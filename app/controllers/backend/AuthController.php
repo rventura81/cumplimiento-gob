@@ -5,10 +5,13 @@ class AuthController extends BaseController {
 
 	public function getLogin()
 	{
-
-
         return View::make('backend/auth/login');
 	}
+
+    public function getLogout(){
+        Auth::logout();
+        return Redirect::to('backend');
+    }
 
     public function postLogin(){
         $validator = \Validator::make(\Input::all(), array(

@@ -39,7 +39,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Bienvenido <?=Auth::user()->nombres?> <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Cerrar sesión</a></li>
+                            <li><a href="<?= URL::to('/backend/auth/logout'); ?>">Cerrar sesión</a></li>
                         </ul>
                     </li>
                 </ul>

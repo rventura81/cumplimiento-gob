@@ -48,4 +48,23 @@ $(document).ready(function(){
         }
         return false;
     });
+
+    var formUsuario = $('.form-usuario');
+    if(formUsuario.length){
+        formUsuario.find('.btn-cambiar-password').on('click', toggleCambioPassword);
+    }
 });
+
+function toggleCambioPassword(e){
+    var btn = $(this),
+        disabled = btn.data('disabled'),
+        contPassword = $('.cont-password'),
+        contCambiarPassword = $('.cont-cambiar-password');
+
+    disabled = !disabled;
+
+    contCambiarPassword.css('display', disabled ? 'none' : 'block');
+    contCambiarPassword.find('#password').attr('disabled', disabled);
+    contCambiarPassword.find('#password_confirmation').attr('disabled', disabled);
+    contPassword.css('display', disabled ? 'block' : 'none');
+}

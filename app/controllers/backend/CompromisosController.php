@@ -6,8 +6,6 @@ class CompromisosController extends BaseController {
 
 	public function getIndex()
 	{
-
-
         $this->layout->title='Inicio';
 		$this->layout->content=View::make('backend/compromisos/index');
 	}

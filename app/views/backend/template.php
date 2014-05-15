@@ -56,6 +56,7 @@
                 <aside>
                     <ul class="nav nav-pills nav-stacked">
                         <li><a href="<?=URL::to('backend/compromisos')?>">Compromisos</a></li>
+                        <li><a href="<?=URL::to('backend/usuarios')?>">Usuarios</a></li>
                     </ul>
                 </aside>
             </div>

@@ -22,6 +22,7 @@ $(document).ready(function(){
                 type: form.method,
                 dataType: "json",
                 success: function(response){
+                    console.log(response);
                         if(response.redirect){
                             window.location=response.redirect;
                         }else{
@@ -31,6 +32,7 @@ $(document).ready(function(){
 
                 },
                 error: function(response){
+                    console.log(response.responseJSON);
                     form.submitting=false;
                     //$(ajaxLoader).remove();
                     $(form).find(":submit").attr("disabled",false);

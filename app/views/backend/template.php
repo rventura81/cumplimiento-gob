@@ -72,7 +72,6 @@
 <script src="<?=URL::asset('bower_components/jquery/dist/jquery.min.js')?>"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="<?=URL::asset('bower_components/bootstrap/dist/js/bootstrap.min.js')?>"></script>
-<script src="<?=URL::asset('bower_components/jquery-form/jquery.form.js')?>"></script>
 <script src="<?=URL::asset('js/backend.js')?>"></script>
 </body>
 </html>

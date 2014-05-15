@@ -1,6 +1,7 @@
-<form class="form-horizontal form-usuario" method="post" action="<?= URL::to('backend/usuarios/guardar/' . $usuario->id); ?>"  autocomplete="off">
+<form class="ajaxForm form-horizontal form-usuario" method="post" action="<?= URL::to('backend/usuarios/guardar/' . $usuario->id); ?>"  autocomplete="off">
     <fieldset>
         <legend><?= $usuario->id ? 'Editar' : 'Nuevo'; ?> Usuario</legend>
+        <div class="validacion"></div>
         <div class="form-group">
             <label for="nombres" class="col-sm-3 control-label">Nombres</label>
             <div class="col-sm-9">
@@ -19,23 +20,23 @@
                 <input type="text" class="form-control" name="email" id="email" value="<?= $usuario->email; ?>"/>
             </div>
         </div>
-        <div class="form-group cont-password">
+        <div class="form-group cont-password" style="<?= $usuario->id ? '' : 'display: none;'; ?>">
             <label for="cambiar-password" class="col-sm-3 control-label">Password</label>
             <div class="col-sm-9">
                 <button type="button" id="cambiar-password" class="btn btn-cambiar-password" data-disabled="true">Cambiar</button>
             </div>
         </div>
-        <div class="cont-cambiar-password" style="display: none;">
+        <div class="cont-cambiar-password" style="<?= $usuario->id ? 'display: none;' : ''; ?>">
             <div class="form-group">
-                <label for="password" class="col-sm-3 control-label">Nuevo Password</label>
+                <label for="password" class="col-sm-3 control-label"><?= $usuario->id ? 'Nuevo ' : ''; ?>Password</label>
                 <div class="col-sm-9">
-                    <input type="password" disabled class="form-control" name="password" id="password" value=""/>
+                    <input type="password" <?= $usuario->id ? 'disabled' : ''; ?> class="form-control" name="password" id="password" value=""/>
                 </div>
             </div>
             <div class="form-group">
                 <label for="password_confirmation" class="col-sm-3 control-label">Confirmar Password</label>
                 <div class="col-sm-9">
-                    <input type="password" disabled class="form-control" name="password_confirmation" id="password_confirmation" value=""/>
+                    <input type="password" <?= $usuario->id ? 'disabled' : ''; ?>  class="form-control" name="password_confirmation" id="password_confirmation" value=""/>
                 </div>
             </div>
         </div>

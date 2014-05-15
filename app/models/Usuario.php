@@ -5,6 +5,8 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 
 class Usuario extends Eloquent implements UserInterface, RemindableInterface {
 
+    protected $fillable = array('nombres', 'apellidos', 'email', 'password');
+
 	/**
 	 * The database table used by the model.
 	 *
@@ -82,6 +84,10 @@ class Usuario extends Eloquent implements UserInterface, RemindableInterface {
 
     public function compromisos(){
         return $this->hasMany('Compromiso');
+    }
+
+    public function getNombreCompletoAttribute($value){
+        return $this->nombres . ' ' . $this->apellidos;
     }
 
 }

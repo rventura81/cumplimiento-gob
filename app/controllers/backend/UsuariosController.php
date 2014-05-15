@@ -20,14 +20,34 @@ class UsuariosController extends BaseController {
     }
 
     public function postGuardar($usuario_id = null){
-        echo '<pre>';
-        print_r(Input::all());
-        echo '</pre>';
-        if($usuario_id)
-            $usuario = Usuario::find($usuario_id);
-        else
-            $usuario = new Usuario();
 
-        return Response::json($usuario);
+        $validator = Validator::make(Input::all(),array(
+            'nombres' => 'required',
+            'apellidos' => 'required',
+            'email' => 'required',
+            'password' => ($usuario_id ? 'confirmed' : 'required|confirmed')
+        ));
+
+        $json = new stdClass();
+        if($validator->passes()){
+            $usuario = $usuario_id ? Usuario::find($usuario_id) : new Usuario();
+
+            $usuario->fill(Input::all());
+
+            if(Input::get('password', null))
+                $usuario->password = Hash::make(Input::get('password'));
+
+            $usuario->save();
+
+            $json->errors = array();
+            $json->redirect = URL::to('backend/usuarios');
+
+            $response = Response::json($json, 200);
+        } else {
+            $json->errors = $validator->messages()->all();
+            $response = Response::json($json, 400);
+        }
+
+        return $response;
     }
 }

@@ -15,7 +15,7 @@
     <tbody>
         <?php foreach($usuarios as $usuario): ?>
             <tr>
-                <td><?= $usuario->nombres; ?></td>
+                <td><?= $usuario->nombre_completo; ?></td>
                 <td>
                     <a href="<?= URL::to('backend/usuarios/editar/'.$usuario->id); ?>" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-edit"></i> Editar</a>
                 </td>

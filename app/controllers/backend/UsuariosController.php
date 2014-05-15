@@ -42,6 +42,8 @@ class UsuariosController extends BaseController {
             $json->errors = array();
             $json->redirect = URL::to('backend/usuarios');
 
+            Session::flash('messages', array('success' => 'El usuario '. $usuario->nombre_completo .' ha sido creado.'));
+
             $response = Response::json($json, 200);
         } else {
             $json->errors = $validator->messages()->all();
@@ -49,5 +51,19 @@ class UsuariosController extends BaseController {
         }
 
         return $response;
+    }
+
+    public function getEliminar($usuario_id){
+        $usuario = Usuario::find($usuario_id);
+        $this->layout = View::make('backend/ajax_template');
+        $this->layout->title = 'Eliminar Usuario';
+        $this->layout->content = View::make('backend/usuarios/delete', array('usuario' => $usuario));
+    }
+
+    public function deleteEliminar($usuario_id){
+        $usuario = Usuario::find($usuario_id);
+        $usuario->delete();
+
+        return Redirect::to('backend/usuarios')->with('messages', array('warning' => 'El usuario ' . $usuario->nombre_completo . ' ha sido eliminado.'));
     }
 }

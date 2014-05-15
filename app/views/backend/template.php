@@ -61,12 +61,19 @@
                 </aside>
             </div>
             <div class="col-md-9">
+                <?= View::make('backend/messages'); ?>
                 <?=$content?>
             </div>
         </div>
 
     </div>
 </main>
+<div class="modal fade" id="modal-backend" tabindex="-1" role="dialog" aria-labelledby="Modal Backend" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="<?=URL::asset('bower_components/jquery/dist/jquery.min.js')?>"></script>

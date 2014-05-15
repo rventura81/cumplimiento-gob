@@ -1,4 +1,4 @@
-<form class="ajaxForm form-horizontal form-usuario" method="post" action="<?= URL::to('backend/usuarios/guardar/' . $usuario->id); ?>"  autocomplete="off">
+<form class="ajaxForm form-horizontal form-usuario" method="post" action="<?= URL::to('backend/usuarios/guardar/' . $usuario->id); ?>">
     <fieldset>
         <legend><?= $usuario->id ? 'Editar' : 'Nuevo'; ?> Usuario</legend>
         <div class="validacion"></div>

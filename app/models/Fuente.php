@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: nsilva
- * Date: 13-05-14
- * Time: 11:34
- */
 
 class Fuente extends Eloquent{
 
@@ -14,4 +8,16 @@ class Fuente extends Eloquent{
         return $this->hasMany('Compromiso');
     }
 
-} 
+    public function padre(){
+        return $this->belongsTo('Fuente', 'fuente_padre_id', 'id');
+    }
+
+    public function hijos(){
+        return $this->hasMany('Fuente', 'fuente_padre_id', 'id');
+    }
+
+    public function esHijoDe(Fuente $fuente){
+        return $this->fuente_padre_id == $fuente->id;
+    }
+
+}

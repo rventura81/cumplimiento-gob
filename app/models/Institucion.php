@@ -5,12 +5,12 @@ class Institucion extends Eloquent{
     protected $table='instituciones';
     protected $fillable=array('nombre','tipo');
 
-    public function institucionesHijas(){
-        return $this->hasMany('Institucion');
+    public function hijos(){
+        return $this->hasMany('Institucion','institucion_padre_id');
     }
 
-    public function institucionPadre(){
-        return $this->belongsTo('Institucion');
+    public function padre(){
+        return $this->belongsTo('Institucion','institucion_padre_id');
     }
 
     public function compromisos(){

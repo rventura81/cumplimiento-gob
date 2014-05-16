@@ -3,7 +3,7 @@
     <li class="active">Compromisos</li>
 </ol>
 
-<a href="<?=URL::to('backend/compromisos/nuevo')?>" class="btn btn-primary">Crear Compromiso</a>
+<a href="<?=URL::to('backend/compromisos/nuevo')?>" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Crear Compromiso</a>
 
 <table class="table">
     <thead>

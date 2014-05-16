@@ -17,7 +17,8 @@ class CompromisosController extends BaseController {
 
     public function getNuevo(){
         $data['compromiso'] = new Compromiso();
-        $data['instituciones'] = Institucion::all();
+        $data['instituciones'] = Institucion::whereNull('institucion_padre_id')->get();
+        $data['fuentes'] = Fuente::whereNull('fuente_padre_id')->get();
 
         $this->layout->title = 'Compromiso';
         $this->layout->content = View::make('backend/compromisos/form', $data);

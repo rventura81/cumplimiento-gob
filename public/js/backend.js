@@ -55,6 +55,8 @@ $(document).ready(function(){
     if(formUsuario.length){
         formUsuario.find('.btn-cambiar-password').on('click', toggleCambioPassword);
     }
+
+    $('.form-control-select2').select2();
 });
 
 function toggleCambioPassword(e){

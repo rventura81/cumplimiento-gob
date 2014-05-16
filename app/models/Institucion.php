@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: nsilva
- * Date: 13-05-14
- * Time: 11:58
- */
 
 class Institucion extends Eloquent{
 

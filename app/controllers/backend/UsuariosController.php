@@ -32,10 +32,12 @@ class UsuariosController extends BaseController {
         if($validator->passes()){
             $usuario = $usuario_id ? Usuario::find($usuario_id) : new Usuario();
 
-            $usuario->fill(Input::all());
-
-            if(Input::get('password', null))
+            if(Input::get('password'))
                 $usuario->password = Hash::make(Input::get('password'));
+
+            $usuario->nombres = Input::get('nombres', '');
+            $usuario->apellidos = Input::get('apellidos', '');
+            $usuario->email = Input::get('email', '');
 
             $usuario->save();
 
@@ -64,6 +66,6 @@ class UsuariosController extends BaseController {
         $usuario = Usuario::find($usuario_id);
         $usuario->delete();
 
-        return Redirect::to('backend/usuarios')->with('messages', array('warning' => 'El usuario ' . $usuario->nombre_completo . ' ha sido eliminado.'));
+        return Redirect::to('backend/usuarios')->with('messages', array('success' => 'El usuario ' . $usuario->nombre_completo . ' ha sido eliminado.'));
     }
 }

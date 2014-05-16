@@ -8,6 +8,8 @@
 
     <!-- Bootstrap -->
     <link href="<?=URL::asset('bower_components/bootstrap/dist/css/bootstrap.min.css')?>" rel="stylesheet">
+    <link href="<?=URL::asset('bower_components/select2/select2.css')?>" rel="stylesheet">
+    <link href="<?=URL::asset('bower_components/select2-bootstrap-css/select2-bootstrap.css')?>" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -75,10 +77,9 @@
     </div>
 </div>
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="<?=URL::asset('bower_components/jquery/dist/jquery.min.js')?>"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="<?=URL::asset('bower_components/bootstrap/dist/js/bootstrap.min.js')?>"></script>
+<script src="<?=URL::asset('bower_components/select2/select2.min.js')?>"></script>
 <script src="<?=URL::asset('js/backend.js')?>"></script>
 </body>
 </html>

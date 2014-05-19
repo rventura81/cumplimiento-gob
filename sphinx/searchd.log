@@ -21,3 +21,5 @@
 [Mon May 19 15:33:32.835 2014] [10242] caught SIGHUP (seamless=1, in queue=1)
 [Mon May 19 15:33:32.840 2014] [10242] rotating index 'compromisos_index': success
 [Mon May 19 15:33:32.840 2014] [10242] rotating finished
+[Mon May 19 15:39:30.946 2014] [10242] caught SIGTERM, shutting down
+[Mon May 19 15:39:30.946 2014] [10242] shutdown complete

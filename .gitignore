@@ -9,3 +9,7 @@ Thumbs.db
 app/config/app.php
 app/config/database.php
 app/config/packages/scalia/sphinxsearch/config.php
+sphinx/etc
+sphinx/index
+sphinx/log
+sphinx/run

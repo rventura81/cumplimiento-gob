@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddAnuncioToCompromisoTable' => $baseDir . '/app/database/migrations/2014_05_19_162823_add_anuncio_to_compromiso_table.php',
     'AuthController' => $baseDir . '/app/controllers/backend/AuthController.php',
     'BackendController' => $baseDir . '/app/controllers/backend/BackendController.php',
     'Barryvdh\\LaravelIdeHelper\\GeneratorCommand' => $vendorDir . '/barryvdh/laravel-ide-helper/src/Barryvdh/LaravelIdeHelper/GeneratorCommand.php',
@@ -22,6 +23,7 @@ return array(
     'Boris\\Inspector' => $vendorDir . '/d11wtq/boris/lib/Boris/Inspector.php',
     'Boris\\ReadlineClient' => $vendorDir . '/d11wtq/boris/lib/Boris/ReadlineClient.php',
     'Boris\\ShallowParser' => $vendorDir . '/d11wtq/boris/lib/Boris/ShallowParser.php',
+    'BuscarController' => $baseDir . '/app/controllers/backend/BuscarController.php',
     'Carbon\\Carbon' => $vendorDir . '/nesbot/carbon/src/Carbon/Carbon.php',
     'ClassPreloader\\Application' => $vendorDir . '/classpreloader/classpreloader/src/ClassPreloader/Application.php',
     'ClassPreloader\\ClassList' => $vendorDir . '/classpreloader/classpreloader/src/ClassPreloader/ClassList.php',
@@ -700,6 +702,7 @@ return array(
     'Jeremeamia\\SuperClosure\\Visitor\\MagicConstantVisitor' => $vendorDir . '/jeremeamia/SuperClosure/src/Jeremeamia/SuperClosure/Visitor/MagicConstantVisitor.php',
     'Math_BigInteger' => $vendorDir . '/phpseclib/phpseclib/phpseclib/Math/BigInteger.php',
     'MedioDeVerificacion' => $baseDir . '/app/models/MedioDeVerificacion.php',
+    'Modernizacion\\Helpers\\SphinxHelper' => $baseDir . '/app/lib/Modernizacion/Helpers/SphinxHelper.php',
     'Monolog\\ErrorHandler' => $vendorDir . '/monolog/monolog/src/Monolog/ErrorHandler.php',
     'Monolog\\Formatter\\ChromePHPFormatter' => $vendorDir . '/monolog/monolog/src/Monolog/Formatter/ChromePHPFormatter.php',
     'Monolog\\Formatter\\ElasticaFormatter' => $vendorDir . '/monolog/monolog/src/Monolog/Formatter/ElasticaFormatter.php',
@@ -1226,9 +1229,13 @@ return array(
     'Psr\\Log\\LoggerInterface' => $vendorDir . '/psr/log/Psr/Log/LoggerInterface.php',
     'Psr\\Log\\LoggerTrait' => $vendorDir . '/psr/log/Psr/Log/LoggerTrait.php',
     'Psr\\Log\\NullLogger' => $vendorDir . '/psr/log/Psr/Log/NullLogger.php',
+    'Scalia\\SphinxSearch\\SphinxSearch' => $vendorDir . '/scalia/sphinxsearch/src/Scalia/SphinxSearch/SphinxSearch.php',
+    'Scalia\\SphinxSearch\\SphinxSearchFacade' => $vendorDir . '/scalia/sphinxsearch/src/Scalia/SphinxSearch/SphinxSearchFacade.php',
+    'Scalia\\SphinxSearch\\SphinxSearchServiceProvider' => $vendorDir . '/scalia/sphinxsearch/src/Scalia/SphinxSearch/SphinxSearchServiceProvider.php',
     'Sector' => $baseDir . '/app/models/Sector.php',
     'SectoresSeeder' => $baseDir . '/app/database/seeds/SectoresSeeder.php',
     'SessionHandlerInterface' => $vendorDir . '/symfony/http-foundation/Symfony/Component/HttpFoundation/Resources/stubs/SessionHandlerInterface.php',
+    'Sphinx\\SphinxClient' => $vendorDir . '/gigablah/sphinxphp/src/Sphinx/SphinxClient.php',
     'Stack\\Builder' => $vendorDir . '/stack/builder/src/Stack/Builder.php',
     'Stack\\StackedHttpKernel' => $vendorDir . '/stack/builder/src/Stack/StackedHttpKernel.php',
     'Symfony\\Component\\BrowserKit\\Client' => $vendorDir . '/symfony/browser-kit/Symfony/Component/BrowserKit/Client.php',

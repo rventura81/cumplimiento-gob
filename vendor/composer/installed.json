@@ -882,58 +882,6 @@
         ]
     },
     {
-        "name": "stack/builder",
-        "version": "v1.0.1",
-        "version_normalized": "1.0.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/stackphp/builder.git",
-            "reference": "49ab90450d7f959943f3659a4bcb5965530117c2"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/stackphp/builder/zipball/49ab90450d7f959943f3659a4bcb5965530117c2",
-            "reference": "49ab90450d7f959943f3659a4bcb5965530117c2",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.0",
-            "symfony/http-foundation": "~2.1",
-            "symfony/http-kernel": "~2.1"
-        },
-        "require-dev": {
-            "silex/silex": "~1.0"
-        },
-        "time": "2013-10-25 14:04:45",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.0-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Stack": "src"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Igor Wiedler",
-                "email": "igor@wiedler.ch",
-                "homepage": "http://wiedler.ch/igor/"
-            }
-        ],
-        "description": "Builder for stack middlewares based on HttpKernelInterface.",
-        "keywords": [
-            "stack"
-        ]
-    },
-    {
         "name": "predis/predis",
         "version": "v0.8.5",
         "version_normalized": "0.8.5.0",
@@ -2393,6 +2341,158 @@
             "phpdoc",
             "phpstorm",
             "sublime"
+        ]
+    },
+    {
+        "name": "stack/builder",
+        "version": "v1.0.2",
+        "version_normalized": "1.0.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/stackphp/builder.git",
+            "reference": "b4af43e7b7f3f7fac919ff475b29f7c5dc7b23b7"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/stackphp/builder/zipball/b4af43e7b7f3f7fac919ff475b29f7c5dc7b23b7",
+            "reference": "b4af43e7b7f3f7fac919ff475b29f7c5dc7b23b7",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0",
+            "symfony/http-foundation": "~2.1",
+            "symfony/http-kernel": "~2.1"
+        },
+        "require-dev": {
+            "silex/silex": "~1.0"
+        },
+        "time": "2014-01-28 19:42:24",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Stack": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Igor Wiedler",
+                "email": "igor@wiedler.ch",
+                "homepage": "http://wiedler.ch/igor/"
+            }
+        ],
+        "description": "Builder for stack middlewares based on HttpKernelInterface.",
+        "keywords": [
+            "stack"
+        ]
+    },
+    {
+        "name": "gigablah/sphinxphp",
+        "version": "2.0.8",
+        "version_normalized": "2.0.8.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/gigablah/sphinxphp.git",
+            "reference": "6d5e97fdd33c1129ca372203d1330827c1cbc46c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/gigablah/sphinxphp/zipball/6d5e97fdd33c1129ca372203d1330827c1cbc46c",
+            "reference": "6d5e97fdd33c1129ca372203d1330827c1cbc46c",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "3.7.*",
+            "satooshi/php-coveralls": "dev-master"
+        },
+        "time": "2013-08-22 08:05:44",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Sphinx": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0"
+        ],
+        "authors": [
+            {
+                "name": "Andrew Aksyonoff",
+                "homepage": "http://sphinxsearch.com/"
+            }
+        ],
+        "description": "Sphinx Search PHP API",
+        "homepage": "http://sphinxsearch.com/",
+        "keywords": [
+            "api",
+            "search",
+            "sphinx"
+        ]
+    },
+    {
+        "name": "scalia/sphinxsearch",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/scalia/sphinxsearch.git",
+            "reference": "1ddb8f85d069a8fe346a3652b5fe35dc31fb3041"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/scalia/sphinxsearch/zipball/1ddb8f85d069a8fe346a3652b5fe35dc31fb3041",
+            "reference": "1ddb8f85d069a8fe346a3652b5fe35dc31fb3041",
+            "shasum": ""
+        },
+        "require": {
+            "gigablah/sphinxphp": "2.0.8",
+            "illuminate/support": "~4.0",
+            "php": ">=5.3.0"
+        },
+        "time": "2014-04-29 07:57:26",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Scalia\\SphinxSearch": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "authors": [
+            {
+                "name": "Scalia",
+                "email": "contacto@scalia.es"
+            }
+        ],
+        "description": "Laravel package to query Sphinxsearch",
+        "homepage": "http://github.com/scalia/sphinxsearch",
+        "keywords": [
+            "Laravel 4",
+            "laravel",
+            "sphinx",
+            "sphinxsearch"
         ]
     }
 ]

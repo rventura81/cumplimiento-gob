@@ -22,7 +22,6 @@
 <header>
     <nav class="navbar navbar-default" role="navigation">
         <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
@@ -33,10 +32,7 @@
                 <a class="navbar-brand" href="#">Cumplimiento</a>
             </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Bienvenido <?=Auth::user()->nombres?> <b class="caret"></b></a>
@@ -45,8 +41,14 @@
                         </ul>
                     </li>
                 </ul>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
+                <form class="navbar-form navbar-right" role="search" action="<?= URL::to('backend/buscar'); ?>" method="GET">
+                    <div class="form-group">
+                        <input accesskey="q" type="text" name="q" id="q" class="form-control" placeholder="Buscar..." value="<?= isset($busqueda) ? strip_tags($busqueda) : ''; ?>">
+                    </div>
+                    <button type="submit" class="btn btn-default">Buscar</button>
+                </form>
+            </div>
+        </div>
     </nav>
 
 </header>
@@ -55,6 +57,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">
+                <?php if($item_menu != 'buscar'): ?>
                 <aside>
                     <ul class="nav nav-pills nav-stacked">
                         <li <?= $item_menu == 'compromisos' ? 'class="active"' : ''; ?>><a href="<?=URL::to('backend/compromisos')?>">Compromisos</a></li>
@@ -63,13 +66,15 @@
                         <li <?= $item_menu == 'usuarios' ? 'class="active"' : ''; ?>><a href="<?=URL::to('backend/usuarios')?>">Usuarios</a></li>
                     </ul>
                 </aside>
+                <?php else: ?>
+                    <?= $filtros; ?>
+                <?php endif; ?>
             </div>
             <div class="col-md-9">
                 <?= View::make('backend/messages'); ?>
                 <?=$content?>
             </div>
         </div>
-
     </div>
 </main>
 <div class="modal fade" id="modal-backend" tabindex="-1" role="dialog" aria-labelledby="Modal Backend" aria-hidden="true">

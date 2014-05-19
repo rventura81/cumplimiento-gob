@@ -4,6 +4,17 @@
 
 $(document).ready(function(){
 
+    $('.form-control-select2').select2();
+
+    initAjaxForm();
+
+    initFormUsuario();
+
+    initFormMediosDeVerificacion();
+
+});
+
+function initAjaxForm(){
     $(".ajaxForm :submit").attr("disabled",false);
     $(document).on("submit",".ajaxForm",function(){
         var form=this;
@@ -23,12 +34,12 @@ $(document).ready(function(){
                 dataType: "json",
                 success: function(response){
                     console.log(response);
-                        if(response.redirect){
-                            window.location=response.redirect;
-                        }else{
-                            var f=window[$(form).data("onsuccess")];
-                            f(form);
-                        }
+                    if(response.redirect){
+                        window.location=response.redirect;
+                    }else{
+                        var f=window[$(form).data("onsuccess")];
+                        f(form);
+                    }
 
                 },
                 error: function(response){
@@ -50,14 +61,28 @@ $(document).ready(function(){
         }
         return false;
     });
+}
 
-    $('.form-control-select2').select2();
-
+function initFormUsuario(){
     var formUsuario = $('.form-usuario');
     if(formUsuario.length){
-        formUsuario.find('.btn-cambiar-password').on('click', toggleCambioPassword);
-    }
+        formUsuario.find('.btn-cambiar-password').on('click', function (e){
+            var btn = $(this),
+                disabled = btn.data('disabled'),
+                contPassword = $('.cont-password'),
+                contCambiarPassword = $('.cont-cambiar-password');
 
+            disabled = !disabled;
+
+            contCambiarPassword.css('display', disabled ? 'none' : 'block');
+            contCambiarPassword.find('#password').attr('disabled', disabled);
+            contCambiarPassword.find('#password_confirmation').attr('disabled', disabled);
+            contPassword.css('display', disabled ? 'block' : 'none');
+        });
+    }
+}
+
+function initFormMediosDeVerificacion(){
     var $formMedios= $('.form-medios');
     $formMedios.find('.form-medios-table tbody tr').length?$formMedios.find('.form-medios-table').show():$formMedios.find('.form-medios-table').hide();
     $formMedios.data('maxid',$formMedios.find('.form-medios-table tbody tr').length);
@@ -66,20 +91,22 @@ $(document).ready(function(){
         var tipo=$formMedios.find('.medio-tipo').val();
         var url=$formMedios.find('.medio-url').val();
 
-        if(!descripcion || !tipo || !url)
+        if(!descripcion || !tipo || !url){
+            alert('Faltan campos por ingresar.');
             return;
+        }
 
         var maxid=$formMedios.data('maxid');
         var row='<tr>' +
-                '<td>'+descripcion+'</td>' +
-                '<td>'+tipo+'</td>' +
-                '<td>'+url+'</td>' +
-                '<td>' +
-                    '<input type="hidden" name="medios-de-verificacion['+maxid+'][descripcion]" value="'+descripcion+'"/>' +
-                    '<input type="hidden" name="medios-de-verificacion['+maxid+'][tipo]" value="'+tipo+'"/>' +
-                    '<input type="hidden" name="medios-de-verificacion['+maxid+'][url]" value="'+url+'"/>' +
-                    '<button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button>' +
-                '</td>' +
+            '<td>'+descripcion+'</td>' +
+            '<td>'+tipo+'</td>' +
+            '<td>'+url+'</td>' +
+            '<td>' +
+            '<input type="hidden" name="medios-de-verificacion['+maxid+'][descripcion]" value="'+descripcion+'"/>' +
+            '<input type="hidden" name="medios-de-verificacion['+maxid+'][tipo]" value="'+tipo+'"/>' +
+            '<input type="hidden" name="medios-de-verificacion['+maxid+'][url]" value="'+url+'"/>' +
+            '<button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button>' +
+            '</td>' +
             '</tr>';
         $formMedios.find('.form-medios-table').append(row);
         $formMedios.data('maxid',++maxid);
@@ -89,19 +116,4 @@ $(document).ready(function(){
         $(this).closest('tr').remove();
         $formMedios.find('.form-medios-table tbody tr').length?$formMedios.find('.form-medios-table').show():$formMedios.find('.form-medios-table').hide();
     });
-
-});
-
-function toggleCambioPassword(e){
-    var btn = $(this),
-        disabled = btn.data('disabled'),
-        contPassword = $('.cont-password'),
-        contCambiarPassword = $('.cont-cambiar-password');
-
-    disabled = !disabled;
-
-    contCambiarPassword.css('display', disabled ? 'none' : 'block');
-    contCambiarPassword.find('#password').attr('disabled', disabled);
-    contCambiarPassword.find('#password_confirmation').attr('disabled', disabled);
-    contPassword.css('display', disabled ? 'block' : 'none');
 }

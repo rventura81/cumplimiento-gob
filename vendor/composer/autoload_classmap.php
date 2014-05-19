@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddAnuncioToCompromisoTable' => $baseDir . '/app/database/migrations/2014_05_19_162823_add_anuncio_to_compromiso_table.php',
     'AuthController' => $baseDir . '/app/controllers/backend/AuthController.php',
     'BackendController' => $baseDir . '/app/controllers/backend/BackendController.php',
     'Barryvdh\\LaravelIdeHelper\\GeneratorCommand' => $vendorDir . '/barryvdh/laravel-ide-helper/src/Barryvdh/LaravelIdeHelper/GeneratorCommand.php',

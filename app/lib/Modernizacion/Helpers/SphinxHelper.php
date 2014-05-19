@@ -24,12 +24,30 @@ class SphinxHelper {
 
     /**
      * @param $text
-     * @param array $filters
+     * @param array $options
      * @return array
      */
-    public function search($text, $filters = array()){
+    public function search($text, $options = array()){
         $ids = $filters = array();
-        $result = $this->sphinx->search($text, 'compromisos_index')->get();
+
+        $sqb = $this->sphinx->search($text, 'compromisos_index');
+
+        if($options['fuente']){
+            $sqb->filter('fuente', $options['fuente']);
+        }
+
+        if($options['entidad']){
+            $sqb->filter('entidad_de_ley', $options['entidad']);
+        }
+
+        if($options['institucion']){
+            $sqb->filter('institucion', $options['institucion']);
+        }
+
+        if(empty($text))
+            $sqb->setMatchMode(\Sphinx\SphinxClient::SPH_MATCH_FULLSCAN);
+
+        $result = $sqb->get();
 
         if(!$result || !isset($result['matches']))
             return array('ids' => null, 'filters' => null);

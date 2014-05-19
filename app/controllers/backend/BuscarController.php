@@ -22,24 +22,25 @@ class BuscarController extends BaseController {
     public function getIndex(){
         $q = Input::get('q');
 
-        $result = $this->sphinxHelper->search($q);
+        $data['results'] = $data['fuentes'] = $data['instituciones'] = $data['entidades'] = array();
+        $data['input'] = array_merge(array('institucion' => array(), 'entidad' => array(), 'fuente' => array()), Input::all());
+
+        $result = $this->sphinxHelper->search($q, $data['input']);
 
         $ids = $result['ids'];
         $filters = $result['filters'];
-
-        $data['results'] = $data['fuentes'] = $data['instituciones'] = $data['entidades'] = array();
 
         if($ids){
             $data['results'] = Compromiso::whereIn('id', $ids)->get();
             $data['fuentes'] = Fuente::whereIn('id', $filters['fuente'])->get();
             $data['instituciones'] = Institucion::whereIn('id', $filters['institucion'])->get();
-//            $data['entidades'] = EntidadDeLey::all();
+            $data['entidades'] = EntidadDeLey::whereIn('id', $filters['entidad_de_ley'])->get();
         }
 
-        $this->layout->busqueda = $q;
+        $this->layout->busqueda = $data['q'] = $q;
         $this->layout->title='Buscar';
 
         $this->layout->filtros = View::make('backend/busquedas/filters', $data);
         $this->layout->content= View::make('backend/busquedas/results', $data);
     }
-} 
+}

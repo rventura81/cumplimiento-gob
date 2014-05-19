@@ -3,6 +3,7 @@
 class UsuariosController extends BaseController {
 
     protected $layout='backend/template';
+    protected $item_menu = 'usuarios';
 
     public function getIndex(){
         $this->layout->title = 'Usuarios';

@@ -4,7 +4,7 @@
 class FuentesController extends BaseController {
 
     protected $layout='backend/template';
-
+    protected $item_menu = 'fuentes';
 
     public function getIndex(){
         $limit = Input::get('limit', 10);

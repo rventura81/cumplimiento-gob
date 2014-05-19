@@ -3,6 +3,7 @@
 class CompromisosController extends BaseController {
 
 	protected $layout='backend/template';
+    protected $item_menu = 'compromisos';
 
 	public function getIndex()
 	{

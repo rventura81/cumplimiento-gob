@@ -151,7 +151,7 @@
                     <div class="col-sm-2">
                         <div class="form-group">
                             <label for="medio-tipo">Tipo</label>
-                            <input id="medio-tipo" type="text" class="form-control medio-tipo" placeholder="Ej: pdf, html" />
+                            <input id="medio-tipo" type="text" class="form-control medio-tipo" placeholder="Ej: pdf" />
                         </div>
                     </div>
                     <div class="col-sm-3">

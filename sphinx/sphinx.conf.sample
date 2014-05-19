@@ -9,9 +9,18 @@ source compromisos_src
     sql_port = 3306
 
     sql_query_pre = SET NAMES utf8
-    sql_query = SELECT id, nombre, descripcion FROM compromisos;
+        sql_query = SELECT c.id, c.nombre, c.descripcion, i.id AS institucion, f.id AS fuente, el.id AS entidad_de_ley\
+                    FROM compromisos AS c\
+                    LEFT JOIN instituciones AS i ON c.institucion_responsable_id = i.id\
+                    LEFT JOIN fuentes AS f ON c.fuente_id = f.id\
+                    LEFT JOIN compromiso_entidad_de_ley cel ON c.id = cel.compromiso_id\
+                    LEFT JOIN entidades_de_ley el ON el.id = cel.entidad_de_ley_id;
 
-    sql_query_info = SELECT nombre FROM compromisos WHERE id=$id
+        sql_attr_uint = institucion
+        sql_attr_uint = fuente
+        sql_attr_uint = entidad_de_ley
+
+        sql_query_info = SELECT nombre FROM compromisos WHERE id=$id
 }
 
 index compromisos_index

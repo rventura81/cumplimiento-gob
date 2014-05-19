@@ -13,3 +13,5 @@ sphinx/etc
 sphinx/index
 sphinx/log
 sphinx/run
+sphinx/searchd.log
+sphinx/sphinx.conf

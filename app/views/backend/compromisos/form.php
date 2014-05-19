@@ -94,12 +94,12 @@
             <div class="col-sm-4">
                 <div class="form-group">
                     <label for="instituciones-relacionadas">Instituciones relacionadas</label>
-                    <select class="form-control form-control-select2" name="instituciones_relacionadas_id" id="instituciones-relacionadas" data-placeholder="Seleccionar instituciones" multiple>
+                    <select class="form-control form-control-select2" name="instituciones_relacionadas[]" id="instituciones-relacionadas" data-placeholder="Seleccionar instituciones" multiple>
                         <option></option>
                         <?php foreach($instituciones as $i): ?>
-                            <option value="<?= $i->id; ?>"><?= $i->nombre; ?></option>
+                            <option value="<?= $i->id; ?>" <?=$compromiso->institucionesRelacionadas->find($i->id)?'selected':''?>><?= $i->nombre; ?></option>
                             <?php foreach($i->hijos as $h): ?>
-                                <option value="<?= $h->id; ?>"> - <?= $h->nombre; ?></option>
+                                <option value="<?= $h->id; ?>" <?=$compromiso->institucionesRelacionadas->find($h->id)?'selected':''?>> - <?= $h->nombre; ?></option>
                             <?php endforeach; ?>
                         <?php endforeach; ?>
                     </select>
@@ -110,11 +110,11 @@
             <div class="col-sm-8">
                 <div class="form-group">
                     <label for="anuncio">Extracto anuncio</label>
-                    <textarea id="anuncio" name="anuncio" class="form-control" rows="6" placeholder="Transcriba la frase o discurso donde se anunció este compromiso."></textarea>
+                    <textarea id="anuncio" name="anuncio" class="form-control" rows="6" placeholder="Transcriba la frase o discurso donde se anunció este compromiso."><?=$compromiso->anuncio?></textarea>
                 </div>
                 <div class="form-group">
                     <label id="anuncio_emisor">Emisor del anuncio</label>
-                    <input type="text" name="anuncio_emisor" id="anuncio_emisor" class="form-control" placeholder="Persona que emitió el anuncio" />
+                    <input type="text" name="anuncio_emisor" id="anuncio_emisor" class="form-control" placeholder="Persona que emitió el anuncio" value="<?=$compromiso->anuncio_emisor?>" />
                 </div>
             </div>
         </div>
@@ -125,10 +125,10 @@
             <div class="col-sm-12">
                 <div class="form-group">
                     <label for="entidades_de_ley">Entidades de Ley asociadas</label>
-                    <select id="entidades_de_ley" name="entidades_de_ley_id" class="form-control form-control-select2" data-placeholder="Seleccione las entidades de Ley asociadas a este compromiso" multiple>
+                    <select id="entidades_de_ley" name="entidades_de_ley[]" class="form-control form-control-select2" data-placeholder="Seleccione las entidades de Ley asociadas a este compromiso" multiple>
                         <option></option>
                         <?php foreach($entidades_de_ley as $l): ?>
-                            <option value="<?= $l->id; ?>"><?= $l->nombre; ?></option>
+                            <option value="<?= $l->id; ?>" <?=$compromiso->entidadesDeLey->find($l->id)?'selected':''?>><?= $l->nombre; ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>

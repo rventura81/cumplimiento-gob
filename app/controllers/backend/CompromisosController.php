@@ -62,6 +62,7 @@ class CompromisosController extends BaseController {
             $compromiso->fuente()->associate(Fuente::find(Input::get('fuente')));
             $compromiso->institucion()->associate(Institucion::find(Input::get('institucion')));
             $compromiso->usuario()->associate(Usuario::find(Input::get('usuario')));
+            $compromiso->institucionesRelacionadas()->sync(Input::get('instituciones_relacionadas'));
 
             $compromiso->save();
 

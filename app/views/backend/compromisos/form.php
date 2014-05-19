@@ -94,12 +94,12 @@
             <div class="col-sm-4">
                 <div class="form-group">
                     <label for="instituciones-relacionadas">Instituciones relacionadas</label>
-                    <select class="form-control form-control-select2" name="instituciones_relacionadas_id" id="instituciones-relacionadas" data-placeholder="Seleccionar instituciones" multiple>
+                    <select class="form-control form-control-select2" name="instituciones_relacionadas[]" id="instituciones-relacionadas" data-placeholder="Seleccionar instituciones" multiple>
                         <option></option>
                         <?php foreach($instituciones as $i): ?>
-                            <option value="<?= $i->id; ?>"><?= $i->nombre; ?></option>
+                            <option value="<?= $i->id; ?>" <?=$compromiso->institucionesRelacionadas->find($i->id)?'selected':''?>><?= $i->nombre; ?></option>
                             <?php foreach($i->hijos as $h): ?>
-                                <option value="<?= $h->id; ?>"> - <?= $h->nombre; ?></option>
+                                <option value="<?= $h->id; ?>" <?=$compromiso->institucionesRelacionadas->find($h->id)?'selected':''?>> - <?= $h->nombre; ?></option>
                             <?php endforeach; ?>
                         <?php endforeach; ?>
                     </select>

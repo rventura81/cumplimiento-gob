@@ -1,3 +1,9 @@
+<ol class="breadcrumb">
+    <li><a href="<?=URL::to('backend')?>">Inicio</a></li>
+    <li><a href="<?=URL::to('backend/compromisos'); ?>">Compromisos</a></li>
+    <li class="active"><?= $compromiso->id ? 'Editar' : 'Nuevo'; ?></li>
+</ol>
+
 <form class="ajaxForm" method="post" action="<?= URL::to('backend/compromisos/guardar/' . $compromiso->id); ?>">
     <fieldset>
         <legend><?= $compromiso->id ? 'Editar' : 'Nuevo'; ?> Compromiso</legend>

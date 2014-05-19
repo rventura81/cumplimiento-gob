@@ -19,6 +19,7 @@
                 <td><?= $fuente->nombre; ?></td>
                 <td><?= $fuente->padre ? $fuente->padre->nombre : ' - '; ?></td>
                 <td>
+                    <a href="<?= URL::to('backend/fuentes/ver/'.$fuente->id); ?>" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-search"></i> Ver</a>
                     <a href="<?= URL::to('backend/fuentes/editar/'.$fuente->id); ?>" class="btn btn-xs btn-success"><i class="glyphicon glyphicon-edit"></i> Editar</a>
                     <a href="<?= URL::to('backend/fuentes/eliminar/'.$fuente->id); ?>" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#modal-backend"><i class="glyphicon glyphicon-remove"></i> Eliminar</a>
                 </td>

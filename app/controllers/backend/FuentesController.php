@@ -16,6 +16,11 @@ class FuentesController extends BaseController {
         $this->layout->content = View::make('backend/fuentes/index', array('fuentes' => $fuentes));
     }
 
+    public function getVer($fuente_id){
+        $this->layout->title = 'Fuentes';
+        $this->layout->content = View::make('backend/fuentes/view', array('fuente' => Fuente::find($fuente_id)));
+    }
+
     public function getNueva(){
         $data['fuentes'] = Fuente::with('hijos')->whereNull('fuente_padre_id')->get();
         $data['fuente'] = new Fuente();

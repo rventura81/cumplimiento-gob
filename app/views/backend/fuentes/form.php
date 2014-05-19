@@ -1,3 +1,9 @@
+<ol class="breadcrumb">
+    <li><a href="<?=URL::to('backend')?>">Inicio</a></li>
+    <li><a href="<?=URL::to('backend/fuentes'); ?>">Fuentes</a></li>
+    <li class="active"><?= $fuente->id ? 'Editar' : 'Nueva'; ?></li>
+</ol>
+
 <form class="ajaxForm form-horizontal form-usuario" method="post" action="<?= URL::to('backend/fuentes/guardar/' . $fuente->id); ?>">
     <fieldset>
         <legend><?= $fuente->id ? 'Editar' : 'Nueva'; ?> Fuente</legend>

@@ -21,6 +21,7 @@
             <td><?= $entidad->tipo; ?></td>
             <td><?= $entidad->estado; ?></td>
             <td>
+                <a href="<?= URL::to('backend/entidades/ver/'.$entidad->id); ?>" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-search"></i> Ver</a>
                 <a href="<?= URL::to('backend/entidades/editar/'.$entidad->id); ?>" class="btn btn-xs btn-success"><i class="glyphicon glyphicon-edit"></i> Editar</a>
                 <a href="<?= URL::to('backend/entidades/eliminar/'.$entidad->id); ?>" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#modal-backend"><i class="glyphicon glyphicon-remove"></i> Eliminar</a>
             </td>

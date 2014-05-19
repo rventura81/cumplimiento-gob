@@ -15,6 +15,11 @@ class EntidadesController extends BaseController {
         $this->layout->content=View::make('backend/entidades/index', array('entidades' => $entidades));
     }
 
+    public function getVer($entidad_id){
+        $this->layout->title = 'Entidades';
+        $this->layout->content = View::make('backend/entidades/view', array('entidad' => EntidadDeLey::find($entidad_id)));
+    }
+
     public function getNueva(){
         $data['entidad'] = new EntidadDeLey();
 

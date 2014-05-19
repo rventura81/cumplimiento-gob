@@ -10,6 +10,11 @@ class UsuariosController extends BaseController {
         $this->layout->content = View::make('backend/usuarios/index', array('usuarios' => Usuario::all()));
     }
 
+    public function getVer($usuario_id){
+        $this->layout->title = 'Usuarios';
+        $this->layout->content = View::make('backend/usuarios/view', array('usuario' => Usuario::find($usuario_id)));
+    }
+
     public function getNuevo(){
         $this->layout->title = 'Usuarios';
         $this->layout->content = View::make('backend/usuarios/form', array('usuario' => new Usuario()));

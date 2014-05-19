@@ -1,3 +1,9 @@
+<ol class="breadcrumb">
+    <li><a href="<?=URL::to('backend')?>">Inicio</a></li>
+    <li><a href="<?=URL::to('backend/entidades'); ?>">Entidades</a></li>
+    <li class="active"><?= $entidad->id ? 'Editar' : 'Nueva'; ?></li>
+</ol>
+
 <form class="ajaxForm form-horizontal form-usuario" method="post" action="<?= URL::to('backend/entidades/guardar/' . $entidad->id); ?>">
     <fieldset>
         <legend><?= $entidad->id ? 'Editar' : 'Nueva'; ?> Entidad</legend>
@@ -20,7 +26,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="numero_boletin" class="col-sm-3 control-label">Número boletin</label>
+            <label for="numero_boletin" class="col-sm-3 control-label">Número de boletín</label>
             <div class="col-sm-9">
                 <input type="number" class="form-control" name="numero_boletin" id="numero_boletin" value="<?= $entidad->numero_boletin; ?>"/>
             </div>

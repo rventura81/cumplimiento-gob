@@ -110,11 +110,11 @@
             <div class="col-sm-8">
                 <div class="form-group">
                     <label for="anuncio">Extracto anuncio</label>
-                    <textarea id="anuncio" name="anuncio" class="form-control" rows="6" placeholder="Transcriba la frase o discurso donde se anunció este compromiso."></textarea>
+                    <textarea id="anuncio" name="anuncio" class="form-control" rows="6" placeholder="Transcriba la frase o discurso donde se anunció este compromiso."><?=$compromiso->anuncio?></textarea>
                 </div>
                 <div class="form-group">
                     <label id="anuncio_emisor">Emisor del anuncio</label>
-                    <input type="text" name="anuncio_emisor" id="anuncio_emisor" class="form-control" placeholder="Persona que emitió el anuncio" />
+                    <input type="text" name="anuncio_emisor" id="anuncio_emisor" class="form-control" placeholder="Persona que emitió el anuncio" value="<?=$compromiso->anuncio_emisor?>" />
                 </div>
             </div>
         </div>

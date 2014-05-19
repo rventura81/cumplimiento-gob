@@ -3,10 +3,16 @@
 class UsuariosController extends BaseController {
 
     protected $layout='backend/template';
+    protected $item_menu = 'usuarios';
 
     public function getIndex(){
         $this->layout->title = 'Usuarios';
         $this->layout->content = View::make('backend/usuarios/index', array('usuarios' => Usuario::all()));
+    }
+
+    public function getVer($usuario_id){
+        $this->layout->title = 'Usuarios';
+        $this->layout->content = View::make('backend/usuarios/view', array('usuario' => Usuario::find($usuario_id)));
     }
 
     public function getNuevo(){

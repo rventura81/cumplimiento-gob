@@ -4,7 +4,7 @@
 class FuentesController extends BaseController {
 
     protected $layout='backend/template';
-
+    protected $item_menu = 'fuentes';
 
     public function getIndex(){
         $limit = Input::get('limit', 10);
@@ -14,6 +14,11 @@ class FuentesController extends BaseController {
 
         $this->layout->title = 'Fuentes';
         $this->layout->content = View::make('backend/fuentes/index', array('fuentes' => $fuentes));
+    }
+
+    public function getVer($fuente_id){
+        $this->layout->title = 'Fuentes';
+        $this->layout->content = View::make('backend/fuentes/view', array('fuente' => Fuente::find($fuente_id)));
     }
 
     public function getNueva(){

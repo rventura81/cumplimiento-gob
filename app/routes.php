@@ -16,8 +16,9 @@ Route::controller('/backend/auth','AuthController');
 
 Route::group(array('before' => 'auth'), function()
 {
-    Route::controller('/backend/usuarios','UsuariosController');
-    Route::controller('/backend/fuentes','FuentesController');
-    Route::controller('/backend/compromisos','CompromisosController');
-    Route::controller('/backend','BackendController');
+    Route::controller('/backend/usuarios', 'UsuariosController');
+    Route::controller('/backend/fuentes', 'FuentesController');
+    Route::controller('/backend/compromisos', 'CompromisosController');
+    Route::controller('/backend/entidades', 'EntidadesController');
+    Route::controller('/backend', 'BackendController');
 });

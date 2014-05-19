@@ -17,6 +17,7 @@
             <tr>
                 <td><?= $usuario->nombre_completo; ?></td>
                 <td>
+                    <a href="<?= URL::to('backend/usuarios/ver/'.$usuario->id); ?>" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-search"></i> Ver</a>
                     <a href="<?= URL::to('backend/usuarios/editar/'.$usuario->id); ?>" class="btn btn-xs btn-success"><i class="glyphicon glyphicon-edit"></i> Editar</a>
                     <a href="<?= URL::to('backend/usuarios/eliminar/'.$usuario->id); ?>" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#modal-backend"><i class="glyphicon glyphicon-remove"></i> Eliminar</a>
                 </td>

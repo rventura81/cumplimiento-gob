@@ -3,6 +3,7 @@
 class CompromisosController extends BaseController {
 
 	protected $layout='backend/template';
+    protected $item_menu = 'compromisos';
 
 	public function getIndex()
 	{
@@ -14,6 +15,11 @@ class CompromisosController extends BaseController {
         $this->layout->title='Inicio';
 		$this->layout->content=View::make('backend/compromisos/index', array('compromisos' => $compromisos));
 	}
+
+    public function getVer($compromiso_id){
+        $this->layout->title = 'Compromiso';
+        $this->layout->content = View::make('backend/compromisos/view', array('compromiso' => Compromiso::find($compromiso_id)));
+    }
 
     public function getNuevo(){
         $data['compromiso'] = new Compromiso();

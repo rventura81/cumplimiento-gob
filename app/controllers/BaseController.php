@@ -12,6 +12,11 @@ class BaseController extends Controller {
 		if ( ! is_null($this->layout))
 		{
 			$this->layout = View::make($this->layout);
+            $this->layout->item_menu = 'inicio';
+
+            if( property_exists($this, 'item_menu') )
+                $this->layout->item_menu = $this->item_menu;
+
 		}
 	}
 

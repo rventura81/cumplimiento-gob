@@ -333,6 +333,7 @@ return array(
     'Doctrine\\DBAL\\Types\\VarDateTimeType' => $vendorDir . '/doctrine/dbal/lib/Doctrine/DBAL/Types/VarDateTimeType.php',
     'Doctrine\\DBAL\\Version' => $vendorDir . '/doctrine/dbal/lib/Doctrine/DBAL/Version.php',
     'EntidadDeLey' => $baseDir . '/app/models/EntidadDeLey.php',
+    'EntidadesController' => $baseDir . '/app/controllers/backend/EntidadesController.php',
     'File_ANSI' => $vendorDir . '/phpseclib/phpseclib/phpseclib/File/ANSI.php',
     'File_ASN1' => $vendorDir . '/phpseclib/phpseclib/phpseclib/File/ASN1.php',
     'File_ASN1_Element' => $vendorDir . '/phpseclib/phpseclib/phpseclib/File/ASN1.php',

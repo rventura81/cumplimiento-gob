@@ -84,7 +84,7 @@ function initFormUsuario(){
 
 function initFormMediosDeVerificacion(){
     var $formMedios= $('.form-medios');
-    $formMedios.find('.form-medios-table tbody tr').length?$formMedios.find('.form-medios-table').show():$formMedios.find('.form-medios-table').hide();
+    $formMedios.find('.form-medios-table tbody tr').length?$formMedios.find('.form-medios-table .nodata').hide():$formMedios.find('.form-medios-table .nodata').show();
     $formMedios.data('maxid',$formMedios.find('.form-medios-table tbody tr').length);
     $formMedios.find('.form-medios-agregar button').on('click',function(){
         var descripcion=$formMedios.find('.medio-descripcion').val();
@@ -110,10 +110,10 @@ function initFormMediosDeVerificacion(){
             '</tr>';
         $formMedios.find('.form-medios-table').append(row);
         $formMedios.data('maxid',++maxid);
-        $formMedios.find('.form-medios-table tbody tr').length?$formMedios.find('.form-medios-table').show():$formMedios.find('.form-medios-table').hide();
+        $formMedios.find('.form-medios-table tbody tr').length?$formMedios.find('.form-medios-table .nodata').hide():$formMedios.find('.form-medios-table .nodata').show();
     });
     $formMedios.find('.form-medios-table').on('click','button',function(){
         $(this).closest('tr').remove();
-        $formMedios.find('.form-medios-table tbody tr').length?$formMedios.find('.form-medios-table').show():$formMedios.find('.form-medios-table').hide();
+        $formMedios.find('.form-medios-table tbody tr').length?$formMedios.find('.form-medios-table .nodata').hide():$formMedios.find('.form-medios-table .nodata').show();
     });
 }

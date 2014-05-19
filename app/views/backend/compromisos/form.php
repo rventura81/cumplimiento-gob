@@ -176,6 +176,9 @@
                         <th class="col-sm-3">Enlace</th>
                         <th></th>
                     </tr>
+                    <tr class="nodata">
+                        <td colspan="4">No hay medios de verificación ingresados.</td>
+                    </tr>
                     </thead>
                     <tbody>
                     <?php $i=0; foreach($compromiso->mediosDeVerificacion as $m):?>

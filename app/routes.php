@@ -20,5 +20,6 @@ Route::group(array('before' => 'auth'), function()
     Route::controller('/backend/fuentes', 'FuentesController');
     Route::controller('/backend/compromisos', 'CompromisosController');
     Route::controller('/backend/entidades', 'EntidadesController');
+    Route::controller('/backend/buscar', 'BuscarController');
     Route::controller('/backend', 'BackendController');
 });

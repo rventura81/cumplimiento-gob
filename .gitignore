@@ -8,3 +8,4 @@ Thumbs.db
 .idea
 app/config/app.php
 app/config/database.php
+app/config/packages/scalia/sphinxsearch/config.php

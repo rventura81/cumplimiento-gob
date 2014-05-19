@@ -65,6 +65,7 @@ class CompromisosController extends BaseController {
             $compromiso->institucionesRelacionadas()->sync(Input::get('instituciones_relacionadas'));
             $compromiso->anuncio=Input::get('anuncio');
             $compromiso->anuncio_emisor=Input::get('anuncio_emisor');
+            $compromiso->entidadesDeLey()->sync(Input::get('entidades_de_ley'));
 
             $compromiso->save();
 

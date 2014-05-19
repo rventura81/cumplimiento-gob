@@ -125,10 +125,10 @@
             <div class="col-sm-12">
                 <div class="form-group">
                     <label for="entidades_de_ley">Entidades de Ley asociadas</label>
-                    <select id="entidades_de_ley" name="entidades_de_ley_id" class="form-control form-control-select2" data-placeholder="Seleccione las entidades de Ley asociadas a este compromiso" multiple>
+                    <select id="entidades_de_ley" name="entidades_de_ley[]" class="form-control form-control-select2" data-placeholder="Seleccione las entidades de Ley asociadas a este compromiso" multiple>
                         <option></option>
                         <?php foreach($entidades_de_ley as $l): ?>
-                            <option value="<?= $l->id; ?>"><?= $l->nombre; ?></option>
+                            <option value="<?= $l->id; ?>" <?=$compromiso->entidadesDeLey->find($l->id)?'selected':''?>><?= $l->nombre; ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>

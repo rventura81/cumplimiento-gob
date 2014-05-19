@@ -51,12 +51,44 @@ $(document).ready(function(){
         return false;
     });
 
+    $('.form-control-select2').select2();
+
     var formUsuario = $('.form-usuario');
     if(formUsuario.length){
         formUsuario.find('.btn-cambiar-password').on('click', toggleCambioPassword);
     }
 
-    $('.form-control-select2').select2();
+    var $formMedios= $('.form-medios');
+    $formMedios.find('.form-medios-table tbody tr').length?$formMedios.find('.form-medios-table').show():$formMedios.find('.form-medios-table').hide();
+    $formMedios.data('maxid',$formMedios.find('.form-medios-table tbody tr').length);
+    $formMedios.find('.form-medios-agregar button').on('click',function(){
+        var descripcion=$formMedios.find('.medio-descripcion').val();
+        var tipo=$formMedios.find('.medio-tipo').val();
+        var url=$formMedios.find('.medio-url').val();
+
+        if(!descripcion || !tipo || !url)
+            return;
+
+        var maxid=$formMedios.data('maxid');
+        var row='<tr>' +
+                '<td>'+descripcion+'</td>' +
+                '<td>'+tipo+'</td>' +
+                '<td>'+url+'</td>' +
+                '<td>' +
+                    '<input type="hidden" name="medios-de-verificacion['+maxid+'][descripcion]" value="'+descripcion+'"/>' +
+                    '<input type="hidden" name="medios-de-verificacion['+maxid+'][tipo]" value="'+tipo+'"/>' +
+                    '<input type="hidden" name="medios-de-verificacion['+maxid+'][url]" value="'+url+'"/>' +
+                    '<button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button>' +
+                '</td>' +
+            '</tr>';
+        $formMedios.find('.form-medios-table').append(row);
+        $formMedios.data('maxid',++maxid);
+        $formMedios.find('.form-medios-table tbody tr').length?$formMedios.find('.form-medios-table').show():$formMedios.find('.form-medios-table').hide();
+    });
+    $formMedios.find('.form-medios-table').on('click','button',function(){
+        $(this).closest('tr').remove();
+        $formMedios.find('.form-medios-table tbody tr').length?$formMedios.find('.form-medios-table').show():$formMedios.find('.form-medios-table').hide();
+    });
 
 });
 

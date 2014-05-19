@@ -9,7 +9,7 @@
 class MedioDeVerificacion extends Eloquent{
 
     protected $table = 'medios_de_verificacion';
-    protected $fillable=array('nombre','descripcion','url');
+    protected $fillable=array('tipo','descripcion','url');
 
     public function compromiso(){
         return $this->belongsTo('Compromiso');

@@ -67,6 +67,13 @@ class CompromisosController extends BaseController {
             $compromiso->anuncio_emisor=Input::get('anuncio_emisor');
             $compromiso->entidadesDeLey()->sync(Input::get('entidades_de_ley'));
 
+            $compromiso->mediosDeVerificacion()->delete();
+            $medios=Input::get('medios-de-verificacion',array());
+            foreach($medios as $m){
+                $new_medio=new MedioDeVerificacion($m);
+                $compromiso->mediosDeVerificacion()->save($new_medio);
+            }
+
             $compromiso->save();
 
             $json->errors = array();

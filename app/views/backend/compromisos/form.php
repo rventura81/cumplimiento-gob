@@ -137,10 +137,62 @@
 
         <hr />
 
-        <div class="row">
+        <div class="row form-medios">
             <div class="col-sm-12">
-                <label for="medios_de_verificacion">Medios de verificación</label>
-                <p>Pendiente...</p>
+                <label>Medios de verificación</label>
+
+                <div class="row form-medios-agregar">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="medio-descripcion">Descripción</label>
+                            <input id="medio-descripcion" type="text" class="form-control medio-descripcion" placeholder="Descripción del medio" />
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label for="medio-tipo">Tipo</label>
+                            <input id="medio-tipo" type="text" class="form-control medio-tipo" placeholder="Ej: pdf, html" />
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="medio-url">Enlace</label>
+                            <input id="medio-url" type="text" class="form-control medio-url" placeholder="Ej: http://diariooficial.cl" />
+                        </div>
+                    </div>
+                    <div class="col-sm-1">
+                        <div class="form-group">
+                            <label>&nbsp;</label>
+                            <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-plus"></span></button>
+                        </div>
+                    </div>
+                </div>
+
+                <table class="table form-medios-table">
+                    <thead>
+                    <tr>
+                        <th class="col-sm-6">Descripcion</th>
+                        <th class="col-sm-3">Tipo</th>
+                        <th class="col-sm-3">Enlace</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php $i=0; foreach($compromiso->mediosDeVerificacion as $m):?>
+                    <tr>
+                        <td><?=$m->descripcion?></td>
+                        <td><?=$m->tipo?></td>
+                        <td><?=$m->url?></td>
+                        <td>
+                            <input type="hidden" name="medios-de-verificacion[<?=$i?>][descripcion]" value="<?=$m->descripcion?>" />
+                            <input type="hidden" name="medios-de-verificacion[<?=$i?>][tipo]" value="<?=$m->tipo?>" />
+                            <input type="hidden" name="medios-de-verificacion[<?=$i?>][url]" value="<?=$m->url?>" />
+                            <button class="btn btn-danger" type="button"><span class="glyphicon glyphicon-remove"></span></button>
+                        </td>
+                    </tr>
+                    <?php $i++; endforeach; ?>
+                    </tbody>
+                </table>
             </div>
         </div>
 

@@ -59,12 +59,15 @@ class CompromisosController extends BaseController {
             $compromiso->nombre = Input::get('nombre');
             $compromiso->descripcion = Input::get('descripcion','');
             $compromiso->publico=Input::get('publico');
-            $compromiso->fuente()->associate(Fuente::find(Input::get('fuente')));
-            $compromiso->institucion()->associate(Institucion::find(Input::get('institucion')));
-            $compromiso->usuario()->associate(Usuario::find(Input::get('usuario')));
-            $compromiso->institucionesRelacionadas()->sync(Input::get('instituciones_relacionadas',array()));
             $compromiso->anuncio=Input::get('anuncio');
             $compromiso->anuncio_emisor=Input::get('anuncio_emisor');
+            $compromiso->institucion()->associate(Institucion::find(Input::get('institucion')));
+            $compromiso->fuente()->associate(Fuente::find(Input::get('fuente')));
+            $compromiso->usuario()->associate(Usuario::find(Input::get('usuario')));
+
+            $compromiso->save();
+
+            $compromiso->institucionesRelacionadas()->sync(Input::get('instituciones_relacionadas',array()));
             $compromiso->entidadesDeLey()->sync(Input::get('entidades_de_ley'));
 
             $compromiso->mediosDeVerificacion()->delete();
@@ -73,8 +76,6 @@ class CompromisosController extends BaseController {
                 $new_medio=new MedioDeVerificacion($m);
                 $compromiso->mediosDeVerificacion()->save($new_medio);
             }
-
-            $compromiso->save();
 
             $json->errors = array();
             $json->redirect = URL::to('backend/compromisos');

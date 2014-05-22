@@ -13,7 +13,7 @@ return array(
 	|
 	*/
 
-	'debug' => true,
+	'debug' => $_ENV['debug'],
 
 	/*
 	|--------------------------------------------------------------------------
@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://localhost',
+	'url' => 'http://dev.cumplimiento.gob.cl',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -78,7 +78,7 @@ return array(
 	|
 	*/
 
-	'key' => 'enVWJFz5DiY0yYMb80qzpcYvTCauZV7Z',
+	'key' => $_ENV['key'],
 
 	/*
 	|--------------------------------------------------------------------------
@@ -120,8 +120,7 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
         'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
-        'Scalia\SphinxSearch\SphinxSearchServiceProvider'
-
+        'Scalia\SphinxSearch\SphinxSearchServiceProvider',
 	),
 
 	/*
@@ -187,8 +186,7 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
-        'SphinxSearch' => 'Scalia\SphinxSearch\SphinxSearchFacade'
-
+        'SphinxSearch' => 'Scalia\SphinxSearch\SphinxSearchFacade',
 	),
 
 );

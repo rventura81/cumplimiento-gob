@@ -4,7 +4,7 @@
 
 $(document).ready(function(){
 
-    $('.form-control-select2').select2();
+    initPlugins();
 
     initAjaxForm();
 
@@ -13,6 +13,12 @@ $(document).ready(function(){
     initFormMediosDeVerificacion();
 
 });
+
+function initPlugins() {
+    var select2Controls = $('.form-control-select2');
+    if(select2Controls.length)
+        select2Controls.select2();
+}
 
 function initAjaxForm(){
     $(".ajaxForm :submit").attr("disabled",false);

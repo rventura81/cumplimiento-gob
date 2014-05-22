@@ -29,10 +29,19 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Cumplimiento</a>
+                <a class="navbar-brand" href="<?= URL::to('/backend'); ?>">Cumplimiento</a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menú<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="<?= URL::to('/backend'); ?>">Administración</a></li>
+                            <li><a href="<?= URL::to('/backend/buscar'); ?>">Busqueda</a></li>
+                        </ul>
+                    </li>
+                </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Bienvenido <?=Auth::user()->nombres?> <b class="caret"></b></a>
@@ -59,12 +68,17 @@
             <div class="col-md-3">
                 <?php if($item_menu != 'buscar'): ?>
                 <aside>
-                    <ul class="nav nav-pills nav-stacked">
-                        <li <?= $item_menu == 'compromisos' ? 'class="active"' : ''; ?>><a href="<?=URL::to('backend/compromisos')?>">Compromisos</a></li>
-                        <li <?= $item_menu == 'fuentes' ? 'class="active"' : ''; ?>><a href="<?=URL::to('backend/fuentes')?>">Fuentes</a></li>
-                        <li <?= $item_menu == 'entidades' ? 'class="active"' : ''; ?>><a href="<?=URL::to('backend/entidades')?>">Entidades de Ley</a></li>
-                        <li <?= $item_menu == 'usuarios' ? 'class="active"' : ''; ?>><a href="<?=URL::to('backend/usuarios')?>">Usuarios</a></li>
-                    </ul>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Administración</div>
+                        <div class="panel-body">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li <?= $item_menu == 'compromisos' ? 'class="active"' : ''; ?>><a href="<?=URL::to('backend/compromisos')?>">Compromisos</a></li>
+                                <li <?= $item_menu == 'fuentes' ? 'class="active"' : ''; ?>><a href="<?=URL::to('backend/fuentes')?>">Fuentes</a></li>
+                                <li <?= $item_menu == 'entidades' ? 'class="active"' : ''; ?>><a href="<?=URL::to('backend/entidades')?>">Entidades de Ley</a></li>
+                                <li <?= $item_menu == 'usuarios' ? 'class="active"' : ''; ?>><a href="<?=URL::to('backend/usuarios')?>">Usuarios</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </aside>
                 <?php else: ?>
                     <?= $filtros; ?>

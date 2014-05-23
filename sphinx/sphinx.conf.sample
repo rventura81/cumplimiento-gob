@@ -122,6 +122,6 @@ indexer
 
 searchd
 {
-    port = 9312
+    listen = 9312
     pid_file = run/searchd.pid
 }

@@ -101,6 +101,7 @@
 <script src="<?=URL::asset('bower_components/jquery/dist/jquery.min.js')?>"></script>
 <script src="<?=URL::asset('bower_components/bootstrap/dist/js/bootstrap.min.js')?>"></script>
 <script src="<?=URL::asset('bower_components/select2/select2.min.js')?>"></script>
+<script src="<?=URL::asset('bower_components/tinymce/tinymce.min.js')?>"></script>
 <script src="<?=URL::asset('js/backend.js')?>"></script>
 </body>
 </html>

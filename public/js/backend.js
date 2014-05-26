@@ -14,6 +14,8 @@ $(document).ready(function(){
 
     initFormCompromisosTipo();
 
+    initTinyMCE();
+
 });
 
 function initPlugins() {
@@ -134,4 +136,11 @@ function initFormCompromisosTipo(){
         else
             $(".form-compromisos-entidades-de-ley").hide();
     }).change();
+}
+
+function initTinyMCE(){
+    tinymce.init({
+        selector: ".tinymce",
+        menubar:false
+    });
 }

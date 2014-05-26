@@ -83,7 +83,7 @@
             <div class="col-sm-12">
                 <div class="form-group">
                     <label for="descripcion">Descripción</label>
-                    <textarea class="form-control" rows="6" placeholder="Descripción sobre lo que consiste el compromiso." id="descripcion" name="descripcion"><?=$compromiso->descripcion?></textarea>
+                    <textarea class="form-control tinymce" rows="6" placeholder="Descripción sobre lo que consiste el compromiso." id="descripcion" name="descripcion"><?=$compromiso->descripcion?></textarea>
                 </div>
             </div>
         </div>
@@ -110,7 +110,7 @@
             <div class="col-sm-8">
                 <div class="form-group">
                     <label for="anuncio">Extracto anuncio</label>
-                    <textarea id="anuncio" name="anuncio" class="form-control" rows="6" placeholder="Transcriba la frase o discurso donde se anunció este compromiso."><?=$compromiso->anuncio?></textarea>
+                    <textarea id="anuncio" name="anuncio" class="form-control tinymce" rows="6" placeholder="Transcriba la frase o discurso donde se anunció este compromiso."><?=$compromiso->anuncio?></textarea>
                 </div>
                 <div class="form-group">
                     <label id="anuncio_emisor">Emisor del anuncio</label>

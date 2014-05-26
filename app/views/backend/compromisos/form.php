@@ -122,8 +122,17 @@
         <hr />
 
         <div class="row">
-            <div class="col-sm-12">
-                <div class="form-group">
+            <div class="col-sm-3">
+                <div class="form-group form-compromisos-tipo">
+                    <label for="tipo">Tipo de Compromiso</label>
+                    <select class="form-control" id="tipo" name="tipo">
+                        <option value="Medida de Gestión" <?=$compromiso->tipo=='Medida de Gestión'?'selected':''?>>Medida de Gestión</option>
+                        <option value="Proyecto de Ley" <?=$compromiso->tipo=='Proyecto de Ley'?'selected':''?>>Proyecto de Ley</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <div class="form-group form-compromisos-entidades-de-ley">
                     <label for="entidades_de_ley">Entidades de Ley asociadas</label>
                     <select id="entidades_de_ley" name="entidades_de_ley[]" class="form-control form-control-select2" data-placeholder="Seleccione las entidades de Ley asociadas a este compromiso" multiple>
                         <option></option>

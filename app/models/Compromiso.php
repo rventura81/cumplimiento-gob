@@ -8,7 +8,7 @@
 
 class Compromiso extends Eloquent{
 
-    protected $fillable = array('nombre','descripcion','publico','anuncio','anuncio_emisor');
+    protected $fillable = array('nombre','descripcion','publico','anuncio','anuncio_emisor','tipo');
 
     public function fuente(){
         return $this->belongsTo('Fuente');

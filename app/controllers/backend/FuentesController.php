@@ -10,7 +10,7 @@ class FuentesController extends BaseController {
         $limit = Input::get('limit', 10);
         $offset = Input::get('offset', 0);
 
-        $fuentes = Fuente::offset($offset)->limit($limit)->get();
+        $fuentes = Fuente::with('hijos', 'hijos.hijos')->whereNull('fuente_padre_id')->offset($offset)->limit($limit)->get();
 
         $this->layout->title = 'Fuentes';
         $this->layout->content = View::make('backend/fuentes/index', array('fuentes' => $fuentes));

@@ -7,6 +7,10 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AddAnuncioToCompromisoTable' => $baseDir . '/app/database/migrations/2014_05_19_162823_add_anuncio_to_compromiso_table.php',
+    'AddAvanceDescripcionToCompromisoTable' => $baseDir . '/app/database/migrations/2014_05_27_141150_add_avance_descripcion_to_compromiso_table.php',
+    'AddAvanceToCompromisoTable' => $baseDir . '/app/database/migrations/2014_05_27_141137_add_avance_to_compromiso_table.php',
+    'AddBeneficiosToCompromisoTable' => $baseDir . '/app/database/migrations/2014_05_27_141005_add_beneficios_to_compromiso_table.php',
+    'AddMetasToCompromisoTable' => $baseDir . '/app/database/migrations/2014_05_27_141020_add_metas_to_compromiso_table.php',
     'AddTipoToCompromisoTable' => $baseDir . '/app/database/migrations/2014_05_26_211705_add_tipo_to_compromiso_table.php',
     'AddTipoToMedioDeVerificacionTable' => $baseDir . '/app/database/migrations/2014_05_19_180046_add_tipo_to_medio_de_verificacion_table.php',
     'AuthController' => $baseDir . '/app/controllers/backend/AuthController.php',

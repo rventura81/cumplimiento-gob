@@ -14,4 +14,4 @@
         <td><?= $fuente->padre ? $fuente->padre->nombre : ' - '; ?></td>
     </tr>
 </table>
-<a href="javascript:history.back();" class="btn btn-warning"><i class="glyphicon glyphicon-chevron-left"></i> Volver</a>
+<a href="javascript:history.back();" class="btn btn-warning"><span class="glyphicon glyphicon-chevron-left"></span> Volver</a>

@@ -16,16 +16,14 @@ $(document).ready(function(){
 
     initFormCompromisosTipo();
 
-    initTinyMCE();
-
 });
 
-/**
- * Vuelve el modal a su estado original cada vez que se cierra
- */
 function modalEvents() {
+    /* Vuelve el modal a su estado original cada vez que se cierra */
     $(document).on('hidden.bs.modal', '#modal-backend',function(e){
-        $(this).removeData('bs.modal');
+        var modal = $(this);
+        modal.removeData('bs.modal');
+        tinymce.remove(modal.selector + ' .tinymce');
     });
     $(document).on('shown.bs.modal', '#modal-backend', function(){
         initPlugins($('#modal-backend'));
@@ -47,6 +45,16 @@ function initPlugins(c) {
         });
     }
 
+    var tinymceSelector = (c ? c.selector + " " : "") + ".tinymce";
+    tinymce.init({
+        selector: tinymceSelector,
+        menubar:false,
+        statusbar: false,
+        plugins: [
+            "link,image"
+        ],
+        toolbar: "undo redo | bold italic | link image | bullist numlist"
+    });
 }
 
 function initAjaxForm(){
@@ -78,7 +86,6 @@ function initAjaxForm(){
 
                 },
                 error: function(response){
-                    console.log(response.responseJSON);
                     form.submitting=false;
                     //$(ajaxLoader).remove();
                     $(form).find(":submit").attr("disabled",false);
@@ -163,18 +170,6 @@ function initFormCompromisosTipo(){
         else
             $(".form-compromisos-entidades-de-ley").hide();
     }).change();
-}
-
-function initTinyMCE(){
-    tinymce.init({
-        selector: ".tinymce",
-        menubar:false,
-        statusbar: false,
-        plugins: [
-            "link,image"
-        ],
-        toolbar: "undo redo | bold italic | link image | bullist numlist"
-    });
 }
 
 function actualizaEntidades (form) {

@@ -45,7 +45,7 @@ class EntidadesController extends BaseController {
         $validator = Validator::make(Input::all(), array(
             'nombre' => 'required',
             'tipo' => 'required',
-            'numero_boletin' => 'required',
+            'numero_boletin' => array('required','regex:/^\d{4}\-\d{2}$/'),
             'estado' => 'required'
         ));
 

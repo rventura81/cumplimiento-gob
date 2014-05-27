@@ -35,9 +35,16 @@ function modalEvents() {
 function initPlugins(c) {
     var container = c || $(document);
 
-    var select2Controls = container.find('.form-control-select2');
-    if(select2Controls.length)
-        select2Controls.select2();
+    container.find(".form-control-select2").select2();
+
+    container.find(".form-control-select2-tags").each(function(i,el){
+        var tags=$(el).data("tags");
+        $(el).select2({
+            tags: tags
+        });
+    });
+
+
 
     var maskedInput = container.find('[data-mask]');
     if(maskedInput.length){

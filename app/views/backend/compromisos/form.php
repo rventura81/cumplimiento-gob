@@ -45,6 +45,13 @@
 
                 </div>
 
+                <div class="form-group">
+                    <label for="tags" class="col-sm-3 control-label">Tags</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control form-control-select2-tags" name="tags" data-tags='<?=json_encode($tags)?>' value="<?=implode(',',$compromiso->tags->lists('nombre'))?>" />
+                    </div>
+                </div>
+
             </div>
             <div class="col-sm-6">
                 <div class="form-group">

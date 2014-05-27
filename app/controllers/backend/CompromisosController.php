@@ -27,6 +27,7 @@ class CompromisosController extends BaseController {
         $data['fuentes'] = Fuente::whereNull('fuente_padre_id')->get();
         $data['usuarios'] = Usuario::all();
         $data['entidades_de_ley']=EntidadDeLey::all();
+        $data['tags']=Tag::all()->lists('nombre');;
 
         $this->layout->title = 'Compromiso';
         $this->layout->content = View::make('backend/compromisos/form', $data);
@@ -38,6 +39,7 @@ class CompromisosController extends BaseController {
         $data['fuentes'] = Fuente::whereNull('fuente_padre_id')->get();
         $data['usuarios'] = Usuario::all();
         $data['entidades_de_ley']=EntidadDeLey::all();
+        $data['tags']=Tag::all()->lists('nombre');
 
         $this->layout->title = 'Compromiso';
         $this->layout->content = View::make('backend/compromisos/form', $data);
@@ -73,6 +75,13 @@ class CompromisosController extends BaseController {
             $compromiso->usuario()->associate(Usuario::find(Input::get('usuario')));
 
             $compromiso->save();
+
+            $tag_arr=explode(',',Input::get('tags'));
+            foreach($tag_arr as $t){
+                $tag=Tag::firstOrNew(array('nombre'=>$t));
+                $tag_ids[]=$tag->id;
+            }
+            $compromiso->tags()->sync($tag_ids);
 
             $compromiso->institucionesRelacionadas()->sync(Input::get('instituciones_relacionadas',array()));
             $compromiso->entidadesDeLey()->sync(Input::get('entidades_de_ley'));

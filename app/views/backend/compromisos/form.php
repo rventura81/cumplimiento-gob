@@ -88,6 +88,42 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label for="beneficios">Beneficios</label>
+                    <textarea class="form-control tinymce" rows="6" placeholder="Beneficios que otorga el compromiso." id="beneficios" name="beneficios"><?=$compromiso->beneficios?></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label for="metas">Metas</label>
+                    <textarea class="form-control tinymce" rows="6" placeholder="Metas del compromisos." id="metas" name="metas"><?=$compromiso->metas?></textarea>
+                </div>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="row">
+            <div class="col-sm-4">
+                <label>Estado de Avance</label>
+                <select name="avance" class="form-control">
+                    <option value="No Iniciado" <?=$compromiso->avance=='No Iniciado'?'selected':''?>>No Iniciado</option>
+                    <option value="En Proceso" <?=$compromiso->avance=='En Proceso'?'selected':''?>>En Proceso</option>
+                    <option value="Atrasado" <?=$compromiso->avance=='Atrasado'?'selected':''?>>Atrasado</option>
+                    <option value="Cumplido" <?=$compromiso->avance=='Cumplido'?'selected':''?>>Cumplido</option>
+                </select>
+            </div>
+            <div class="col-sm-8">
+                <label>Descripción del Estado de Avance</label>
+                <textarea class="form-control tinymce" rows="6" name="avance_descripcion"><?=$compromiso->avance_descripcion?></textarea>
+            </div>
+        </div>
+
         <hr />
 
         <div class="row">

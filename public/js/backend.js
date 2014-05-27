@@ -154,7 +154,12 @@ function initFormCompromisosTipo(){
 function initTinyMCE(){
     tinymce.init({
         selector: ".tinymce",
-        menubar:false
+        menubar:false,
+        statusbar: false,
+        plugins: [
+            "link,image"
+        ],
+        toolbar: "undo redo | bold italic | link image | bullist numlist"
     });
 }
 

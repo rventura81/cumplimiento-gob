@@ -49,7 +49,8 @@ class CompromisosController extends BaseController {
             'publico' => 'required',
             'fuente' => 'required',
             'institucion' => 'required',
-            'usuario' => 'required'
+            'usuario' => 'required',
+            'tipo'=>'required'
         ));
 
         $json = new stdClass();
@@ -61,6 +62,7 @@ class CompromisosController extends BaseController {
             $compromiso->publico=Input::get('publico');
             $compromiso->anuncio=Input::get('anuncio');
             $compromiso->anuncio_emisor=Input::get('anuncio_emisor');
+            $compromiso->tipo=Input::get('tipo');
             $compromiso->institucion()->associate(Institucion::find(Input::get('institucion')));
             $compromiso->fuente()->associate(Fuente::find(Input::get('fuente')));
             $compromiso->usuario()->associate(Usuario::find(Input::get('usuario')));

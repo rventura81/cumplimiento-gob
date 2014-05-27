@@ -80,6 +80,7 @@ class CompromisosController extends BaseController {
             $tag_ids=array();
             foreach($tag_arr as $t){
                 $tag=Tag::firstOrNew(array('nombre'=>$t));
+                $tag->save();
                 $tag_ids[]=$tag->id;
             }
             $compromiso->tags()->sync($tag_ids);

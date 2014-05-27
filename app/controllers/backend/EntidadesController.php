@@ -38,7 +38,7 @@ class EntidadesController extends BaseController {
         $data['entidad'] = EntidadDeLey::find($entidad_id);
 
         $this->layout->title = 'Entidades';
-        $this->layout->content = View::make('backend/entidades/form', $data);
+        $this->layout->content = View::make('backend/entidades/normal_form', $data);
     }
 
     public function postGuardar($entidad_id = null){

@@ -133,7 +133,7 @@
             </div>
             <div class="col-sm-9">
                 <div class="form-group form-compromisos-entidades-de-ley">
-                    <a href="<?= URL::to('backend/entidades/nueva'); ?>" data-toggle="modal" data-target="#modal-backend" class="btn btn-xs btn-success pull-right"><i class="glyphicon glyphicon-plus"></i> Nueva</a>
+                    <a href="<?= URL::to('backend/entidades/nueva'); ?>" data-toggle="modal" data-target="#modal-backend" class="btn btn-xs btn-success pull-right"><span class="glyphicon glyphicon-plus"></span> Nueva</a>
                     <label for="entidades_de_ley">Entidades de Ley asociadas</label>
                     <select id="entidades_de_ley" name="entidades_de_ley[]" class="form-control form-control-select2" data-placeholder="Seleccione las entidades de Ley asociadas a este compromiso" multiple>
                         <option></option>
@@ -211,6 +211,8 @@
 
     </fieldset>
     <hr/>
-    <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-save"></i> Guardar</button>
-    <a href="javascript:history.back();" class="btn btn-warning"><i class="glyphicon glyphicon-ban-circle"></i> Cancelar</a>
+    <div class="text-right">
+        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-save"></span> Guardar</button>
+        <a href="javascript:history.back();" class="btn btn-warning"><span class="glyphicon glyphicon-ban-circle"></span> Cancelar</a>
+    </div>
 </form>

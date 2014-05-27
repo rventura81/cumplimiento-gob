@@ -4,7 +4,7 @@
         <input type="hidden" name="is_modal" value="1"/>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="glyphicon glyphicon-ban-circle"></i> Close</button>
-        <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-save"></i> Guardar</button>
+        <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-save"></i> Guardar</button>
+        <button type="button" class="btn btn-warning" data-dismiss="modal"><i class="glyphicon glyphicon-ban-circle"></i> Cancelar</button>
     </div>
 </form>

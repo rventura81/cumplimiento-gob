@@ -3,7 +3,7 @@
     <li class="active">Usuarios</li>
 </ol>
 
-<a href="<?=URL::to('backend/usuarios/nuevo')?>" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Crear Usuario</a>
+<a href="<?=URL::to('backend/usuarios/nuevo')?>" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Crear Usuario</a>
 
 <table class="table">
     <thead>
@@ -17,9 +17,9 @@
             <tr>
                 <td><?= $usuario->nombre_completo; ?></td>
                 <td>
-                    <a href="<?= URL::to('backend/usuarios/ver/'.$usuario->id); ?>" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-search"></i> Ver</a>
-                    <a href="<?= URL::to('backend/usuarios/editar/'.$usuario->id); ?>" class="btn btn-xs btn-success"><i class="glyphicon glyphicon-edit"></i> Editar</a>
-                    <a href="<?= URL::to('backend/usuarios/eliminar/'.$usuario->id); ?>" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#modal-backend"><i class="glyphicon glyphicon-remove"></i> Eliminar</a>
+                    <a href="<?= URL::to('backend/usuarios/ver/'.$usuario->id); ?>" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-search"></span> Ver</a>
+                    <a href="<?= URL::to('backend/usuarios/editar/'.$usuario->id); ?>" class="btn btn-xs btn-success"><span class="glyphicon glyphicon-edit"></span> Editar</a>
+                    <a href="<?= URL::to('backend/usuarios/eliminar/'.$usuario->id); ?>" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#modal-backend"><span class="glyphicon glyphicon-remove"></span> Eliminar</a>
                 </td>
             </tr>
         <?php endforeach; ?>

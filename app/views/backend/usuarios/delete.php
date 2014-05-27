@@ -3,8 +3,8 @@
         ¿Está seguro que desea eliminar el usuario <strong><?= $usuario->nombre_completo; ?></strong>?
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-danger">Aceptar</button>
+        <button type="submit" class="btn btn-danger"><i class="glyphicon glyphicon-ok"></i> Eliminar</button>
+        <button type="button" class="btn btn-warning" data-dismiss="modal"><i class="glyphicon glyphicon-ban-circle"></i> Cancelar</button>
     </div>
     <input type="hidden" name="_method" value="delete"/>
 </form>

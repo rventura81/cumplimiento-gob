@@ -124,11 +124,12 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="form-group">
+                    <a href="<?= URL::to('backend/entidades/nueva'); ?>" data-toggle="modal" data-target="#modal-backend" class="btn btn-xs btn-success pull-right"><i class="glyphicon glyphicon-plus"></i> Nueva</a>
                     <label for="entidades_de_ley">Entidades de Ley asociadas</label>
                     <select id="entidades_de_ley" name="entidades_de_ley[]" class="form-control form-control-select2" data-placeholder="Seleccione las entidades de Ley asociadas a este compromiso" multiple>
                         <option></option>
                         <?php foreach($entidades_de_ley as $l): ?>
-                            <option value="<?= $l->id; ?>" <?=$compromiso->entidadesDeLey->find($l->id)?'selected':''?>><?= $l->nombre; ?></option>
+                            <option value="<?= $l->id; ?>" <?=$compromiso->entidadesDeLey->find($l->id)?'selected':''?>><?= $l->nombre; ?> <?= $l->numero_boletin ? '(N° Boletín: '.$l->numero_boletin.')' : ''; ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>

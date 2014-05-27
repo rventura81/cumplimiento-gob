@@ -12,7 +12,18 @@ $(document).ready(function(){
 
     initFormMediosDeVerificacion();
 
+    modalReset();
+
 });
+
+/**
+ * Vuelve el modal a su estado original cada vez que se cierra
+ */
+function modalReset() {
+    $(document).on('hidden.bs.modal', '#modal-backend',function(e){
+        $(this).removeData('bs.modal');
+    });
+}
 
 function initPlugins() {
     var select2Controls = $('.form-control-select2');
@@ -39,11 +50,11 @@ function initAjaxForm(){
                 type: form.method,
                 dataType: "json",
                 success: function(response){
-                    console.log(response);
                     if(response.redirect){
                         window.location=response.redirect;
                     }else{
                         var f=window[$(form).data("onsuccess")];
+                        $(form).data('response-data', response);
                         f(form);
                     }
 
@@ -59,9 +70,11 @@ function initAjaxForm(){
                         html+="<div class='alert alert-danger'>"+response.responseJSON.errors[i]+"</div>";
 
                     $(form).find(".validacion").html(html);
-                    $('html, body').animate({
-                        scrollTop: $(".validacion").offset().top-10
-                    });
+                    if($(form).parents('.modal').length){
+                        $('html, body').animate({
+                            scrollTop: $(".validacion").offset().top-10
+                        });
+                    }
                 }
             });
         }
@@ -122,4 +135,22 @@ function initFormMediosDeVerificacion(){
         $(this).closest('tr').remove();
         $formMedios.find('.form-medios-table tbody tr').length?$formMedios.find('.form-medios-table .nodata').hide():$formMedios.find('.form-medios-table .nodata').show();
     });
+}
+
+function actualizaEntidades (form) {
+    var $form = $(form),
+        inputEntidades = $('#entidades_de_ley'),
+        dataEntidad = $form.data('response-data').entidad,
+        currentValues = inputEntidades.val();
+
+    if(dataEntidad.numero_boletin)
+        dataEntidad.nombre += ' (N° Boletín: ' + dataEntidad.numero_boletin + ')';
+
+    var optionHtml = '<option value="'+dataEntidad.id+'">'+dataEntidad.nombre+'</option>';
+    inputEntidades.append(optionHtml);
+
+    currentValues.push(dataEntidad.id);
+    inputEntidades.val(currentValues).trigger('change');
+
+    $('#modal-backend').modal('hide');
 }

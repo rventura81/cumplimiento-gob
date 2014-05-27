@@ -23,8 +23,15 @@ class EntidadesController extends BaseController {
     public function getNueva(){
         $data['entidad'] = new EntidadDeLey();
 
+        if(Request::ajax()){
+            $view = 'backend/entidades/ajax_form';
+            $this->layout = View::make('backend/ajax_template');
+        } else {
+            $view = 'backend/entidades/normal_form';
+        }
+
         $this->layout->title = 'Entidades';
-        $this->layout->content = View::make('backend/entidades/form', $data);
+        $this->layout->content = View::make($view, $data);
     }
 
     public function getEditar($entidad_id){
@@ -53,9 +60,15 @@ class EntidadesController extends BaseController {
             $entidad->save();
 
             $json->errors = array();
-            $json->redirect = URL::to('backend/entidades');
 
-            Session::flash('messages', array('success' => 'La entidad de ley '. $entidad->nombre .' ha sido creada.'));
+            if(Input::get('is_modal', false)){
+                $json->entidad['id'] = $entidad->id;
+                $json->entidad['nombre'] = $entidad->nombre;
+                $json->entidad['numero_boletin'] = $entidad->numero_boletin;
+            }else{
+                $json->redirect = URL::to('backend/entidades');
+                Session::flash('messages', array('success' => 'La entidad de ley '. $entidad->nombre .' ha sido creada.'));
+            }
 
             $response = Response::json($json, 200);
         } else {

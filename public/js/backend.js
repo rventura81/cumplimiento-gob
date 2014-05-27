@@ -10,9 +10,13 @@ $(document).ready(function(){
 
     initFormUsuario();
 
-    initFormMediosDeVerificacion();
+    initFormCompromisosMediosDeVerificacion();
 
     modalReset();
+
+    initFormCompromisosTipo();
+
+    initTinyMCE();
 
 });
 
@@ -101,7 +105,7 @@ function initFormUsuario(){
     }
 }
 
-function initFormMediosDeVerificacion(){
+function initFormCompromisosMediosDeVerificacion(){
     var $formMedios= $('.form-medios');
     $formMedios.find('.form-medios-table tbody tr').length?$formMedios.find('.form-medios-table .nodata').hide():$formMedios.find('.form-medios-table .nodata').show();
     $formMedios.data('maxid',$formMedios.find('.form-medios-table tbody tr').length);
@@ -134,6 +138,23 @@ function initFormMediosDeVerificacion(){
     $formMedios.find('.form-medios-table').on('click','button',function(){
         $(this).closest('tr').remove();
         $formMedios.find('.form-medios-table tbody tr').length?$formMedios.find('.form-medios-table .nodata').hide():$formMedios.find('.form-medios-table .nodata').show();
+    });
+}
+
+function initFormCompromisosTipo(){
+    $(".form-compromisos-tipo :input").change(function(){
+        var val=$(".form-compromisos-tipo :input").val();
+        if(val=='Proyecto de Ley')
+            $(".form-compromisos-entidades-de-ley").show();
+        else
+            $(".form-compromisos-entidades-de-ley").hide();
+    }).change();
+}
+
+function initTinyMCE(){
+    tinymce.init({
+        selector: ".tinymce",
+        menubar:false
     });
 }
 

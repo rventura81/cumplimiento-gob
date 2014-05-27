@@ -76,11 +76,7 @@ class CompromisosController extends BaseController {
 
             $compromiso->save();
 
-            $tag_string=Input::get('tags');
-            if($tag_string)
-                $tag_arr=explode(',',$tag_string);
-            else
-                $tag_arr=array();
+            $tag_arr=Input::get('tags')?explode(',',Input::get('tags')):array();
             $tag_ids=array();
             foreach($tag_arr as $t){
                 $tag=Tag::firstOrNew(array('nombre'=>$t));

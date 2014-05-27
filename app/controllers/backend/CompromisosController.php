@@ -107,4 +107,18 @@ class CompromisosController extends BaseController {
 
         return $response;
     }
+
+    public function getEliminar($compromiso_id){
+        $compromiso = Compromiso::find($compromiso_id);
+        $this->layout = View::make('backend/ajax_template');
+        $this->layout->title = 'Eliminar Compromiso';
+        $this->layout->content = View::make('backend/compromisos/delete', array('compromiso' => $compromiso));
+    }
+
+    public function deleteEliminar($compromiso_id){
+        $compromiso = Compromiso::find($compromiso_id);
+        $compromiso->delete();
+
+        return Redirect::to('backend/compromisos')->with('messages', array('success' => 'El compromiso ' . $compromiso->nombre . ' ha sido eliminada.'));
+    }
 }

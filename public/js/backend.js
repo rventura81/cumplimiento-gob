@@ -33,7 +33,9 @@ function modalEvents() {
 function initPlugins(c) {
     var container = c || $(document);
 
-    container.find(".form-control-select2").select2();
+    container.find(".form-control-select2").each(function(i,el){
+        $(el).select2();
+    });
 
     container.find(".form-control-select2-tags").each(function(i,el){
         var tags=$(el).data("tags");
@@ -53,6 +55,7 @@ function initPlugins(c) {
     }
 
     var tinymceSelector = (c ? c.selector + " " : "") + ".tinymce";
+    if($(tinymceSelector).length){
     tinymce.init({
         selector: tinymceSelector,
         menubar:false,
@@ -62,6 +65,7 @@ function initPlugins(c) {
         ],
         toolbar: "undo redo | bold italic | link image | bullist numlist"
     });
+    }
 }
 
 function initAjaxForm(){

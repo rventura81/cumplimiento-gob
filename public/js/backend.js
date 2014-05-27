@@ -12,7 +12,7 @@ $(document).ready(function(){
 
     initFormCompromisosMediosDeVerificacion();
 
-    modalReset();
+    modalEvents();
 
     initFormCompromisosTipo();
 
@@ -23,16 +23,30 @@ $(document).ready(function(){
 /**
  * Vuelve el modal a su estado original cada vez que se cierra
  */
-function modalReset() {
+function modalEvents() {
     $(document).on('hidden.bs.modal', '#modal-backend',function(e){
         $(this).removeData('bs.modal');
     });
+    $(document).on('shown.bs.modal', '#modal-backend', function(){
+        initPlugins($('#modal-backend'));
+    });
 }
 
-function initPlugins() {
-    var select2Controls = $('.form-control-select2');
+function initPlugins(c) {
+    var container = c || $(document);
+
+    var select2Controls = container.find('.form-control-select2');
     if(select2Controls.length)
         select2Controls.select2();
+
+    var maskedInput = container.find('[data-mask]');
+    if(maskedInput.length){
+        maskedInput.each(function(i, e){
+            var elem = $(this);
+            elem.mask(elem.data('mask'));
+        });
+    }
+
 }
 
 function initAjaxForm(){

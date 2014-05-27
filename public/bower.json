@@ -5,6 +5,7 @@
         "bootstrap": ">= 3.1.*",
         "select2": ">= 3.4.*",
         "select2-bootstrap-css": "bootstrap3",
-        "tinymce": "latest"
+        "tinymce": "latest",
+        "jquery.maskedinput": "latest"
     }
 }

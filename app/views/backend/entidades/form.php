@@ -19,7 +19,7 @@
 <div class="form-group">
     <label for="numero_boletin" class="col-sm-3 control-label">Número de boletín</label>
     <div class="col-sm-9">
-        <input type="number" class="form-control" name="numero_boletin" id="numero_boletin" value="<?= $entidad->numero_boletin; ?>"/>
+        <input type="text" data-mask="9999-99" class="form-control" name="numero_boletin" id="numero_boletin" value="<?= $entidad->numero_boletin; ?>"/>
     </div>
 </div>
 <div class="form-group">

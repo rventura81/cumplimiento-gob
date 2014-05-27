@@ -58,6 +58,8 @@ class CompromisosController extends BaseController {
 
         $json = new stdClass();
         if($validator->passes()){
+            DB::connection()->getPdo()->beginTransaction();
+
             $compromiso = $compromiso_id ? Compromiso::find($compromiso_id) : new Compromiso();
 
             $compromiso->nombre = Input::get('nombre');
@@ -94,6 +96,8 @@ class CompromisosController extends BaseController {
                 $new_medio=new MedioDeVerificacion($m);
                 $compromiso->mediosDeVerificacion()->save($new_medio);
             }
+
+            DB::connection()->getPdo()->commit();
 
             $json->errors = array();
             $json->redirect = URL::to('backend/compromisos');

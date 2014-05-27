@@ -74,7 +74,7 @@
                         <select class="form-control form-control-select2" name="usuario" id="usuario" data-placeholder="Seleccionar usuario">
                             <option></option>
                             <?php foreach($usuarios as $usuario): ?>
-                                <option value="<?= $usuario->id; ?>" <?=$usuario->id==$compromiso->usuario_id?'selected':''?>><?= $usuario->email; ?></option>
+                                <option value="<?= $usuario->id; ?>" <?=$usuario->id==$compromiso->usuario_id?'selected':''?>><?= $usuario->nombre; ?> <?=$usuario->apellidos?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>

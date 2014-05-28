@@ -27,6 +27,7 @@ class CompromisosController extends BaseController {
         $data['fuentes'] = Fuente::whereNull('fuente_padre_id')->get();
         $data['usuarios'] = Usuario::all();
         $data['entidades_de_ley']=EntidadDeLey::all();
+        $data['tags']=Tag::all()->lists('nombre');;
 
         $this->layout->title = 'Compromiso';
         $this->layout->content = View::make('backend/compromisos/form', $data);
@@ -38,6 +39,7 @@ class CompromisosController extends BaseController {
         $data['fuentes'] = Fuente::whereNull('fuente_padre_id')->get();
         $data['usuarios'] = Usuario::all();
         $data['entidades_de_ley']=EntidadDeLey::all();
+        $data['tags']=Tag::all()->lists('nombre');
 
         $this->layout->title = 'Compromiso';
         $this->layout->content = View::make('backend/compromisos/form', $data);
@@ -56,6 +58,8 @@ class CompromisosController extends BaseController {
 
         $json = new stdClass();
         if($validator->passes()){
+            DB::connection()->getPdo()->beginTransaction();
+
             $compromiso = $compromiso_id ? Compromiso::find($compromiso_id) : new Compromiso();
 
             $compromiso->nombre = Input::get('nombre');
@@ -74,9 +78,17 @@ class CompromisosController extends BaseController {
 
             $compromiso->save();
 
+            $tag_arr=Input::get('tags')?explode(',',Input::get('tags')):array();
+            $tag_ids=array();
+            foreach($tag_arr as $t){
+                $tag=Tag::firstOrNew(array('nombre'=>$t));
+                $tag->save();
+                $tag_ids[]=$tag->id;
+            }
+            $compromiso->tags()->sync($tag_ids);
+
             $compromiso->institucionesRelacionadas()->sync(Input::get('instituciones_relacionadas',array()));
-            if(Input::get('entidades_de_ley', null))
-                $compromiso->entidadesDeLey()->sync(Input::get('entidades_de_ley'));
+            $compromiso->entidadesDeLey()->sync(Input::get('entidades_de_ley',array()));
 
             $compromiso->mediosDeVerificacion()->delete();
             $medios=Input::get('medios-de-verificacion',array());
@@ -84,6 +96,8 @@ class CompromisosController extends BaseController {
                 $new_medio=new MedioDeVerificacion($m);
                 $compromiso->mediosDeVerificacion()->save($new_medio);
             }
+
+            DB::connection()->getPdo()->commit();
 
             $json->errors = array();
             $json->redirect = URL::to('backend/compromisos');
@@ -97,5 +111,19 @@ class CompromisosController extends BaseController {
         }
 
         return $response;
+    }
+
+    public function getEliminar($compromiso_id){
+        $compromiso = Compromiso::find($compromiso_id);
+        $this->layout = View::make('backend/ajax_template');
+        $this->layout->title = 'Eliminar Compromiso';
+        $this->layout->content = View::make('backend/compromisos/delete', array('compromiso' => $compromiso));
+    }
+
+    public function deleteEliminar($compromiso_id){
+        $compromiso = Compromiso::find($compromiso_id);
+        $compromiso->delete();
+
+        return Redirect::to('backend/compromisos')->with('messages', array('success' => 'El compromiso ' . $compromiso->nombre . ' ha sido eliminada.'));
     }
 }

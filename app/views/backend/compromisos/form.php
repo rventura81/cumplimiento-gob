@@ -45,6 +45,13 @@
 
                 </div>
 
+                <div class="form-group">
+                    <label for="tags" class="col-sm-3 control-label">Tags</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control form-control-select2-tags" name="tags" data-tags='<?=json_encode($tags)?>' value="<?=implode(',',$compromiso->tags->lists('nombre'))?>" />
+                    </div>
+                </div>
+
             </div>
             <div class="col-sm-6">
                 <div class="form-group">
@@ -67,7 +74,7 @@
                         <select class="form-control form-control-select2" name="usuario" id="usuario" data-placeholder="Seleccionar usuario">
                             <option></option>
                             <?php foreach($usuarios as $usuario): ?>
-                                <option value="<?= $usuario->id; ?>" <?=$usuario->id==$compromiso->usuario_id?'selected':''?>><?= $usuario->email; ?></option>
+                                <option value="<?= $usuario->id; ?>" <?=$usuario->id==$compromiso->usuario_id?'selected':''?>><?= $usuario->nombres; ?> <?=$usuario->apellidos?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>

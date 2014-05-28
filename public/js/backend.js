@@ -35,9 +35,18 @@ function modalEvents() {
 function initPlugins(c) {
     var container = c || $(document);
 
-    var select2Controls = container.find('.form-control-select2');
-    if(select2Controls.length)
-        select2Controls.select2();
+    container.find(".form-control-select2").each(function(i,el){
+        $(el).select2();
+    });
+
+    container.find(".form-control-select2-tags").each(function(i,el){
+        var tags=$(el).data("tags");
+        $(el).select2({
+            tags: tags
+        });
+    });
+
+
 
     var maskedInput = container.find('[data-mask]');
     if(maskedInput.length){
@@ -49,15 +58,15 @@ function initPlugins(c) {
 
     var tinymceSelector = (c ? c.selector + " " : "") + ".tinymce";
     if($(tinymceSelector).length){
-        tinymce.init({
-            selector: tinymceSelector,
-            menubar:false,
-            statusbar: false,
-            plugins: [
-                "link,image"
-            ],
-            toolbar: "undo redo | bold italic | link image | bullist numlist"
-        });
+    tinymce.init({
+        selector: tinymceSelector,
+        menubar:false,
+        statusbar: false,
+        plugins: [
+            "link,image"
+        ],
+        toolbar: "undo redo | bold italic | link image | bullist numlist"
+    });
     }
 }
 

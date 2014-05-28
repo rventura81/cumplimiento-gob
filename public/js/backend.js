@@ -12,6 +12,8 @@ $(document).ready(function(){
 
     initFormCompromisosMediosDeVerificacion();
 
+    initFiltrosBusqueda();
+
     modalEvents();
 
     initFormCompromisosTipo();
@@ -106,7 +108,7 @@ function initAjaxForm(){
                         html+="<div class='alert alert-danger'>"+response.responseJSON.errors[i]+"</div>";
 
                     $(form).find(".validacion").html(html);
-                    if($(form).parents('.modal').length){
+                    if(!$(form).parents('.modal').length){
                         $('html, body').animate({
                             scrollTop: $(".validacion").offset().top-10
                         });
@@ -187,7 +189,7 @@ function actualizaEntidades (form) {
     var $form = $(form),
         inputEntidades = $('#entidades_de_ley'),
         dataEntidad = $form.data('response-data').entidad,
-        currentValues = inputEntidades.val();
+        currentValues = inputEntidades.val() || [];
 
     if(dataEntidad.numero_boletin)
         dataEntidad.nombre += ' (N° Boletín: ' + dataEntidad.numero_boletin + ')';
@@ -199,4 +201,9 @@ function actualizaEntidades (form) {
     inputEntidades.val(currentValues).trigger('change');
 
     $('#modal-backend').modal('hide');
+}
+
+function initFiltrosBusqueda(){
+    var filtrosAnidados = $('.panel-filtro-anidado');
+    filtrosAnidados.find('li.active').parents('li').addClass('active');
 }

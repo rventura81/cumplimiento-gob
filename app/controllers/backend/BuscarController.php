@@ -22,19 +22,22 @@ class BuscarController extends BaseController {
     public function getIndex(){
         $q = Input::get('q');
 
-        $data['results'] = $data['fuentes'] = $data['instituciones'] = $data['entidades'] = array();
-        $data['input'] = array_merge(array('institucion' => array(), 'entidad' => array(), 'fuente' => array()), Input::all());
+        $data['compromisos'] = $data['fuentes'] = $data['instituciones'] = $data['tipos'] = array();
+        $data['input'] = array_merge(array('instituciones' => array(), 'fuentes' => array(), 'tipos' => array()), Input::all());
 
         $result = $this->sphinxHelper->search($q, $data['input']);
 
         $ids = $result['ids'];
-        $filters = $result['filters'];
 
         if($ids){
-            $data['results'] = Compromiso::whereIn('id', $ids)->get();
-            $data['fuentes'] = Fuente::whereIn('id', $filters['fuente'])->get();
-            $data['instituciones'] = Institucion::whereIn('id', $filters['institucion'])->get();
-            $data['entidades'] = EntidadDeLey::whereIn('id', $filters['entidad_de_ley'])->get();
+            $data['filtros'] = array();
+            foreach($result['filters'] as $name => $filter)
+                $data['filtros'][$name] = array_unique(array_flatten($filter));
+
+            $data['compromisos'] = Compromiso::whereIn('id', $ids)->get();
+            $data['fuentes'] = Fuente::with('hijos', 'hijos.hijos')->whereNull('fuente_padre_id')->get();
+            $data['instituciones'] = Institucion::with('hijos')->whereNull('institucion_padre_id')->get();
+            $data['tipos'] = $this->sphinxHelper->getFiltrosTipo($data['filtros']['tipo']);
         }
 
         $this->layout->busqueda = $data['q'] = $q;

@@ -1,0 +1,11 @@
+.panel-filtro-anidado ul {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 10px;
+}
+.panel-filtro-anidado ul li {
+  display: none;
+}
+.panel-filtro-anidado ul li.active {
+  display: block;
+}

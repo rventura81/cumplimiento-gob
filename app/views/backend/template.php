@@ -10,6 +10,7 @@
     <link href="<?=URL::asset('bower_components/bootstrap/dist/css/bootstrap.min.css')?>" rel="stylesheet">
     <link href="<?=URL::asset('bower_components/select2/select2.css')?>" rel="stylesheet">
     <link href="<?=URL::asset('bower_components/select2-bootstrap-css/select2-bootstrap.css')?>" rel="stylesheet">
+    <link rel="stylesheet" href="<?= URL::asset('css/styles.css'); ?>"/>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

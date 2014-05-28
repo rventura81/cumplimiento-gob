@@ -90,7 +90,7 @@ class SectoresSeeder extends Seeder {
         ));
 
         //Comuna
-        DB::table('sectores', array(
+        DB::table('sectores')->insert( array(
             array('id' => 71, 'nombre' => 'Iquique', 'lat' => '-20.2232', 'lng' => '-70.1463', 'tipo' => 'comuna', 'sector_padre_id' => 17, 'created_at' => $date, 'updated_at' => $date),
             array('id' => 72, 'nombre' => 'Alto Hospicio', 'lat' => '-20.2677', 'lng' => '-70.1007', 'tipo' => 'comuna', 'sector_padre_id' => 17, 'created_at' => $date, 'updated_at' => $date),
             array('id' => 73, 'nombre' => 'Pozo Almonte', 'lat' => '-20.2532', 'lng' => '-69.7848', 'tipo' => 'comuna', 'sector_padre_id' => 18, 'created_at' => $date, 'updated_at' => $date),

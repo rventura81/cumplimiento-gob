@@ -75,7 +75,8 @@ class CompromisosController extends BaseController {
             $compromiso->save();
 
             $compromiso->institucionesRelacionadas()->sync(Input::get('instituciones_relacionadas',array()));
-            $compromiso->entidadesDeLey()->sync(Input::get('entidades_de_ley'));
+            if(Input::get('entidades_de_ley', null))
+                $compromiso->entidadesDeLey()->sync(Input::get('entidades_de_ley'));
 
             $compromiso->mediosDeVerificacion()->delete();
             $medios=Input::get('medios-de-verificacion',array());

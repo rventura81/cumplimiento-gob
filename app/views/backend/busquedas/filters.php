@@ -10,37 +10,75 @@
             </div>
 
             <div class="panel-heading">Fuentes</div>
-            <div class="panel-body">
-                <?php foreach($fuentes as $fuente): ?>
-                    <div class="checkbox">
-                        <label>
-                            <input name="fuente[]" <?= in_array($fuente->id, $input['fuente']) ? 'checked' : ''; ?> value="<?= $fuente->id; ?>" type="checkbox"/>
-                            <?= $fuente->nombre; ?>
-                        </label>
-                    </div>
-                <?php endforeach; ?>
+            <div class="panel-body panel-filtro-anidado">
+                <div class="checkbox">
+                    <ul>
+                    <?php foreach($fuentes as $fuente): ?>
+                        <li <?= in_array($fuente->id, $filtros['fuente']) ? 'class="active"' : ''; ?>>
+                            <label>
+                                <input name="fuentes[]" <?= in_array($fuente->id, $input['fuentes']) ? 'checked' : ''; ?> value="<?= $fuente->id; ?>" type="checkbox"/>
+                                <?= $fuente->nombre; ?>
+                            </label>
+                            <ul>
+                            <?php foreach($fuente->hijos as $h): ?>
+                                <li <?= in_array($h->id, $filtros['fuente']) ? 'class="active"' : ''; ?>>
+                                    <label>
+                                        <input name="fuentes[]" <?= in_array($h->id, $input['fuentes']) ? 'checked' : ''; ?> value="<?= $h->id; ?>" type="checkbox"/>
+                                        <?= $h->nombre; ?>
+                                    </label>
+                                    <ul>
+                                        <?php foreach($h->hijos as $n): ?>
+                                            <li <?= in_array($n->id, $filtros['fuente']) ? 'class="active"' : ''; ?>>
+                                                <label>
+                                                    <input name="fuentes[]" <?= in_array($n->id, $input['fuentes']) ? 'checked' : ''; ?> value="<?= $n->id; ?>" type="checkbox"/>
+                                                    <?= $n->nombre; ?>
+                                                </label>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                        </li>
+                    <?php endforeach; ?>
+                    </ul>
+                </div>
             </div>
 
             <div class="panel-heading">Institución responsable</div>
-            <div class="panel-body">
-                <?php foreach($instituciones as $institucion): ?>
-                    <div class="checkbox">
-                        <label>
-                            <input name="institucion[]" <?= in_array($institucion->id, $input['institucion']) ? 'checked' : ''; ?> value="<?= $institucion->id; ?>" type="checkbox"/>
-                            <?= $institucion->nombre; ?>
-                        </label>
-                    </div>
-                <?php endforeach; ?>
+            <div class="panel-body panel-filtro-anidado">
+                <div class="checkbox">
+                    <ul>
+                        <?php foreach($instituciones as $institucion): ?>
+                            <li <?= in_array($institucion->id, $filtros['institucion']) ? 'class="active"' : ''; ?>>
+                                <label>
+                                    <input name="instituciones[]" <?= in_array($institucion->id, $input['instituciones']) ? 'checked' : ''; ?> value="<?= $institucion->id; ?>" type="checkbox"/>
+                                    <?= $institucion->nombre; ?>
+                                </label>
+                                <ul>
+                                <?php foreach($institucion->hijos as $institucionHija): ?>
+                                    <li <?= in_array($institucionHija->id, $filtros['institucion']) ? 'class="active"' : ''; ?>>
+                                        <label>
+                                            <input name="instituciones[]" <?= in_array($institucionHija->id, $input['instituciones']) ? 'checked' : ''; ?> value="<?= $institucionHija->id; ?>" type="checkbox"/>
+                                            <?= $institucionHija->nombre; ?>
+                                        </label>
+                                    </li>
+                                <?php endforeach; ?>
+                                </ul>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
             </div>
 
-            <div class="panel-heading">Entidad de Ley</div>
+            <div class="panel-heading">Tipo de Compromiso</div>
             <div class="panel-body">
-                <?php foreach($entidades as $entidad): ?>
+                <?php foreach($tipos as $crc32_tipo => $tipo): ?>
                     <div class="checkbox">
-                        <label>
-                            <input name="entidad[]" <?= in_array($entidad->id, $input['entidad']) ? 'checked' : ''; ?> value="<?= $entidad->id; ?>" type="checkbox"/>
-                            <?= $entidad->nombre; ?>
-                        </label>
+                    <label>
+                        <input name="tipos[]" <?= in_array($crc32_tipo, $input['tipos']) ? 'checked' : ''; ?> value="<?= $crc32_tipo; ?>" type="checkbox"/>
+                        <?= $tipo; ?>
+                    </label>
                     </div>
                 <?php endforeach; ?>
             </div>

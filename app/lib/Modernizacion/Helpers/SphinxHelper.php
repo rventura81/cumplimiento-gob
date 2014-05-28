@@ -2,6 +2,8 @@
 
 namespace Modernizacion\Helpers;
 
+use DB;
+use Fuente;
 use Scalia\SphinxSearch\SphinxSearch;
 
 /**
@@ -32,17 +34,14 @@ class SphinxHelper {
 
         $sqb = $this->sphinx->search($text, 'compromisos_index');
 
-        if($options['fuente']){
-            $sqb->filter('fuente', $options['fuente']);
-        }
+        if($options['fuentes'])
+            $sqb->filter('fuente', $options['fuentes']);
 
-        if($options['entidad']){
-            $sqb->filter('entidad_de_ley', $options['entidad']);
-        }
+        if($options['instituciones'])
+            $sqb->filter('institucion', $options['instituciones']);
 
-        if($options['institucion']){
-            $sqb->filter('institucion', $options['institucion']);
-        }
+        if($options['tipos'])
+            $sqb->filter('tipo', $options['tipos']);
 
         if(empty($text))
             $sqb->setMatchMode(\Sphinx\SphinxClient::SPH_MATCH_FULLSCAN);
@@ -64,6 +63,19 @@ class SphinxHelper {
         }
 
         return array('ids' => $ids, 'filters' => $filters);
+    }
+
+    /**
+     * @param array $filtroTipos
+     * @return array
+     */
+    public function getFiltrosTipo($filtroTipos){
+        $tipos = array('Medida de Gestión', 'Proyecto de Ley');
+        $tipos = array_combine(array_map("crc32", $tipos), $tipos);
+
+        $result = array_intersect_key($tipos, array_flip($filtroTipos));
+
+        return $result;
     }
 
 }

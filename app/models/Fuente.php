@@ -20,4 +20,12 @@ class Fuente extends Eloquent{
         return $this->fuente_padre_id == $fuente->id;
     }
 
+    public function tienePadre(){
+        return count($this->padre) > 0;
+    }
+
+    public function tieneHijos(){
+        return count($this->hijos) > 0;
+    }
+
 }

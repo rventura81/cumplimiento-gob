@@ -9,18 +9,38 @@ source compromisos_src
     sql_port = 3306
 
     sql_query_pre = SET NAMES utf8
-        sql_query = SELECT c.id, c.nombre, c.descripcion, i.id AS institucion, f.id AS fuente, el.id AS entidad_de_ley\
-                    FROM compromisos AS c\
-                    LEFT JOIN instituciones AS i ON c.institucion_responsable_id = i.id\
-                    LEFT JOIN fuentes AS f ON c.fuente_id = f.id\
-                    LEFT JOIN compromiso_entidad_de_ley cel ON c.id = cel.compromiso_id\
-                    LEFT JOIN entidades_de_ley el ON el.id = cel.entidad_de_ley_id;
+    sql_query = SELECT c.id, c.nombre, c.descripcion, CRC32(c.tipo) AS tipo\
+                FROM compromisos AS c;
 
-        sql_attr_uint = institucion
-        sql_attr_uint = fuente
-        sql_attr_uint = entidad_de_ley
+    sql_attr_uint = tipo
 
-        sql_query_info = SELECT nombre FROM compromisos WHERE id=$id
+    sql_attr_multi = uint institucion from query;\
+        (SELECT c.id AS id, i.id AS institucion\
+        FROM compromisos c\
+        LEFT JOIN instituciones i ON c.institucion_responsable_id = i.id)\
+        UNION\
+        (SELECT c.id AS id, ip.id AS institucion\
+        FROM compromisos c\
+        LEFT JOIN instituciones i ON c.institucion_responsable_id = i.id\
+        LEFT JOIN instituciones ip ON i.institucion_padre_id = ip.id);
+
+    sql_attr_multi = uint fuente from query;\
+        (SELECT c.id AS id, f.id AS fuente\
+        FROM compromisos c\
+        LEFT JOIN fuentes f ON c.fuente_id = f.id)\
+        UNION\
+        (SELECT c.id AS id, fp.id AS fuente\
+        FROM compromisos c\
+        LEFT JOIN fuentes f ON c.fuente_id = f.id\
+        LEFT JOIN fuentes fp ON fp.id = f.fuente_padre_id)\
+        UNION\
+        (SELECT c.id AS id, fa.id AS fuente\
+        FROM compromisos c\
+        LEFT JOIN fuentes f ON c.fuente_id = f.id\
+        LEFT JOIN fuentes fp ON fp.id = f.fuente_padre_id\
+        LEFT JOIN fuentes fa ON fa.id = fp.fuente_padre_id);
+
+    sql_query_info = SELECT nombre FROM compromisos WHERE id=$id
 }
 
 index compromisos_index

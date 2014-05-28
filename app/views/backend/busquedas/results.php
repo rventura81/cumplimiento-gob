@@ -12,7 +12,7 @@
     </tr>
     </thead>
     <tbody>
-    <?php foreach($results as $compromiso): ?>
+    <?php foreach($compromisos as $compromiso): ?>
         <tr>
             <td><?= $compromiso->nombre; ?></td>
             <td><span class="label label-info"><?= $compromiso->publico ? 'public' : 'privado'; ?></span></td>
@@ -22,7 +22,7 @@
             </td>
         </tr>
     <?php endforeach; ?>
-    <?php if(!count($results)): ?>
+    <?php if(!count($compromisos)): ?>
         <tr>
             <th class="text-center" colspan="3">No se han encontrado compromisos.</th>
         </tr>

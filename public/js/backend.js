@@ -22,10 +22,10 @@ $(document).ready(function(){
 
 function modalEvents() {
     /* Vuelve el modal a su estado original cada vez que se cierra */
-    $(document).on('hidden.bs.modal', '#modal-backend',function(e){
+    $(document).on('hidden.bs.modal', '#modal-backend', function(e){
         var modal = $(this);
         modal.removeData('bs.modal');
-        tinymce.remove(modal.selector + ' .tinymce');
+        tinymce.remove('#modal-backend .tinymce');
     });
     $(document).on('shown.bs.modal', '#modal-backend', function(){
         initPlugins($('#modal-backend'));

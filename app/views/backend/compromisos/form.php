@@ -55,6 +55,26 @@
             </div>
             <div class="col-sm-6">
                 <div class="form-group">
+                    <label for="sector" class="col-sm-3 control-label">Sector Geográfico</label>
+                    <div class="col-sm-9">
+                        <select class="form-control form-control-select2" name="sectores[]" id="sector" data-placeholder="Seleccionar sector geográfico" multiple>
+                            <option></option>
+                            <?php foreach($sectores as $s): ?>
+                                <option value="<?= $s->id; ?>" <?=$compromiso->sectores->find($s->id)?'selected':''?>><?= $s->nombre; ?></option>
+                                <?php foreach($s->hijos as $h): ?>
+                                    <option value="<?= $h->id; ?>" <?=$compromiso->sectores->find($h->id)?'selected':''?>> - <?= $h->nombre; ?></option>
+                                    <?php foreach($h->hijos as $hh): ?>
+                                        <option value="<?= $hh->id; ?>" <?=$compromiso->sectores->find($hh->id)?'selected':''?>> -- Provincia de <?= $hh->nombre; ?></option>
+                                        <?php foreach($hh->hijos as $hhh): ?>
+                                            <option value="<?= $hhh->id; ?>" <?=$compromiso->sectores->find($hhh->id)?'selected':''?>> --- <?= $hhh->nombre; ?></option>
+                                        <?php endforeach; ?>
+                                    <?php endforeach; ?>
+                                <?php endforeach; ?>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label for="institucion" class="col-sm-3 control-label">Institución responsable</label>
                     <div class="col-sm-9">
                         <select class="form-control form-control-select2" name="institucion" id="institucion" data-placeholder="Seleccionar institución">

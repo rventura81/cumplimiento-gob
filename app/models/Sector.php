@@ -14,4 +14,12 @@ class Sector extends Eloquent{
     public function compromisos(){
         return $this->belongsToMany('Compromiso');
     }
+
+    public function padre(){
+        return $this->belongsTo('Sector', 'sector_padre_id', 'id');
+    }
+
+    public function hijos(){
+        return $this->hasMany('Sector', 'sector_padre_id', 'id');
+    }
 } 

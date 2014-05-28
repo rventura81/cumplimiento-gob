@@ -24,6 +24,7 @@ class CompromisosController extends BaseController {
     public function getNuevo(){
         $data['compromiso'] = new Compromiso();
         $data['instituciones'] = Institucion::whereNull('institucion_padre_id')->get();
+        $data['sectores'] = Sector::whereNull('sector_padre_id')->get();
         $data['fuentes'] = Fuente::whereNull('fuente_padre_id')->get();
         $data['usuarios'] = Usuario::all();
         $data['entidades_de_ley']=EntidadDeLey::all();
@@ -36,6 +37,7 @@ class CompromisosController extends BaseController {
     public function getEditar($compromiso_id){
         $data['compromiso'] = Compromiso::find($compromiso_id);
         $data['instituciones'] = Institucion::whereNull('institucion_padre_id')->get();
+        $data['sectores'] = Sector::whereNull('sector_padre_id')->get();
         $data['fuentes'] = Fuente::whereNull('fuente_padre_id')->get();
         $data['usuarios'] = Usuario::all();
         $data['entidades_de_ley']=EntidadDeLey::all();
@@ -86,6 +88,8 @@ class CompromisosController extends BaseController {
                 $tag_ids[]=$tag->id;
             }
             $compromiso->tags()->sync($tag_ids);
+
+            $compromiso->sectores()->sync(Input::get('sectores',array()));
 
             $compromiso->institucionesRelacionadas()->sync(Input::get('instituciones_relacionadas',array()));
             $compromiso->entidadesDeLey()->sync(Input::get('entidades_de_ley',array()));

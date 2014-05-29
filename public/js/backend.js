@@ -143,6 +143,7 @@ function initFormUsuario(){
 
 function initFormCompromisosHitos(){
     $('.form-hitos').each(function(i,el){
+        $(el).find('.form-hitos-table tbody tr').length?$(el).find('.form-hitos-table').show():$(el).find('.form-hitos-table').hide();
         var maxid=$(el).find('.form-hitos-table tbody tr').length;
         $(el).find('.form-hitos-agregar').on('click',function(){
             var row='<tr>' +
@@ -154,48 +155,40 @@ function initFormCompromisosHitos(){
                 '</tr>';
             $(el).find('.form-hitos-table').append(row);
             ++maxid;
+            $(el).find('.form-hitos-table tbody tr').length?$(el).find('.form-hitos-table').show():$(el).find('.form-hitos-table').hide();
         });
         $(el).find('.form-hitos-table').on('click','button',function(){
             $(this).closest('tr').remove();
+            $(el).find('.form-hitos-table tbody tr').length?$(el).find('.form-hitos-table').show():$(el).find('.form-hitos-table').hide();
         });
     });
 
 }
 
 function initFormCompromisosMediosDeVerificacion(){
-    var $formMedios= $('.form-medios');
-    $formMedios.find('.form-medios-table tbody tr').length?$formMedios.find('.form-medios-table .nodata').hide():$formMedios.find('.form-medios-table .nodata').show();
-    $formMedios.data('maxid',$formMedios.find('.form-medios-table tbody tr').length);
-    $formMedios.find('.form-medios-agregar button').on('click',function(){
-        var descripcion=$formMedios.find('.medio-descripcion').val();
-        var tipo=$formMedios.find('.medio-tipo').val();
-        var url=$formMedios.find('.medio-url').val();
+    $('.form-medios').each(function(i,el){
+        $(el).find('.form-medios-table tbody tr').length?$(el).find('.form-medios-table').show():$(el).find('.form-medios-table').hide();
+        var maxid=$(el).find('.form-medios-table tbody tr').length;
+        $(el).find('.form-medios-agregar').on('click',function(){
 
-        if(!descripcion || !tipo || !url){
-            alert('Faltan campos por ingresar.');
-            return;
-        }
-
-        var maxid=$formMedios.data('maxid');
-        var row='<tr>' +
-            '<td>'+descripcion+'</td>' +
-            '<td>'+tipo+'</td>' +
-            '<td>'+url+'</td>' +
-            '<td>' +
-            '<input type="hidden" name="medios-de-verificacion['+maxid+'][descripcion]" value="'+descripcion+'"/>' +
-            '<input type="hidden" name="medios-de-verificacion['+maxid+'][tipo]" value="'+tipo+'"/>' +
-            '<input type="hidden" name="medios-de-verificacion['+maxid+'][url]" value="'+url+'"/>' +
-            '<button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button>' +
-            '</td>' +
-            '</tr>';
-        $formMedios.find('.form-medios-table').append(row);
-        $formMedios.data('maxid',++maxid);
-        $formMedios.find('.form-medios-table tbody tr').length?$formMedios.find('.form-medios-table .nodata').hide():$formMedios.find('.form-medios-table .nodata').show();
+            var row='<tr>' +
+                '<td><input class="form-control" type="text" name="medios-de-verificacion['+maxid+'][descripcion]" value="" placeholder="Descripción del medio de verificación" /></td>' +
+                '<td><input class="form-control" type="text" name="medios-de-verificacion['+maxid+'][tipo]" value="" placeholder="pdf" /></td>' +
+                '<td><input class="form-control" type="text" name="medios-de-verificacion['+maxid+'][url]" value="" placeholder="http://www.diariooficial.cl" /></td>' +
+                '<td>' +
+                '<button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button>' +
+                '</td>' +
+                '</tr>';
+            $(el).find('.form-medios-table').append(row);
+            ++maxid;
+            $(el).find('.form-medios-table tbody tr').length?$(el).find('.form-medios-table').show():$(el).find('.form-medios-table').hide();
+        });
+        $(el).find('.form-medios-table').on('click','button',function(){
+            $(this).closest('tr').remove();
+            $(el).find('.form-medios-table tbody tr').length?$(el).find('.form-medios-table').show():$(el).find('.form-medios-table').hide();
+        });
     });
-    $formMedios.find('.form-medios-table').on('click','button',function(){
-        $(this).closest('tr').remove();
-        $formMedios.find('.form-medios-table tbody tr').length?$formMedios.find('.form-medios-table .nodata').hide():$formMedios.find('.form-medios-table .nodata').show();
-    });
+    
 }
 
 function initFormCompromisosTipo(){

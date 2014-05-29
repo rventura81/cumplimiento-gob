@@ -214,7 +214,7 @@
             <div class="col-sm-12">
                 <label>Hitos</label>
 
-                <div><button class="btn btn-default form-hitos-agregar" type="button">Agregar nuevo hito</button></div>
+                <div><button class="btn btn-default form-hitos-agregar" type="button"><span class="glyphicon glyphicon-plus"></span> Agregar nuevo hito</button></div>
                 <table class="table form-hitos-table">
                     <thead>
                         <tr>
@@ -243,33 +243,7 @@
         <div class="row form-medios">
             <div class="col-sm-12">
                 <label>Medios de verificación</label>
-
-                <div class="row form-medios-agregar">
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="medio-descripcion">Descripción</label>
-                            <input id="medio-descripcion" type="text" class="form-control medio-descripcion" placeholder="Descripción del medio" />
-                        </div>
-                    </div>
-                    <div class="col-sm-2">
-                        <div class="form-group">
-                            <label for="medio-tipo">Tipo</label>
-                            <input id="medio-tipo" type="text" class="form-control medio-tipo" placeholder="Ej: pdf" />
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <label for="medio-url">Enlace</label>
-                            <input id="medio-url" type="text" class="form-control medio-url" placeholder="Ej: http://diariooficial.cl" />
-                        </div>
-                    </div>
-                    <div class="col-sm-1">
-                        <div class="form-group">
-                            <label>&nbsp;</label>
-                            <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-plus"></span></button>
-                        </div>
-                    </div>
-                </div>
+                <div><button class="btn btn-default form-medios-agregar" type="button"><span class="glyphicon glyphicon-plus"></span> Agregar nuevo Medio de Verificación</button></div>
 
                 <table class="table form-medios-table">
                     <thead>
@@ -279,20 +253,14 @@
                         <th class="col-sm-3">Enlace</th>
                         <th></th>
                     </tr>
-                    <tr class="nodata">
-                        <td colspan="4">No hay medios de verificación ingresados.</td>
-                    </tr>
                     </thead>
                     <tbody>
                     <?php $i=0; foreach($compromiso->mediosDeVerificacion as $m):?>
                     <tr>
-                        <td><?=$m->descripcion?></td>
-                        <td><?=$m->tipo?></td>
-                        <td><?=$m->url?></td>
+                        <td><input class="form-control" type="text" name="medios-de-verificacion[<?=$i?>][descripcion]" value="<?=$m->descripcion?>" placeholder="Descripción del medio de verificación" /></td>
+                        <td><input class="form-control" type="text" name="medios-de-verificacion[<?=$i?>][tipo]" value="<?=$m->tipo?>" placeholder="pdf" /></td>
+                        <td><input class="form-control" type="text" name="medios-de-verificacion[<?=$i?>][url]" value="<?=$m->url?>" placeholder="http://www.diariooficial.cl" /></td>
                         <td>
-                            <input type="hidden" name="medios-de-verificacion[<?=$i?>][descripcion]" value="<?=$m->descripcion?>" />
-                            <input type="hidden" name="medios-de-verificacion[<?=$i?>][tipo]" value="<?=$m->tipo?>" />
-                            <input type="hidden" name="medios-de-verificacion[<?=$i?>][url]" value="<?=$m->url?>" />
                             <button class="btn btn-danger" type="button"><span class="glyphicon glyphicon-remove"></span></button>
                         </td>
                     </tr>

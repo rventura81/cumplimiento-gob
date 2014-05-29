@@ -248,7 +248,7 @@
                 <table class="table form-medios-table">
                     <thead>
                     <tr>
-                        <th class="col-sm-6">Descripcion</th>
+                        <th class="col-sm-6">Descripción</th>
                         <th class="col-sm-3">Tipo</th>
                         <th class="col-sm-3">Enlace</th>
                         <th></th>

@@ -11,7 +11,7 @@
 |
 */
 
-//Route::controller('/','HomeController');
+Route::controller('/','HomeController');
 Route::controller('/backend/auth','AuthController');
 
 Route::group(array('before' => 'auth'), function()

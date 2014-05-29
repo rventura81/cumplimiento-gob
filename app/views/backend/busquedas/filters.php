@@ -18,6 +18,9 @@
                             <label>
                                 <input name="fuentes[]" <?= in_array($fuente->id, $input['fuentes']) ? 'checked' : ''; ?> value="<?= $fuente->id; ?>" type="checkbox"/>
                                 <?= $fuente->nombre; ?>
+                                <?php if(isset($filtros_count['fuente'][$fuente->id])): ?>
+                                    <span class="label label-info"><?= array_get($filtros_count['fuente'],$fuente->id); ?></span>
+                                <?php endif ?>
                             </label>
                             <ul>
                             <?php foreach($fuente->hijos as $h): ?>
@@ -25,6 +28,9 @@
                                     <label>
                                         <input name="fuentes[]" <?= in_array($h->id, $input['fuentes']) ? 'checked' : ''; ?> value="<?= $h->id; ?>" type="checkbox"/>
                                         <?= $h->nombre; ?>
+                                        <?php if(isset($filtros_count['fuente'][$h->id])): ?>
+                                            <span class="label label-info"><?= array_get($filtros_count['fuente'],$h->id); ?></span>
+                                        <?php endif ?>
                                     </label>
                                     <ul>
                                         <?php foreach($h->hijos as $n): ?>
@@ -32,6 +38,9 @@
                                                 <label>
                                                     <input name="fuentes[]" <?= in_array($n->id, $input['fuentes']) ? 'checked' : ''; ?> value="<?= $n->id; ?>" type="checkbox"/>
                                                     <?= $n->nombre; ?>
+                                                    <?php if(isset($filtros_count['fuente'][$n->id])): ?>
+                                                        <span class="label label-info"><?= array_get($filtros_count['fuente'],$n->id); ?></span>
+                                                    <?php endif ?>
                                                 </label>
                                             </li>
                                         <?php endforeach; ?>
@@ -54,6 +63,9 @@
                                 <label>
                                     <input name="instituciones[]" <?= in_array($institucion->id, $input['instituciones']) ? 'checked' : ''; ?> value="<?= $institucion->id; ?>" type="checkbox"/>
                                     <?= $institucion->nombre; ?>
+                                    <?php if(isset($filtros_count['institucion'][$institucion->id])): ?>
+                                        <span class="label label-info"><?= array_get($filtros_count['institucion'],$institucion->id); ?></span>
+                                    <?php endif ?>
                                 </label>
                                 <ul>
                                 <?php foreach($institucion->hijos as $institucionHija): ?>
@@ -61,6 +73,9 @@
                                         <label>
                                             <input name="instituciones[]" <?= in_array($institucionHija->id, $input['instituciones']) ? 'checked' : ''; ?> value="<?= $institucionHija->id; ?>" type="checkbox"/>
                                             <?= $institucionHija->nombre; ?>
+                                            <?php if(isset($filtros_count['institucion'][$institucionHija->id])): ?>
+                                                <span class="label label-info"><?= array_get($filtros_count['institucion'],$institucionHija->id); ?></span>
+                                            <?php endif ?>
                                         </label>
                                     </li>
                                 <?php endforeach; ?>
@@ -78,6 +93,9 @@
                     <label>
                         <input name="tipos[]" <?= in_array($crc32_tipo, $input['tipos']) ? 'checked' : ''; ?> value="<?= $crc32_tipo; ?>" type="checkbox"/>
                         <?= $tipo; ?>
+                        <?php if(isset($filtros_count['tipo'][$crc32_tipo])): ?>
+                            <span class="label label-info"><?= array_get($filtros_count['tipo'],$crc32_tipo); ?></span>
+                        <?php endif ?>
                     </label>
                     </div>
                 <?php endforeach; ?>

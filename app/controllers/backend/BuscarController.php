@@ -30,9 +30,12 @@ class BuscarController extends BaseController {
         $ids = $result['ids'];
 
         if($ids){
-            $data['filtros'] = array();
-            foreach($result['filters'] as $name => $filter)
-                $data['filtros'][$name] = array_unique(array_flatten($filter));
+            $data['filtros'] = $data['filtros_count'] = array();
+            foreach($result['filters'] as $name => $filter){
+                $filters_id = array_flatten($filter);
+                $data['filtros'][$name] = array_unique($filters_id);
+                $data['filtros_count'][$name] = array_count_values($filters_id);
+            }
 
             $data['compromisos'] = Compromiso::whereIn('id', $ids)->get();
             $data['fuentes'] = Fuente::with('hijos', 'hijos.hijos')->whereNull('fuente_padre_id')->get();

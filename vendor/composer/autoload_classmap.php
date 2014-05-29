@@ -46,6 +46,7 @@ return array(
     'CreateCompromisosTable' => $baseDir . '/app/database/migrations/2014_05_13_164000_create_compromisos_table.php',
     'CreateEntidadesDeLeyTable' => $baseDir . '/app/database/migrations/2014_05_13_163226_create_entidades_de_ley_table.php',
     'CreateFuentesTable' => $baseDir . '/app/database/migrations/2014_05_13_155629_create_fuentes_table.php',
+    'CreateHitosTable' => $baseDir . '/app/database/migrations/2014_05_29_193019_create_hitos_table.php',
     'CreateInstitucionesTable' => $baseDir . '/app/database/migrations/2014_05_13_160230_create_instituciones_table.php',
     'CreateMediosDeVerificacionTable' => $baseDir . '/app/database/migrations/2014_05_13_164102_create_medios_de_verificacion_table.php',
     'CreateSectoresTable' => $baseDir . '/app/database/migrations/2014_05_13_162859_create_sectores_table.php',

@@ -210,6 +210,36 @@
 
         <hr />
 
+        <div class="row form-hitos">
+            <div class="col-sm-12">
+                <label>Hitos</label>
+
+                <div><button class="btn btn-default form-hitos-agregar" type="button">Agregar nuevo hito</button></div>
+                <table class="table form-hitos-table">
+                    <thead>
+                        <tr>
+                            <th>Descripción</th>
+                            <th>Fecha</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $i=0; foreach($compromiso->hitos as $h):?>
+                        <tr>
+                            <td><input class="form-control" type="text" value="<?=$h->descripcion?>" name="hitos[<?=$i?>][descripcion]" placeholder="Descripción del hito"/></td>
+                            <td><input data-provide="datepicker" data-date-format="dd-mm-yyyy" data-date-autoclose="true" type="date" class="form-control" value="<?=$h->fecha->format('d-m-Y')?>" name="hitos[<?=$i?>][fecha]" placeholder="Fecha en que ocurrió" /></td>
+                            <td>
+                                <button class="btn btn-danger" type="text"><span class="glyphicon glyphicon-remove"></span></button>
+                            </td>
+                        </tr>
+                        <?php $i++; endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <hr />
+
         <div class="row form-medios">
             <div class="col-sm-12">
                 <label>Medios de verificación</label>

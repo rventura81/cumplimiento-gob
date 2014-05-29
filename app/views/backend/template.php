@@ -10,6 +10,7 @@
     <link href="<?=URL::asset('bower_components/bootstrap/dist/css/bootstrap.min.css')?>" rel="stylesheet">
     <link href="<?=URL::asset('bower_components/select2/select2.css')?>" rel="stylesheet">
     <link href="<?=URL::asset('bower_components/select2-bootstrap-css/select2-bootstrap.css')?>" rel="stylesheet">
+    <link href="<?=URL::asset('bower_components/bootstrap-datepicker/css/datepicker3.css')?>" rel="stylesheet">
     <link rel="stylesheet" href="<?= URL::asset('css/styles.css'); ?>"/>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -104,6 +105,7 @@
 <script src="<?=URL::asset('bower_components/select2/select2.min.js')?>"></script>
 <script src="<?=URL::asset('bower_components/tinymce/tinymce.min.js')?>"></script>
 <script src="<?=URL::asset('bower_components/jquery.maskedinput/jquery.maskedinput.min.js')?>"></script>
+<script src="<?=URL::asset('bower_components/bootstrap-datepicker/js/bootstrap-datepicker.js')?>"></script>
 <script src="<?=URL::asset('js/backend.js')?>"></script>
 </body>
 </html>

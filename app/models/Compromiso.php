@@ -42,4 +42,8 @@ class Compromiso extends Eloquent{
         return $this->belongsToMany('Tag');
     }
 
+    public function hitos(){
+        return $this->hasMany('Hito');
+    }
+
 } 

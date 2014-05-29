@@ -6,6 +6,7 @@
         "select2": ">= 3.4.*",
         "select2-bootstrap-css": "bootstrap3",
         "tinymce": "latest",
-        "jquery.maskedinput": "latest"
+        "jquery.maskedinput": "latest",
+        "bootstrap-datepicker": "latest"
     }
 }

@@ -94,6 +94,16 @@ class CompromisosController extends BaseController {
             $compromiso->institucionesRelacionadas()->sync(Input::get('instituciones_relacionadas',array()));
             $compromiso->entidadesDeLey()->sync(Input::get('entidades_de_ley',array()));
 
+            $compromiso->hitos()->delete();
+            $hitos=Input::get('hitos',array());
+            foreach($hitos as $h){
+                $new_hito=new Hito();
+                $new_hito->descripcion=$h['descripcion'];
+                $new_hito->fecha=\Carbon\Carbon::parse($h['fecha']);
+                $compromiso->hitos()->save($new_hito);
+            }
+
+
             $compromiso->mediosDeVerificacion()->delete();
             $medios=Input::get('medios-de-verificacion',array());
             foreach($medios as $m){

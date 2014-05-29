@@ -17,7 +17,7 @@
         <?php foreach($compromisos as $compromiso): ?>
             <tr>
                 <td><?= $compromiso->nombre; ?></td>
-                <td><span class="glyphicon glyphicon-<?= $compromiso->publico ? 'ok' : 'remove'; ?>"></span> </td>
+                <td><?= $compromiso->publico ? 'Sí' : 'No'; ?></td>
                 <td>
                     <a href="<?= URL::to('backend/compromisos/editar/'.$compromiso->id); ?>" class="btn btn-xs btn-success"><span class="glyphicon glyphicon-edit"></span> Editar</a>
                     <a href="<?= URL::to('backend/compromisos/eliminar/'.$compromiso->id); ?>" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#modal-backend"><span class="glyphicon glyphicon-remove"></span> Eliminar</a>

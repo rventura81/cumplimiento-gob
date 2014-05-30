@@ -9,9 +9,9 @@ class ReportesController extends BaseController{
     }
 
     public function getHitos(){
-        $data=array();
+        $data['hitos']=Hito::where('fecha','>=','2014-01-01')->orderBy('fecha')->with('compromiso')->get();
 
-        $this->layout->title='reportes';
+        $this->layout->title='Próximos hitos relevantes';
         $this->layout->sidebar = View::make('backend/reportes/sidebar',array('item_menu'=>'hitos'));
         $this->layout->content= View::make('backend/reportes/hitos', $data);
     }

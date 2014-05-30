@@ -3,7 +3,6 @@
 class EntidadesController extends BaseController {
 
     protected $layout='backend/template';
-    protected $item_menu = 'entidades';
 
     public function getIndex(){
         $offset = Input::get('offset', 0);
@@ -12,11 +11,13 @@ class EntidadesController extends BaseController {
         $entidades = EntidadDeLey::limit($limit)->offset($offset)->get();
 
         $this->layout->title='Entidades';
+        $this->layout->sidebar=View::make('backend/sidebar',array('item_menu'=>'entidades'));
         $this->layout->content=View::make('backend/entidades/index', array('entidades' => $entidades));
     }
 
     public function getVer($entidad_id){
         $this->layout->title = 'Entidades';
+        $this->layout->sidebar=View::make('backend/sidebar',array('item_menu'=>'entidades'));
         $this->layout->content = View::make('backend/entidades/view', array('entidad' => EntidadDeLey::find($entidad_id)));
     }
 
@@ -31,6 +32,7 @@ class EntidadesController extends BaseController {
         }
 
         $this->layout->title = 'Entidades';
+        $this->layout->sidebar=View::make('backend/sidebar',array('item_menu'=>'entidades'));
         $this->layout->content = View::make($view, $data);
     }
 
@@ -38,6 +40,7 @@ class EntidadesController extends BaseController {
         $data['entidad'] = EntidadDeLey::find($entidad_id);
 
         $this->layout->title = 'Entidades';
+        $this->layout->sidebar=View::make('backend/sidebar',array('item_menu'=>'entidades'));
         $this->layout->content = View::make('backend/entidades/normal_form', $data);
     }
 

@@ -41,6 +41,7 @@
                         <ul class="dropdown-menu">
                             <li><a href="<?= URL::to('/backend'); ?>">Administración</a></li>
                             <li><a href="<?= URL::to('/backend/buscar'); ?>">Busqueda</a></li>
+                            <li><a href="<?= URL::to('/backend/reportes'); ?>">Reportes</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -68,23 +69,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <?php if($item_menu != 'buscar'): ?>
-                <aside>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Administración</div>
-                        <div class="panel-body">
-                            <ul class="nav nav-pills nav-stacked">
-                                <li <?= $item_menu == 'compromisos' ? 'class="active"' : ''; ?>><a href="<?=URL::to('backend/compromisos')?>">Compromisos</a></li>
-                                <li <?= $item_menu == 'fuentes' ? 'class="active"' : ''; ?>><a href="<?=URL::to('backend/fuentes')?>">Fuentes</a></li>
-                                <li <?= $item_menu == 'entidades' ? 'class="active"' : ''; ?>><a href="<?=URL::to('backend/entidades')?>">Entidades de Ley</a></li>
-                                <li <?= $item_menu == 'usuarios' ? 'class="active"' : ''; ?>><a href="<?=URL::to('backend/usuarios')?>">Usuarios</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </aside>
-                <?php else: ?>
-                    <?= $filtros; ?>
-                <?php endif; ?>
+                <?=$sidebar?>
             </div>
             <div class="col-md-9">
                 <?= View::make('backend/messages'); ?>

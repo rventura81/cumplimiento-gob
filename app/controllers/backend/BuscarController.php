@@ -46,7 +46,7 @@ class BuscarController extends BaseController {
         $this->layout->busqueda = $data['q'] = $q;
         $this->layout->title='Buscar';
 
-        $this->layout->filtros = View::make('backend/busquedas/filters', $data);
+        $this->layout->sidebar = View::make('backend/busquedas/sidebar', $data);
         $this->layout->content= View::make('backend/busquedas/results', $data);
     }
 }

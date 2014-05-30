@@ -4,7 +4,6 @@
 class FuentesController extends BaseController {
 
     protected $layout='backend/template';
-    protected $item_menu = 'fuentes';
 
     public function getIndex(){
         $limit = Input::get('limit', 10);
@@ -13,11 +12,13 @@ class FuentesController extends BaseController {
         $fuentes = Fuente::with('hijos', 'hijos.hijos')->whereNull('fuente_padre_id')->offset($offset)->limit($limit)->get();
 
         $this->layout->title = 'Fuentes';
+        $this->layout->sidebar=View::make('backend/sidebar',array('item_menu'=>'fuentes'));
         $this->layout->content = View::make('backend/fuentes/index', array('fuentes' => $fuentes));
     }
 
     public function getVer($fuente_id){
         $this->layout->title = 'Fuentes';
+        $this->layout->sidebar=View::make('backend/sidebar',array('item_menu'=>'fuentes'));
         $this->layout->content = View::make('backend/fuentes/view', array('fuente' => Fuente::find($fuente_id)));
     }
 
@@ -26,6 +27,7 @@ class FuentesController extends BaseController {
         $data['fuente'] = new Fuente();
 
         $this->layout->title = 'Fuentes';
+        $this->layout->sidebar=View::make('backend/sidebar',array('item_menu'=>'fuentes'));
         $this->layout->content = View::make('backend/fuentes/form', $data);
     }
 
@@ -34,6 +36,7 @@ class FuentesController extends BaseController {
         $data['fuente'] = Fuente::find($fuente_id);
 
         $this->layout->title = 'Fuentes';
+        $this->layout->sidebar=View::make('backend/sidebar',array('item_menu'=>'fuentes'));
         $this->layout->content = View::make('backend/fuentes/form', $data);
     }
 

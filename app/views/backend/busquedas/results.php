@@ -5,8 +5,8 @@
 
 <!-- Nav tabs -->
 <ul class="nav nav-tabs">
-    <li class="active"><a href="#listado" data-toggle="tab">Listado</a></li>
-    <li><a href="#visualizaciones" data-toggle="tab">Visualizaciones</a></li>
+    <li class="active"><a href="#listado" data-toggle="tab"><span class="glyphicon glyphicon-list"></span> Resultados</a></li>
+    <li><a href="#visualizaciones" data-toggle="tab"><span class="glyphicon glyphicon-stats"></span> Visualizaciones</a></li>
 </ul>
 
 <!-- Tab panes -->

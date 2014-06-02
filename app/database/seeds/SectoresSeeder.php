@@ -7,28 +7,23 @@ class SectoresSeeder extends Seeder {
         $date = new DateTime();
         $date = $date->format('Y-m-d H:i:s');
 
-        //Paises
-        DB::table('sectores')->insert(array(
-            'id' => 1, 'nombre' => 'Chile', 'lat' => '-36.4145', 'lng' => '-71.9508', 'tipo' => 'pais', 'created_at' => $date, 'updated_at' => $date
-        ));
-
         //Regiones
         DB::table('sectores')->insert(array(
-            array('id' => 2, 'nombre' => 'Región de Tarapacá', 'lat' => '-20.164', 'lng' => '-69.5541', 'tipo' => 'region', 'sector_padre_id' => 1, 'created_at' => $date, 'updated_at' => $date),
-            array('id' => 3, 'nombre' => 'Región de Antofagasta', 'lat' => '-23.7503', 'lng' => '-69.6', 'tipo' => 'region', 'sector_padre_id' => 1, 'created_at' => $date, 'updated_at' => $date),
-            array('id' => 4, 'nombre' => 'Región de Atacama', 'lat' => '-27.5276', 'lng' => '-70.2494', 'tipo' => 'region', 'sector_padre_id' => 1, 'created_at' => $date, 'updated_at' => $date),
-            array('id' => 5, 'nombre' => 'Región de Coquimbo', 'lat' => '-30.8301', 'lng' => '-70.9816', 'tipo' => 'region', 'sector_padre_id' => 1, 'created_at' => $date, 'updated_at' => $date),
-            array('id' => 6, 'nombre' => 'Región de Valparaíso', 'lat' => '-32.9039', 'lng' => '-71.0262', 'tipo' => 'region', 'sector_padre_id' => 1, 'created_at' => $date, 'updated_at' => $date),
-            array('id' => 7, 'nombre' => 'Región del Libertador Gral. Bernardo O’Higgins', 'lat' => '-34.4294', 'lng' => '-71.0393', 'tipo' => 'region', 'sector_padre_id' => 1, 'created_at' => $date, 'updated_at' => $date),
-            array('id' => 8, 'nombre' => 'Región del Maule', 'lat' => '-35.5892', 'lng' => '-71.5007', 'tipo' => 'region', 'sector_padre_id' => 1, 'created_at' => $date, 'updated_at' => $date),
-            array('id' => 9, 'nombre' => 'Región del Biobío', 'lat' => '-37.2442', 'lng' => '-72.4661', 'tipo' => 'region', 'sector_padre_id' => 1, 'created_at' => $date, 'updated_at' => $date),
-            array('id' => 10, 'nombre' => 'Región de la Araucanía', 'lat' => '-38.5505', 'lng' => '-72.4382', 'tipo' => 'region', 'sector_padre_id' => 1, 'created_at' => $date, 'updated_at' => $date),
-            array('id' => 11, 'nombre' => 'Región de Los Lagos', 'lat' => '-42.1071', 'lng' => '-72.6425', 'tipo' => 'region', 'sector_padre_id' => 1, 'created_at' => $date, 'updated_at' => $date),
-            array('id' => 12, 'nombre' => 'Región de Aysén del Gral. Carlos Ibáñez del Campo', 'lat' => '-46.2772', 'lng' => '-73.6628', 'tipo' => 'region', 'sector_padre_id' => 1, 'created_at' => $date, 'updated_at' => $date),
-            array('id' => 13, 'nombre' => 'Región de Magallanes y de la Antártica Chilena', 'lat' => '-54.3551', 'lng' => '-70.5284', 'tipo' => 'region', 'sector_padre_id' => 1, 'created_at' => $date, 'updated_at' => $date),
-            array('id' => 14, 'nombre' => 'Región Metropolitana de Santiago', 'lat' => '-33.4417', 'lng' => '-70.6541', 'tipo' => 'region', 'sector_padre_id' => 1, 'created_at' => $date, 'updated_at' => $date),
-            array('id' => 15, 'nombre' => 'Región de Los Ríos', 'lat' => '-39.9086', 'lng' => '-72.7034', 'tipo' => 'region', 'sector_padre_id' => 1, 'created_at' => $date, 'updated_at' => $date),
-            array('id' => 16, 'nombre' => 'Región de Arica y Parinacota', 'lat' => '-18.5075', 'lng' => '-69.6451', 'tipo' => 'region', 'sector_padre_id' => 1, 'created_at' => $date, 'updated_at' => $date)
+            array('id' => 2, 'nombre' => 'Región de Tarapacá', 'lat' => '-20.164', 'lng' => '-69.5541', 'tipo' => 'region', 'created_at' => $date, 'updated_at' => $date),
+            array('id' => 3, 'nombre' => 'Región de Antofagasta', 'lat' => '-23.7503', 'lng' => '-69.6', 'tipo' => 'region', 'created_at' => $date, 'updated_at' => $date),
+            array('id' => 4, 'nombre' => 'Región de Atacama', 'lat' => '-27.5276', 'lng' => '-70.2494', 'tipo' => 'region', 'created_at' => $date, 'updated_at' => $date),
+            array('id' => 5, 'nombre' => 'Región de Coquimbo', 'lat' => '-30.8301', 'lng' => '-70.9816', 'tipo' => 'region', 'created_at' => $date, 'updated_at' => $date),
+            array('id' => 6, 'nombre' => 'Región de Valparaíso', 'lat' => '-32.9039', 'lng' => '-71.0262', 'tipo' => 'region', 'created_at' => $date, 'updated_at' => $date),
+            array('id' => 7, 'nombre' => 'Región del Libertador Gral. Bernardo O’Higgins', 'lat' => '-34.4294', 'lng' => '-71.0393', 'tipo' => 'region', 'created_at' => $date, 'updated_at' => $date),
+            array('id' => 8, 'nombre' => 'Región del Maule', 'lat' => '-35.5892', 'lng' => '-71.5007', 'tipo' => 'region', 'created_at' => $date, 'updated_at' => $date),
+            array('id' => 9, 'nombre' => 'Región del Biobío', 'lat' => '-37.2442', 'lng' => '-72.4661', 'tipo' => 'region', 'created_at' => $date, 'updated_at' => $date),
+            array('id' => 10, 'nombre' => 'Región de la Araucanía', 'lat' => '-38.5505', 'lng' => '-72.4382', 'tipo' => 'region', 'created_at' => $date, 'updated_at' => $date),
+            array('id' => 11, 'nombre' => 'Región de Los Lagos', 'lat' => '-42.1071', 'lng' => '-72.6425', 'tipo' => 'region', 'created_at' => $date, 'updated_at' => $date),
+            array('id' => 12, 'nombre' => 'Región de Aysén del Gral. Carlos Ibáñez del Campo', 'lat' => '-46.2772', 'lng' => '-73.6628', 'tipo' => 'region', 'created_at' => $date, 'updated_at' => $date),
+            array('id' => 13, 'nombre' => 'Región de Magallanes y de la Antártica Chilena', 'lat' => '-54.3551', 'lng' => '-70.5284', 'tipo' => 'region', 'created_at' => $date, 'updated_at' => $date),
+            array('id' => 14, 'nombre' => 'Región Metropolitana de Santiago', 'lat' => '-33.4417', 'lng' => '-70.6541', 'tipo' => 'region', 'created_at' => $date, 'updated_at' => $date),
+            array('id' => 15, 'nombre' => 'Región de Los Ríos', 'lat' => '-39.9086', 'lng' => '-72.7034', 'tipo' => 'region', 'created_at' => $date, 'updated_at' => $date),
+            array('id' => 16, 'nombre' => 'Región de Arica y Parinacota', 'lat' => '-18.5075', 'lng' => '-69.6451', 'tipo' => 'region', 'created_at' => $date, 'updated_at' => $date)
         ));
 
         //Provincias

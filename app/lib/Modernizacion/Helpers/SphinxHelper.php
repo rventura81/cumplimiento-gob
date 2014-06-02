@@ -40,6 +40,9 @@ class SphinxHelper {
         if($options['instituciones'])
             $sqb->filter('institucion', $options['instituciones']);
 
+        if($options['sectores'])
+            $sqb->filter('sector', $options['sectores']);
+
         if($options['tipos'])
             $sqb->filter('tipo', $options['tipos']);
 

@@ -20,6 +20,8 @@ $(document).ready(function(){
 
     initFormCompromisosTipo();
 
+    initCharts();
+
 });
 
 function modalEvents() {
@@ -222,4 +224,45 @@ function actualizaEntidades (form) {
 function initFiltrosBusqueda(){
     var filtrosAnidados = $('.panel-filtro-anidado');
     filtrosAnidados.find('li.active').parents('li').addClass('active');
+}
+
+function initCharts(){
+    $(".chart.pie").each(function(i,el){
+
+        var data=$(el).data("data");
+
+        var options= {
+            series: {
+                pie: {
+                    show: true,
+                    radius: 1,
+                    label: {
+                        show: true,
+                        radius: 3/4,
+                        formatter: labelFormatter,
+                        background: {
+                            opacity: 0.5
+                        }
+                    }
+                }
+            },
+            legend: {
+                show: false
+            }
+        };
+
+        $.plot($(el), data, options);
+        window.onresize = function(event) {
+            $.plot($(el), data, options);
+        }
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (event) {
+            $.plot($(el), data, options);
+        })
+
+    });
+
+    function labelFormatter(label, series) {
+        return "<div style='font-size:12px; text-align:center; padding:2px; color:white;'>" + label + "<br/>" + Math.round(series.percent) + "%</div>";
+    }
+
 }

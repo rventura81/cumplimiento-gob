@@ -38,6 +38,7 @@ class BuscarController extends BaseController {
             }
 
             $data['compromisos'] = Compromiso::whereIn('id', $ids)->get();
+            $data['compromisos_chart']=DB::table('compromisos')->whereIn('id', $ids)->groupBy('avance')->select(DB::raw('count(*) as data, avance as label'))->get();
             $data['fuentes'] = Fuente::with('hijos', 'hijos.hijos')->whereNull('fuente_padre_id')->get();
             $data['instituciones'] = Institucion::with('hijos')->whereNull('institucion_padre_id')->get();
             $data['tipos'] = $this->sphinxHelper->getFiltrosTipo($data['filtros']['tipo']);

@@ -91,6 +91,8 @@
 <script src="<?=URL::asset('bower_components/tinymce/tinymce.min.js')?>"></script>
 <script src="<?=URL::asset('bower_components/jquery.maskedinput/jquery.maskedinput.min.js')?>"></script>
 <script src="<?=URL::asset('bower_components/bootstrap-datepicker/js/bootstrap-datepicker.js')?>"></script>
+<script src="<?=URL::asset('bower_components/flot/jquery.flot.js')?>"></script>
+<script src="<?=URL::asset('bower_components/flot/jquery.flot.pie.js')?>"></script>
 <script src="<?=URL::asset('js/backend.js')?>"></script>
 </body>
 </html>

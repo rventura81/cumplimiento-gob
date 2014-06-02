@@ -22,8 +22,8 @@ class BuscarController extends BaseController {
     public function getIndex(){
         $q = Input::get('q');
 
-        $data['compromisos'] = $data['compromisos_chart'] = $data['fuentes'] = $data['instituciones'] = $data['sectores'] = $data['tipos'] = $data['avances'] = array();
-        $data['input'] = array_merge(array('instituciones' => array(), 'sectores' => array(), 'fuentes' => array(), 'tipos' => array(), 'avances'=> array()), Input::all());
+        $data['compromisos'] = $data['compromisos_chart'] = $data['fuentes'] = $data['instituciones'] = $data['tags'] = $data['sectores'] = $data['tipos'] = $data['avances'] = array();
+        $data['input'] = array_merge(array('instituciones' => array(),'tags'=>array(), 'sectores' => array(), 'fuentes' => array(), 'tipos' => array(), 'avances'=> array()), Input::all());
         $result = $this->sphinxHelper->search($q, $data['input']);
 
         $ids = $result['ids'];
@@ -41,6 +41,7 @@ class BuscarController extends BaseController {
             $data['fuentes'] = Fuente::with('hijos', 'hijos.hijos')->whereNull('fuente_padre_id')->get();
             $data['instituciones'] = Institucion::with('hijos')->whereNull('institucion_padre_id')->get();
             $data['sectores'] = Sector::with('hijos.hijos')->whereNull('sector_padre_id')->get();
+            $data['tags'] = Tag::all();
             $data['tipos'] = $this->sphinxHelper->getFiltrosTipo($data['filtros']['tipo']);
             $data['avances'] = $this->sphinxHelper->getFiltrosAvance($data['filtros']['avance']);
         }

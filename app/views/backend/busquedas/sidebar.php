@@ -145,6 +145,21 @@
                     </div>
                 <?php endforeach; ?>
             </div>
+
+            <div class="panel-heading">Estado de Avance</div>
+            <div class="panel-body panel-filtro-anidado">
+                <?php foreach($avances as $crc32_tipo => $tipo): ?>
+                    <div class="checkbox">
+                        <label>
+                            <input name="avances[]" <?= in_array($crc32_tipo, $input['avances']) ? 'checked' : ''; ?> value="<?= $crc32_tipo; ?>" type="checkbox"/>
+                            <?= $tipo; ?>
+                            <?php if(isset($filtros_count['avance'][$crc32_tipo])): ?>
+                                <span class="badge"><?= array_get($filtros_count['avance'],$crc32_tipo); ?></span>
+                            <?php endif ?>
+                        </label>
+                    </div>
+                <?php endforeach; ?>
+            </div>
         </div>
     </form>
 </aside>

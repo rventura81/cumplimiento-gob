@@ -46,6 +46,9 @@ class SphinxHelper {
         if($options['tipos'])
             $sqb->filter('tipo', $options['tipos']);
 
+        if($options['avances'])
+            $sqb->filter('avance', $options['avances']);
+
         if(empty($text))
             $sqb->setMatchMode(\Sphinx\SphinxClient::SPH_MATCH_FULLSCAN);
 
@@ -77,6 +80,19 @@ class SphinxHelper {
         $tipos = array_combine(array_map("crc32", $tipos), $tipos);
 
         $result = array_intersect_key($tipos, array_flip($filtroTipos));
+
+        return $result;
+    }
+
+    /**
+     * @param array $filtroAvances
+     * @return array
+     */
+    public function getFiltrosAvance($filtroAvances){
+        $tipos = array('No Iniciado','En Proceso','Atrasado','Cumplido');
+        $tipos = array_combine(array_map("crc32", $tipos), $tipos);
+
+        $result = array_intersect_key($tipos, array_flip($filtroAvances));
 
         return $result;
     }

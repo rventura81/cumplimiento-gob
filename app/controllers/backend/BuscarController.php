@@ -22,7 +22,7 @@ class BuscarController extends BaseController {
     public function getIndex(){
         $q = Input::get('q');
 
-        $data['compromisos'] = $data['fuentes'] = $data['instituciones'] = $data['tipos'] = array();
+        $data['compromisos'] = $data['compromisos_chart'] = $data['fuentes'] = $data['instituciones'] = $data['tipos'] = array();
         $data['input'] = array_merge(array('instituciones' => array(), 'fuentes' => array(), 'tipos' => array()), Input::all());
 
         $result = $this->sphinxHelper->search($q, $data['input']);

@@ -11,7 +11,7 @@
 |
 */
 
-//Route::controller('/','HomeController');
+Route::controller('/compromisos','CompromisosFrontendController');
 Route::controller('/backend/auth','AuthController');
 
 Route::group(array('before' => 'auth'), function()

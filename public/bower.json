@@ -8,6 +8,7 @@
         "tinymce": "latest",
         "jquery.maskedinput": "latest",
         "bootstrap-datepicker": "latest",
-        "flot":"latest"
+        "flot":"latest",
+        "moment": "latest"
     }
 }

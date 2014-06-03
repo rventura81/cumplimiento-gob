@@ -9,7 +9,7 @@ class ReportesController extends BaseController{
     }
 
     public function getHitos(){
-        $data['hitos']=Hito::where('fecha','>=','2014-01-01')->orderBy('fecha')->with('compromiso')->get();
+        $data['hitos']=Hito::where('fecha','>=',\Carbon\Carbon::now()->toDateString())->orderBy('fecha')->with('compromiso')->get();
 
         $this->layout->title='Próximos hitos relevantes';
         $this->layout->sidebar = View::make('backend/reportes/sidebar',array('item_menu'=>'hitos'));

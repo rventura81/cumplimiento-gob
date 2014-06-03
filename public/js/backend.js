@@ -22,6 +22,8 @@ $(document).ready(function(){
 
     initCharts();
 
+    initMoment();
+
 });
 
 function modalEvents() {
@@ -265,4 +267,12 @@ function initCharts(){
         return "<div style='font-size:12px; text-align:center; padding:2px; color:white;'>" + label + "<br/>" + Math.round(series.percent) + "%</div>";
     }
 
+}
+
+function initMoment(){
+    moment.lang("es");
+    $("time").each(function(i,el){
+        var time=moment($(el).text());
+        $(el).text(time.fromNow());
+    });
 }

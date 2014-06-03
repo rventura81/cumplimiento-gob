@@ -17,8 +17,8 @@
     <?php foreach($hitos as $h):?>
     <tr>
         <td><?=$h->descripcion?></td>
-        <td><a href="<?=URL::to('backend/compromisos/ver/'.$h->compromiso->id)?>"><?=$h->compromiso->nombre?></a></td>
-        <td><?=$h->fecha->format('d-m-Y')?></td>
+        <td><a href="<?=URL::to('backend/compromisos/editar/'.$h->compromiso->id)?>"><?=$h->compromiso->nombre?></a></td>
+        <td><time><?=$h->fecha?></time></td>
     </tr>
     <?php endforeach ?>
     </tbody>

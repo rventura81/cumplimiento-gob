@@ -226,6 +226,11 @@ function actualizaEntidades (form) {
 function initFiltrosBusqueda(){
     var filtrosAnidados = $('.panel-filtro-anidado');
     filtrosAnidados.find('li.active').parents('li').addClass('active');
+
+    filtrosAnidados.find(':checkbox').change(function(){
+        if($(this).prop("checked"))
+            $(this).parents('li').find(':checkbox').prop("checked",true);
+    });
 }
 
 function initCharts(){

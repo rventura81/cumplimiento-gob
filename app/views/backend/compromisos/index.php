@@ -55,6 +55,10 @@
             </tbody>
         </table>
 
+        <div class="text-center">
+        <?=$compromisos->links()?>
+        </div>
+
     </div>
     <div class="tab-pane" id="visualizaciones">
         <div class="chart pie" data-data='<?=json_encode($compromisos_chart)?>'></div>

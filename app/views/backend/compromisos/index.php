@@ -36,7 +36,7 @@
                         <h4>Entidades de Ley relacionadas:</h4>
                         <ul>
                         <?php foreach ($compromiso->entidadesDeLey as $e):?>
-                            <li><?=$e->nombre?><?=$e->numero_boletin?' (Nº '.$e->numero_boletin.')':''?></li>
+                            <li><a href="<?=URL::to('backend/entidades/editar/'.$e->id)?>"><?=$e->nombre?><?=$e->numero_boletin?' (Nº '.$e->numero_boletin.')':''?></a></li>
                         <?php endforeach ?>
                         </ul>
                         <?php endif ?>

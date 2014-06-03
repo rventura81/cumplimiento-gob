@@ -15,6 +15,9 @@
 <!-- Tab panes -->
 <div class="tab-content">
     <div class="tab-pane active" id="listado">
+
+        <p class="text-right">Exportar a <a href="<?=str_replace('compromisos','compromisos.pdf',URL::full())?>">PDF</a></p>
+
         <table class="table">
             <tbody>
             <?php foreach($compromisos as $compromiso): ?>

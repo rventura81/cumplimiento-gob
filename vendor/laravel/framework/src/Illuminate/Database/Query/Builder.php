@@ -128,6 +128,13 @@ class Builder {
 	public $lock;
 
 	/**
+	 * The backups of fields while doing a pagination count.
+	 *
+	 * @var array
+	 */
+	protected $backups = array();
+
+	/**
 	 * The key that should be used when caching the query.
 	 *
 	 * @var string
@@ -1549,23 +1556,47 @@ class Builder {
 	 */
 	public function getPaginationCount()
 	{
-		list($orders, $this->orders) = array($this->orders, null);
-
-		$columns = $this->columns;
+		$this->backupFieldsForCount();
 
 		// Because some database engines may throw errors if we leave the ordering
 		// statements on the query, we will "back them up" and remove them from
 		// the query. Once we have the count we will put them back onto this.
 		$total = $this->count();
 
-		$this->orders = $orders;
-
-		// Once the query is run we need to put the old select columns back on the
-		// instance so that the select query will run properly. Otherwise, they
-		// will be cleared, then the query will fire with all of the columns.
-		$this->columns = $columns;
+		$this->restoreFieldsForCount();
 
 		return $total;
+	}
+
+	/**
+	 * Backup certain fields for a pagination count.
+	 *
+	 * @return void
+	 */
+	protected function backupFieldsForCount()
+	{
+		foreach (array('orders', 'limit', 'offset') as $field)
+		{
+			$this->backups[$field] = $this->{$field};
+
+			$this->{$field} = null;
+		}
+
+	}
+
+	/**
+	 * Restore certain fields for a pagination count.
+	 *
+	 * @return void
+	 */
+	protected function restoreFieldsForCount()
+	{
+		foreach (array('orders', 'limit', 'offset') as $field)
+		{
+			$this->{$field} = $this->backups[$field];
+		}
+
+		$this->backups = array();
 	}
 
 	/**
@@ -1581,12 +1612,17 @@ class Builder {
 	/**
 	 * Retrieve the "count" result of the query.
 	 *
-	 * @param  string  $column
+	 * @param  string  $columns
 	 * @return int
 	 */
-	public function count($column = '*')
+	public function count($columns = '*')
 	{
-		return (int) $this->aggregate(__FUNCTION__, array($column));
+		if ( ! is_array($columns))
+		{
+			$columns = array($columns);
+		}
+
+		return (int) $this->aggregate(__FUNCTION__, $columns);
 	}
 
 	/**
@@ -1619,7 +1655,9 @@ class Builder {
 	 */
 	public function sum($column)
 	{
-		return $this->aggregate(__FUNCTION__, array($column));
+		$result = $this->aggregate(__FUNCTION__, array($column));
+
+		return $result ?: 0;
 	}
 
 	/**
@@ -1644,12 +1682,16 @@ class Builder {
 	{
 		$this->aggregate = compact('function', 'columns');
 
+		$previousColumns = $this->columns;
+
 		$results = $this->get($columns);
 
 		// Once we have executed the query, we will reset the aggregate property so
 		// that more select queries can be executed against the database without
 		// the aggregate value getting in the way when the grammar builds it.
-		$this->columns = null; $this->aggregate = null;
+		$this->aggregate = null;
+
+		$this->columns = $previousColumns;
 
 		if (isset($results[0]))
 		{

@@ -1,0 +1,46 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+
+</head>
+<body>
+        <table class="table">
+            <tbody>
+            <?php foreach($compromisos as $compromiso): ?>
+                <tr>
+                    <td>
+                        <h3><?= $compromiso->nombre; ?></h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><strong>Institucion Responsable:</strong><br />
+                                <?=$compromiso->institucion->nombre?></p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>Sectorialista Responsable:</strong><br />
+                                    <?=$compromiso->usuario->nombres?> <?=$compromiso->usuario->apellidos?></p>
+                            </div>
+                        </div>
+                        <?=$compromiso->descripcion?>
+                        <?php if($compromiso->entidadesDeLey->count()):?>
+                        <h4>Entidades de Ley relacionadas:</h4>
+                        <ul>
+                        <?php foreach ($compromiso->entidadesDeLey as $e):?>
+                            <li><a href="<?=URL::to('backend/entidades/editar/'.$e->id)?>"><?=$e->nombre?><?=$e->numero_boletin?' (Nº '.$e->numero_boletin.')':''?></a></li>
+                        <?php endforeach ?>
+                        </ul>
+                        <?php endif ?>
+                    </td>
+
+                </tr>
+            <?php endforeach; ?>
+            <?php if(!count($compromisos)): ?>
+                <tr>
+                    <th class="text-center" colspan="3">No se han encontrado compromisos.</th>
+                </tr>
+            <?php endif; ?>
+            </tbody>
+        </table>
+
+
+</html>
+</body>

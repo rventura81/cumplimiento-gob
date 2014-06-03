@@ -7,7 +7,7 @@ class CompromisosController extends BaseController {
 	protected $layout='backend/template';
 
 
-    public function getIndex(){
+    public function getIndex($extension='.html'){
         $q = Input::get('q');
 
         $data['compromisos'] = $data['compromisos_chart'] = $data['fuentes'] = $data['instituciones'] = $data['tags'] = $data['sectores'] = $data['tipos'] = $data['avances'] = array();
@@ -36,11 +36,16 @@ class CompromisosController extends BaseController {
             $data['avances'] = $sphinxHelper->getFiltrosAvance($data['filtros']['avance']);
         }
 
-        $this->layout->busqueda = $data['q'] = $q;
-        $this->layout->title='Buscar';
 
-        $this->layout->sidebar = View::make('backend/compromisos/sidebar_search', $data);
-        $this->layout->content= View::make('backend/compromisos/index', $data);
+        if($extension=='.html'){
+            $this->layout->busqueda = $data['q'] = $q;
+            $this->layout->title='Buscar';
+            $this->layout->sidebar = View::make('backend/compromisos/sidebar_search', $data);
+            $this->layout->content= View::make('backend/compromisos/index', $data);
+        }else if($extension=='.pdf'){
+
+            return PDF::load(View::make('backend/compromisos/index_pdf',$data), 'letter', 'portrait')->show();
+        }
     }
 /*
 	public function getIndex()

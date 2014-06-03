@@ -121,6 +121,7 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
         'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
         'Scalia\SphinxSearch\SphinxSearchServiceProvider',
+        'Thujohn\Pdf\PdfServiceProvider'
 	),
 
 	/*
@@ -187,6 +188,7 @@ return array(
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
         'SphinxSearch' => 'Scalia\SphinxSearch\SphinxSearchFacade',
+        'PDF' => 'Thujohn\Pdf\PdfFacade'
 	),
 
 );

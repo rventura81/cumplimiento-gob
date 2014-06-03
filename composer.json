@@ -6,7 +6,8 @@
 	"require": {
 		"laravel/framework": "4.1.*",
         "barryvdh/laravel-ide-helper": "1.*",
-        "scalia/sphinxsearch": "dev-master"
+        "scalia/sphinxsearch": "dev-master",
+        "thujohn/pdf": "dev-master"
 	},
 	"autoload": {
 		"classmap": [

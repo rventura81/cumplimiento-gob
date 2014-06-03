@@ -26,7 +26,7 @@ class CompromisosController extends BaseController {
                 $data['filtros_count'][$name] = array_count_values($filters_id);
             }
 
-            $data['compromisos'] = Compromiso::whereIn('id', $ids)->get();
+            $data['compromisos'] = Compromiso::whereIn('id', $ids)->with('entidadesDeLey','institucion','usuario')->get();
             $data['compromisos_chart']=DB::table('compromisos')->whereIn('id', $ids)->groupBy('avance')->select(DB::raw('count(*) as data, avance as label'))->get();
             $data['fuentes'] = Fuente::with('hijos', 'hijos.hijos')->whereNull('fuente_padre_id')->get();
             $data['instituciones'] = Institucion::with('hijos')->whereNull('institucion_padre_id')->get();

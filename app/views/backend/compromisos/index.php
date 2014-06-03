@@ -16,6 +16,8 @@
 <div class="tab-content">
     <div class="tab-pane active" id="listado">
 
+        <?php if(count($compromisos)):?>
+
         <p class="text-right">Exportar a <a href="<?=str_replace('compromisos','compromisos.pdf',URL::full())?>">PDF</a></p>
 
         <table class="table">
@@ -50,17 +52,15 @@
                     </td>
                 </tr>
             <?php endforeach; ?>
-            <?php if(!count($compromisos)): ?>
-                <tr>
-                    <th class="text-center" colspan="3">No se han encontrado compromisos.</th>
-                </tr>
-            <?php endif; ?>
             </tbody>
         </table>
 
         <div class="text-center">
         <?=$compromisos->links()?>
         </div>
+        <?php else:?>
+        <p>No se han encontrado compromisos.</p>
+        <?php endif ?>
 
     </div>
     <div class="tab-pane" id="visualizaciones">

@@ -26,7 +26,7 @@ class CompromisosController extends BaseController {
                 $data['filtros_count'][$name] = array_count_values($filters_id);
             }
 
-            $data['compromisos'] = Compromiso::whereIn('id', $ids)->with('entidadesDeLey','institucion','usuario')->paginate(50);
+            $compromisos = Compromiso::whereIn('id', $ids)->with('entidadesDeLey','institucion','usuario');
             $data['compromisos_chart']=DB::table('compromisos')->whereIn('id', $ids)->groupBy('avance')->select(DB::raw('count(*) as data, avance as label'))->get();
             $data['fuentes'] = Fuente::with('hijos', 'hijos.hijos')->whereNull('fuente_padre_id')->get();
             $data['instituciones'] = Institucion::with('hijos')->whereNull('institucion_padre_id')->get();
@@ -38,12 +38,13 @@ class CompromisosController extends BaseController {
 
 
         if($extension=='.html'){
+            $data['compromisos']=isset($compromisos)?$compromisos->paginate(50):null;
             $this->layout->busqueda = $data['q'] = $q;
             $this->layout->title='Buscar';
             $this->layout->sidebar = View::make('backend/compromisos/sidebar_search', $data);
             $this->layout->content= View::make('backend/compromisos/index', $data);
         }else if($extension=='.pdf'){
-
+            $data['compromisos']=isset($compromisos)?$compromisos->get():null;
             return PDF::load(View::make('backend/compromisos/index_pdf',$data), 'letter', 'portrait')->show();
         }
     }

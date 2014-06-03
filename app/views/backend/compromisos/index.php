@@ -18,6 +18,8 @@
 
         <?php if(count($compromisos)):?>
 
+        <p style="margin: 20px 0;">Se han encontrado <?=$compromisos->getTotal()?> resultados.</p>
+
         <p class="text-right">Exportar a <a href="<?=str_replace('compromisos','compromisos.pdf',URL::full())?>">PDF</a></p>
 
         <table class="table">

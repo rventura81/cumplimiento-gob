@@ -1,6 +1,6 @@
 <ol class="breadcrumb">
     <li><a href="<?=URL::to('backend')?>">Inicio</a></li>
-    <li><a href="<?=URL::to('backend/reportes')?>">Reportes</a></li>
+    <li><a href="<?=URL::to('backend/hitos')?>">Hitos</a></li>
     <li class="active">Próximos hitos relevantes</li>
 </ol>
 

@@ -39,9 +39,11 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menú<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="<?= URL::to('/backend'); ?>">Administración</a></li>
-                            <li><a href="<?= URL::to('/backend/buscar'); ?>">Busqueda</a></li>
-                            <li><a href="<?= URL::to('/backend/reportes'); ?>">Reportes</a></li>
+                            <li><a href="<?= URL::to('/backend/compromisos'); ?>">Compromisos</a></li>
+                            <li><a href="<?= URL::to('/backend/fuentes'); ?>">Fuentes</a></li>
+                            <li><a href="<?= URL::to('/backend/entidades'); ?>">Entidades de Ley</a></li>
+                            <li><a href="<?= URL::to('/backend/hitos'); ?>">Hitos</a></li>
+                            <li><a href="<?= URL::to('/backend/usuarios'); ?>">Usuarios</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -53,7 +55,7 @@
                         </ul>
                     </li>
                 </ul>
-                <form class="navbar-form navbar-right" role="search" action="<?= URL::to('backend/buscar'); ?>" method="GET">
+                <form class="navbar-form navbar-right" role="search" action="<?= URL::to('backend/compromisos'); ?>" method="GET">
                     <div class="form-group">
                         <input accesskey="q" type="text" name="q" id="q" class="form-control" placeholder="Buscar..." value="<?= isset($busqueda) ? strip_tags($busqueda) : ''; ?>">
                     </div>

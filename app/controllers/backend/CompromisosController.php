@@ -1,9 +1,48 @@
 <?php
 
+use Modernizacion\Helpers\SphinxHelper;
+
 class CompromisosController extends BaseController {
 
 	protected $layout='backend/template';
 
+
+    public function getIndex(){
+        $q = Input::get('q');
+
+        $data['compromisos'] = $data['compromisos_chart'] = $data['fuentes'] = $data['instituciones'] = $data['tags'] = $data['sectores'] = $data['tipos'] = $data['avances'] = array();
+        $data['input'] = array_merge(array('instituciones' => array(),'tags'=>array(), 'sectores' => array(), 'fuentes' => array(), 'tipos' => array(), 'avances'=> array()), Input::all());
+
+        $sphinxHelper=new SphinxHelper(new \Scalia\SphinxSearch\SphinxSearch());
+        $result = $sphinxHelper->search($q, $data['input']);
+
+        $ids = $result['ids'];
+
+        if($ids){
+            $data['filtros'] = $data['filtros_count'] = array();
+            foreach($result['filters'] as $name => $filter){
+                $filters_id = array_flatten($filter);
+                $data['filtros'][$name] = array_unique($filters_id);
+                $data['filtros_count'][$name] = array_count_values($filters_id);
+            }
+
+            $data['compromisos'] = Compromiso::whereIn('id', $ids)->get();
+            $data['compromisos_chart']=DB::table('compromisos')->whereIn('id', $ids)->groupBy('avance')->select(DB::raw('count(*) as data, avance as label'))->get();
+            $data['fuentes'] = Fuente::with('hijos', 'hijos.hijos')->whereNull('fuente_padre_id')->get();
+            $data['instituciones'] = Institucion::with('hijos')->whereNull('institucion_padre_id')->get();
+            $data['sectores'] = Sector::with('hijos.hijos')->whereNull('sector_padre_id')->get();
+            $data['tags'] = Tag::all();
+            $data['tipos'] = $sphinxHelper->getFiltrosTipo($data['filtros']['tipo']);
+            $data['avances'] = $sphinxHelper->getFiltrosAvance($data['filtros']['avance']);
+        }
+
+        $this->layout->busqueda = $data['q'] = $q;
+        $this->layout->title='Buscar';
+
+        $this->layout->sidebar = View::make('backend/compromisos/sidebar', $data);
+        $this->layout->content= View::make('backend/compromisos/index', $data);
+    }
+/*
 	public function getIndex()
 	{
         $offset = Input::get('offset', 0);
@@ -15,7 +54,7 @@ class CompromisosController extends BaseController {
         $this->layout->sidebar=View::make('backend/sidebar',array('item_menu'=>'compromisos'));
 		$this->layout->content=View::make('backend/compromisos/index', array('compromisos' => $compromisos));
 	}
-
+*/
     public function getVer($compromiso_id){
         $this->layout->title = 'Compromiso';
         $this->layout->sidebar=View::make('backend/sidebar',array('item_menu'=>'compromisos'));

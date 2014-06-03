@@ -1,5 +1,5 @@
 <aside>
-    <form action="<?= URL::to('backend/buscar'); ?>" method="get">
+    <form action="<?= URL::to('backend/compromisos'); ?>" method="get">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <button type="submit" class="btn btn-xs btn-primary pull-right"><i class="glyphicon glyphicon-search"></i> Filtrar</button>

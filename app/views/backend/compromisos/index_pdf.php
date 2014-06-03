@@ -4,11 +4,9 @@
 
 </head>
 <body>
-        <table class="table">
-            <tbody>
+
             <?php foreach($compromisos as $compromiso): ?>
-                <tr>
-                    <td>
+                <div>
                         <h3><?= $compromiso->nombre; ?></h3>
                         <div class="row">
                             <div class="col-md-6">
@@ -29,17 +27,15 @@
                         <?php endforeach ?>
                         </ul>
                         <?php endif ?>
-                    </td>
-
-                </tr>
+                </div>
+                <hr/>
             <?php endforeach; ?>
             <?php if(!count($compromisos)): ?>
-                <tr>
+                <div>
                     <th class="text-center" colspan="3">No se han encontrado compromisos.</th>
-                </tr>
+                </div>
             <?php endif; ?>
-            </tbody>
-        </table>
+
 
 
 </html>

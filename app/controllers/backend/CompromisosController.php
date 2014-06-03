@@ -39,7 +39,7 @@ class CompromisosController extends BaseController {
         $this->layout->busqueda = $data['q'] = $q;
         $this->layout->title='Buscar';
 
-        $this->layout->sidebar = View::make('backend/compromisos/sidebar', $data);
+        $this->layout->sidebar = View::make('backend/compromisos/sidebar_search', $data);
         $this->layout->content= View::make('backend/compromisos/index', $data);
     }
 /*
@@ -51,13 +51,13 @@ class CompromisosController extends BaseController {
         $compromisos = Compromiso::limit($limit)->offset($offset)->get();
 
         $this->layout->title='Inicio';
-        $this->layout->sidebar=View::make('backend/sidebar',array('item_menu'=>'compromisos'));
+        $this->layout->sidebar=View::make('backend/compromisos/sidebar',array('item_menu'=>'compromisos'));
 		$this->layout->content=View::make('backend/compromisos/index', array('compromisos' => $compromisos));
 	}
 */
     public function getVer($compromiso_id){
         $this->layout->title = 'Compromiso';
-        $this->layout->sidebar=View::make('backend/sidebar',array('item_menu'=>'compromisos'));
+        $this->layout->sidebar=View::make('backend/compromisos/sidebar',array('item_menu'=>'compromisos'));
         $this->layout->content = View::make('backend/compromisos/view', array('compromiso' => Compromiso::find($compromiso_id)));
     }
 
@@ -71,7 +71,7 @@ class CompromisosController extends BaseController {
         $data['tags']=Tag::all()->lists('nombre');;
 
         $this->layout->title = 'Compromiso';
-        $this->layout->sidebar=View::make('backend/sidebar',array('item_menu'=>'compromisos'));
+        $this->layout->sidebar=View::make('backend/compromisos/sidebar',array('item_menu'=>'compromisos'));
         $this->layout->content = View::make('backend/compromisos/form', $data);
     }
 
@@ -85,7 +85,7 @@ class CompromisosController extends BaseController {
         $data['tags']=Tag::all()->lists('nombre');
 
         $this->layout->title = 'Compromiso';
-        $this->layout->sidebar=View::make('backend/sidebar',array('item_menu'=>'compromisos'));
+        $this->layout->sidebar=View::make('backend/compromisos/sidebar',array('item_menu'=>'compromisos'));
         $this->layout->content = View::make('backend/compromisos/form', $data);
     }
 

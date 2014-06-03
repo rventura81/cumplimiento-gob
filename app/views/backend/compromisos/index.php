@@ -26,7 +26,10 @@
             <tbody>
             <?php foreach($compromisos as $compromiso): ?>
                 <tr>
-                    <td><?= $compromiso->nombre; ?></td>
+                    <td>
+                        <?= $compromiso->nombre; ?>
+                        <?=$compromiso->descripcion?>
+                    </td>
                     <td><?= $compromiso->publico ? 'Sí' : 'No'; ?></td>
                     <td>
                         <a href="<?= URL::to('backend/compromisos/editar/'.$compromiso->id); ?>" class="btn btn-xs btn-success"><i class="glyphicon glyphicon-edit"></i> Editar</a>

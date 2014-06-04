@@ -10,6 +10,15 @@ class Compromiso extends Eloquent{
 
     protected $fillable = array('nombre','descripcion','publico','anuncio','anuncio_emisor','tipo','beneficios','metas','avance','avance_descripcion');
 
+    public static function boot()
+    {
+        parent::boot();
+
+        parent::saved(function($compromiso){
+            exec('cd ../sphinx; searchd; indexer --rotate --all');
+        });
+    }
+
     public function fuente(){
         return $this->belongsTo('Fuente');
     }

@@ -13,6 +13,7 @@ return array(
     'AddMetasToCompromisoTable' => $baseDir . '/app/database/migrations/2014_05_27_141020_add_metas_to_compromiso_table.php',
     'AddTipoToCompromisoTable' => $baseDir . '/app/database/migrations/2014_05_26_211705_add_tipo_to_compromiso_table.php',
     'AddTipoToMedioDeVerificacionTable' => $baseDir . '/app/database/migrations/2014_05_19_180046_add_tipo_to_medio_de_verificacion_table.php',
+    'AlterUsuarioTable' => $baseDir . '/app/database/migrations/2014_06_04_163746_alter_usuario_table.php',
     'AuthController' => $baseDir . '/app/controllers/backend/AuthController.php',
     'BackendController' => $baseDir . '/app/controllers/backend/BackendController.php',
     'Barryvdh\\LaravelIdeHelper\\GeneratorCommand' => $vendorDir . '/barryvdh/laravel-ide-helper/src/Barryvdh/LaravelIdeHelper/GeneratorCommand.php',

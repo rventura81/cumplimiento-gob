@@ -55,7 +55,7 @@ class SphinxHelper {
         if(empty($text))
             $sqb->setMatchMode(\Sphinx\SphinxClient::SPH_MATCH_FULLSCAN);
 
-        $result = $sqb->get();
+        $result = $sqb->limit(10000)->get();
 
         if(!$result || !isset($result['matches']))
             return array('ids' => null, 'filters' => null);

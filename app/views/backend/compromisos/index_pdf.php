@@ -4,6 +4,7 @@
 
 </head>
 <body>
+<img src="<?=public_path('img/minsegpres.jpg')?>" alt="" width="100"/>
 
             <?php foreach($compromisos as $compromiso): ?>
                 <div>

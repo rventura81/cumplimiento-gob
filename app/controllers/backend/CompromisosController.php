@@ -8,10 +8,12 @@ class CompromisosController extends BaseController {
 
 
     public function getIndex($extension='.html'){
-        $q = Input::get('q');
+        $q=Input::get('q');
+        $input = Input::all();
+        unset($input['q']);
 
         $data['compromisos'] = $data['compromisos_chart'] = $data['fuentes'] = $data['instituciones'] = $data['tags'] = $data['sectores'] = $data['tipos'] = $data['avances'] = array();
-        $data['input'] = array_merge(array('instituciones' => array(),'tags'=>array(), 'sectores' => array(), 'fuentes' => array(), 'tipos' => array(), 'avances'=> array()), Input::all());
+        $data['input'] = array_merge(array('instituciones' => array(),'tags'=>array(), 'sectores' => array(), 'fuentes' => array(), 'tipos' => array(), 'avances'=> array()), $input);
 
         $sphinxHelper=new SphinxHelper(new \Scalia\SphinxSearch\SphinxSearch());
         $result = $sphinxHelper->search($q, $data['input']);
@@ -26,10 +28,10 @@ class CompromisosController extends BaseController {
                 $data['filtros_count'][$name] = array_count_values($filters_id);
             }
 
-            if($q)
-                $compromisos = Compromiso::whereIn('id', $ids)->with('entidadesDeLey','institucion','usuario')->orderByRaw('FIELD(id,'.implode(',',$ids).')');
-            else
+            if(!$q && empty($input))
                 $compromisos = Compromiso::with('entidadesDeLey','institucion','usuario')->orderBy('id','desc');
+            else
+                $compromisos = Compromiso::whereIn('id', $ids)->with('entidadesDeLey','institucion','usuario')->orderByRaw('FIELD(id,'.implode(',',$ids).')');
 
             $data['compromisos_chart']=DB::table('compromisos')->whereIn('id', $ids)->groupBy('avance')->select(DB::raw('count(*) as data, avance as label'))->get();
             $data['fuentes'] = Fuente::with('hijos', 'hijos.hijos')->whereNull('fuente_padre_id')->get();

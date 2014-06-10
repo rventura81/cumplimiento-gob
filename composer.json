@@ -8,7 +8,8 @@
         "barryvdh/laravel-ide-helper": "1.*",
         "scalia/sphinxsearch": "dev-master",
         "thujohn/pdf": "dev-master",
-        "guzzle/guzzle": "3.8.*@dev"
+        "guzzle/guzzle": "3.8.*@dev",
+        "maatwebsite/excel": "1.1.*@dev"
 	},
 	"autoload": {
 		"classmap": [

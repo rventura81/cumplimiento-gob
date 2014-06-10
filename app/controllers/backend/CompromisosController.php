@@ -28,7 +28,7 @@ class CompromisosController extends BaseController {
                 $data['filtros_count'][$name] = array_count_values($filters_id);
             }
 
-            $compromisos = Compromiso::whereIn('id', $ids)->with('entidadesDeLey','institucion','usuario');
+            $compromisos = Compromiso::whereIn('id', $ids)->with('entidadesDeLey','institucion','usuario','mediosDeVerificacion','sectores');
             if($q)
                 $compromisos->orderByRaw('FIELD(id,'.implode(',',$ids).')');
             else
@@ -54,6 +54,36 @@ class CompromisosController extends BaseController {
         }else if($extension=='.pdf'){
             $data['compromisos']=isset($compromisos)?$compromisos->get():null;
             return PDF::load(View::make('backend/compromisos/index_pdf',$data), 'letter', 'portrait')->show();
+        }else if($extension=='.xls'){
+            Excel::create('compromisos', function($excel) use ($compromisos) {
+                $excel->sheet('Sheetname', function($sheet) use ($compromisos) {
+                    $compromisos=$compromisos->get();
+
+                    $array=array();
+                    foreach($compromisos as $c){
+                        $row['id']=$c->id;
+                        $row['nombre']=$c->nombre;
+                        $row['descripcion']=$c->descripcion;
+                        $row['institucion']=$c->institucion->nombre;
+                        $row['publico']=$c->publico?'Sí':'No';
+                        $row['sectorialista']=$c->usuario->nombres.' '.$c->usuario->apellidos;
+                        $row['fuente']=$c->fuente->nombre;
+                        $row['tipo']=$c->tipo;
+                        $row['avance']=$c->avance;
+                        $row['avance_descripcion']=$c->avance_descripcion;
+                        $row['medios_de_verificacion']=$c->mediosDeVerificacion->implode('url',', ');
+                        $row['entidades_de_ley']=$c->entidadesDeLey->implode('nombre',', ');
+                        $row['beneficios']=$c->beneficios;
+                        $row['metas']=$c->metas;
+                        $row['sectores']=$c->sectores->implode('nombre',', ');
+
+                        $array[]=$row;
+                    }
+
+                    $sheet->fromArray($array);
+
+                });
+            })->export('xls');
         }
     }
 /*

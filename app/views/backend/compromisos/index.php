@@ -20,7 +20,7 @@
 
         <p style="margin: 20px 0;">Se han encontrado <?=$compromisos->getTotal()?> resultados.</p>
 
-        <p class="text-right">Exportar a <a href="<?=str_replace('compromisos','compromisos.pdf',URL::full())?>">PDF</a></p>
+        <p class="text-right">Exportar a <a href="<?=str_replace('compromisos','compromisos.pdf',URL::full())?>">PDF</a>, <a href="<?=str_replace('compromisos','compromisos.xls',URL::full())?>">XLS</a></p>
 
         <table class="table">
             <tbody>

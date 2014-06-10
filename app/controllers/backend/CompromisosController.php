@@ -28,10 +28,11 @@ class CompromisosController extends BaseController {
                 $data['filtros_count'][$name] = array_count_values($filters_id);
             }
 
-            if(!$q && empty($input))
-                $compromisos = Compromiso::with('entidadesDeLey','institucion','usuario')->orderBy('id','desc');
+            $compromisos = Compromiso::whereIn('id', $ids)->with('entidadesDeLey','institucion','usuario');
+            if($q)
+                $compromisos->orderByRaw('FIELD(id,'.implode(',',$ids).')');
             else
-                $compromisos = Compromiso::whereIn('id', $ids)->with('entidadesDeLey','institucion','usuario')->orderByRaw('FIELD(id,'.implode(',',$ids).')');
+                $compromisos->orderBy('id','desc');
 
             $data['compromisos_chart']=DB::table('compromisos')->whereIn('id', $ids)->groupBy('avance')->select(DB::raw('count(*) as data, avance as label'))->get();
             $data['fuentes'] = Fuente::with('hijos', 'hijos.hijos')->whereNull('fuente_padre_id')->get();

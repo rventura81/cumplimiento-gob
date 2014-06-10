@@ -47,7 +47,7 @@ class EntidadesController extends BaseController {
     public function postGuardar($entidad_id = null){
         $validator = Validator::make(Input::all(), array(
             'nombre' => 'required',
-            'tipo' => 'required',
+            'borrador' => 'required',
             'numero_boletin' => array('regex:/^\d{4}\-\d{2}$/'),
             'estado' => 'required'
         ));
@@ -57,7 +57,7 @@ class EntidadesController extends BaseController {
             $entidad = $entidad_id ? EntidadDeLey::find($entidad_id) : new EntidadDeLey();
 
             $entidad->nombre = Input::get('nombre', '');
-            $entidad->tipo = Input::get('tipo');
+            $entidad->borrador = Input::get('borrador');
             $entidad->numero_boletin = Input::get('numero_boletin');
             $entidad->estado = Input::get('estado');
             $entidad->save();

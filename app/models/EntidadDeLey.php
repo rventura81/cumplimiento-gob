@@ -9,7 +9,12 @@
 class EntidadDeLey extends Eloquent{
 
     protected $table='entidades_de_ley';
-    protected $fillable=array('nombre','tipo','numero_boletin','estado');
+    protected $fillable=array('nombre','borrador','numero_boletin','estado','fecha_ingreso','camara_origen','etapa','subetapa','iniciativa','urgencia_actual');
+
+    public function getDates()
+    {
+        return array('created_at','updated_at','fecha_ingreso');
+    }
 
     public function compromisos(){
         return $this->belongsToMany('Compromiso');

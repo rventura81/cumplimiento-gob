@@ -9,7 +9,7 @@
     <thead>
     <tr>
         <th>Nombre</th>
-        <th>Tipo</th>
+        <th>Borrador</th>
         <th>Estado</th>
         <th>Acciones</th>
     </tr>
@@ -18,7 +18,7 @@
     <?php foreach($entidades as $entidad): ?>
         <tr>
             <td><?= $entidad->nombre; ?></td>
-            <td><?= $entidad->tipo; ?></td>
+            <td><?= $entidad->borrador?'Sí':'No' ?></td>
             <td><?= $entidad->estado; ?></td>
             <td>
                 <a href="<?= URL::to('backend/entidades/ver/'.$entidad->id); ?>" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-search"></span> Ver</a>

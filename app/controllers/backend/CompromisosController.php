@@ -12,8 +12,8 @@ class CompromisosController extends BaseController {
         $input = Input::all();
         unset($input['q']);
 
-        $data['compromisos'] = $data['compromisos_chart'] = $data['fuentes'] = $data['instituciones'] = $data['tags'] = $data['sectores'] = $data['tipos'] = $data['avances'] = array();
-        $data['input'] = array_merge(array('instituciones' => array(),'tags'=>array(), 'sectores' => array(), 'fuentes' => array(), 'tipos' => array(), 'avances'=> array()), $input);
+        $data['compromisos'] = $data['compromisos_chart'] = $data['fuentes'] = $data['instituciones'] = $data['tags'] = $data['usuarios'] = $data['sectores'] = $data['tipos'] = $data['avances'] = array();
+        $data['input'] = array_merge(array('instituciones' => array(),'tags'=>array(), 'usuarios'=>array(), 'sectores' => array(), 'fuentes' => array(), 'tipos' => array(), 'avances'=> array()), $input);
 
         $sphinxHelper=new SphinxHelper(new \Scalia\SphinxSearch\SphinxSearch());
         $result = $sphinxHelper->search($q, $data['input']);
@@ -38,6 +38,7 @@ class CompromisosController extends BaseController {
             $data['instituciones'] = Institucion::with('hijos')->whereNull('institucion_padre_id')->get();
             $data['sectores'] = Sector::with('hijos.hijos')->whereNull('sector_padre_id')->get();
             $data['tags'] = Tag::all();
+            $data['usuarios'] = Usuario::all();
             $data['tipos'] = $sphinxHelper->getFiltrosTipo($data['filtros']['tipo']);
             $data['avances'] = $sphinxHelper->getFiltrosAvance($data['filtros']['avance']);
         }

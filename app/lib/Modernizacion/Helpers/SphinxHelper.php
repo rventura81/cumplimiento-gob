@@ -43,6 +43,9 @@ class SphinxHelper {
         if($options['tags'])
             $sqb->filter('tag', $options['tags']);
 
+        if($options['usuarios'])
+            $sqb->filter('usuario', $options['usuarios']);
+
         if($options['sectores'])
             $sqb->filter('sector', $options['sectores']);
 

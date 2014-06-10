@@ -12,3 +12,4 @@
 */
 
 Artisan::add(new CronDaily);
+Artisan::add(new CronHourly);

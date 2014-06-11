@@ -27,7 +27,7 @@
 <div class="form-group">
     <label class="col-sm-3 control-label">Fecha de Ingreso a la Cámara</label>
     <div class="col-sm-9">
-        <input type="text" class="form-control" readonly value="<?= $entidad->fecha_ingreso->format('d-m-Y') ?>"/>
+        <input type="text" class="form-control" readonly value="<?= $entidad->fecha_ingreso? $entidad->fecha_ingreso->format('d-m-Y'):'' ?>"/>
     </div>
 </div>
 <div class="form-group">

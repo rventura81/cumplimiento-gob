@@ -96,6 +96,9 @@
 <script src="<?=URL::asset('bower_components/flot/jquery.flot.js')?>"></script>
 <script src="<?=URL::asset('bower_components/flot/jquery.flot.pie.js')?>"></script>
 <script src="<?=URL::asset('bower_components/moment/min/moment-with-langs.min.js')?>"></script>
+<script>
+    var base_url="<?=url()?>";
+</script>
 <script src="<?=URL::asset('js/backend.js')?>"></script>
 </body>
 </html>

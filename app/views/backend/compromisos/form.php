@@ -201,6 +201,7 @@
                             <option value="<?= $l->id; ?>" <?=$compromiso->entidadesDeLey->find($l->id)?'selected':''?>><?= $l->nombre; ?> <?= $l->numero_boletin ? '(N° Boletín: '.$l->numero_boletin.')' : ''; ?></option>
                         <?php endforeach; ?>
                     </select>
+                    <p class="help-block">Doble click para editar una en particular.</p>
                 </div>
             </div>
         </div>

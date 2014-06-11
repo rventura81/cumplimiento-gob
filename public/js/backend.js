@@ -24,6 +24,8 @@ $(document).ready(function(){
 
     initMoment();
 
+    initFormCompromisosEntidadesDeLey();
+
 });
 
 function modalEvents() {
@@ -215,7 +217,12 @@ function actualizaEntidades (form) {
         dataEntidad.nombre += ' (N° Boletín: ' + dataEntidad.numero_boletin + ')';
 
     var optionHtml = '<option value="'+dataEntidad.id+'">'+dataEntidad.nombre+'</option>';
-    inputEntidades.append(optionHtml);
+
+    var oldOption=inputEntidades.find("option[value="+dataEntidad.id+"]");
+    if(oldOption.length)
+        oldOption.replaceWith(optionHtml);
+    else
+        inputEntidades.append(optionHtml);
 
     currentValues.push(dataEntidad.id);
     inputEntidades.val(currentValues).trigger('change');
@@ -279,5 +286,16 @@ function initMoment(){
     $("time").each(function(i,el){
         var time=moment($(el).text());
         $(el).text(time.fromNow());
+    });
+}
+
+function initFormCompromisosEntidadesDeLey(){
+    $(".form-compromisos-entidades-de-ley").each(function(i,el){
+        $(el).select2("container").on("dblclick", "li.select2-search-choice", function () {
+            var currentSelect = $(this);
+            $('#modal-backend').modal({
+                remote: base_url+"/backend/entidades/editar/"+currentSelect.data("select2Data").id
+            });
+        });
     });
 }

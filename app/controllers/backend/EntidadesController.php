@@ -39,9 +39,16 @@ class EntidadesController extends BaseController {
     public function getEditar($entidad_id){
         $data['entidad'] = EntidadDeLey::find($entidad_id);
 
+        if(Request::ajax()){
+            $view = 'backend/entidades/ajax_form';
+            $this->layout = View::make('backend/ajax_template');
+        } else {
+            $view = 'backend/entidades/normal_form';
+        }
+
         $this->layout->title = 'Entidades';
         $this->layout->sidebar=View::make('backend/entidades/sidebar',array('item_menu'=>'entidades'));
-        $this->layout->content = View::make('backend/entidades/normal_form', $data);
+        $this->layout->content = View::make($view, $data);
     }
 
     public function postGuardar($entidad_id = null){

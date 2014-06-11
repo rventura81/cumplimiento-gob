@@ -4,6 +4,11 @@ class UsuariosController extends BaseController {
 
     protected $layout='backend/template';
 
+    function __construct(){
+        if(!Auth::user()->super)
+            App::abort(403, 'Unauthorized action.');
+    }
+
     public function getIndex(){
         $this->layout->title = 'Usuarios';
         $this->layout->sidebar=View::make('backend/usuarios/sidebar',array('item_menu'=>'usuarios'));
@@ -34,6 +39,7 @@ class UsuariosController extends BaseController {
             'nombres' => 'required',
             'apellidos' => 'required',
             'email' => 'required',
+            'super' => 'required',
             'password' => ($usuario_id ? 'confirmed' : 'required|confirmed')
         ));
 
@@ -47,6 +53,7 @@ class UsuariosController extends BaseController {
             $usuario->nombres = Input::get('nombres', '');
             $usuario->apellidos = Input::get('apellidos', '');
             $usuario->email = Input::get('email', '');
+            $usuario->super = Input::get('super');
 
             $usuario->save();
 

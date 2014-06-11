@@ -9,7 +9,13 @@ class HitosController extends BaseController{
     }
 
     public function getProximos(){
-        $data['hitos']=Hito::where('fecha','>=',\Carbon\Carbon::now()->toDateString())->orderBy('fecha')->with('compromiso')->get();
+        $hitos=Hito::with('compromiso','compromiso.usuario')->where('fecha','>=',\Carbon\Carbon::now()->toDateString())->orderBy('fecha')->with('compromiso');
+
+        if(!Auth::user()->super){
+            $hitos->whereHas('compromiso',function($q){$q->where('usuario_id',Auth::user()->id);});
+        }
+
+        $data['hitos']=$hitos->get();
 
         $this->layout->title='Próximos hitos relevantes';
         $this->layout->sidebar = View::make('backend/hitos/sidebar',array('item_menu'=>'hitos'));

@@ -11,6 +11,7 @@ return array(
     'AddAvanceToCompromisoTable' => $baseDir . '/app/database/migrations/2014_05_27_141137_add_avance_to_compromiso_table.php',
     'AddBeneficiosToCompromisoTable' => $baseDir . '/app/database/migrations/2014_05_27_141005_add_beneficios_to_compromiso_table.php',
     'AddMetasToCompromisoTable' => $baseDir . '/app/database/migrations/2014_05_27_141020_add_metas_to_compromiso_table.php',
+    'AddSuperToUsuarioTable' => $baseDir . '/app/database/migrations/2014_06_11_190734_add_super_to_usuario_table.php',
     'AddTipoToCompromisoTable' => $baseDir . '/app/database/migrations/2014_05_26_211705_add_tipo_to_compromiso_table.php',
     'AddTipoToMedioDeVerificacionTable' => $baseDir . '/app/database/migrations/2014_05_19_180046_add_tipo_to_medio_de_verificacion_table.php',
     'AlterCompromisoTable' => $baseDir . '/app/database/migrations/2014_06_04_164401_alter_compromiso_table.php',

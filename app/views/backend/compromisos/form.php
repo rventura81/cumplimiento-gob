@@ -88,12 +88,17 @@
                 <div class="form-group">
                     <label for="usuario" class="col-sm-3 control-label">Sectorialista responsable</label>
                     <div class="col-sm-9">
+                        <?php if(Auth::user()->super):?>
                         <select class="form-control form-control-select2" name="usuario" id="usuario" data-placeholder="Seleccionar usuario">
                             <option></option>
                             <?php foreach($usuarios as $usuario): ?>
                                 <option value="<?= $usuario->id; ?>" <?=$usuario->id==$compromiso->usuario_id?'selected':''?>><?= $usuario->nombres; ?> <?=$usuario->apellidos?></option>
                             <?php endforeach; ?>
                         </select>
+                        <?php else: ?>
+                        <input type="text" class="form-control" readonly value="<?=Auth::user()->nombres.' '.Auth::user()->apellidos?>" />
+                        <input type="hidden" name="usuario" value="<?=Auth::user()->id?>" />
+                        <?php endif ?>
                     </div>
                 </div>
 
@@ -225,7 +230,7 @@
                         <?php $i=0; foreach($compromiso->hitos as $h):?>
                         <tr>
                             <td><input class="form-control" type="text" value="<?=$h->descripcion?>" name="hitos[<?=$i?>][descripcion]" placeholder="Descripción del hito"/></td>
-                            <td><input data-provide="datepicker" data-date-format="dd-mm-yyyy" data-date-autoclose="true" type="date" class="form-control" value="<?=$h->fecha->format('d-m-Y')?>" name="hitos[<?=$i?>][fecha]" placeholder="Fecha en que ocurrió" /></td>
+                            <td><input data-provide="datepicker" data-date-format="dd-mm-yyyy" data-date-autoclose="true" type="date" class="form-control" value="<?=$h->fecha->format('d-m-Y')?>" name="hitos[<?=$i?>][fecha]" placeholder="Fecha en que debería ocurrir" /></td>
                             <td>
                                 <button class="btn btn-danger" type="text"><span class="glyphicon glyphicon-remove"></span></button>
                             </td>

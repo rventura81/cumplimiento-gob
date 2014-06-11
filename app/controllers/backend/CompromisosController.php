@@ -15,6 +15,10 @@ class CompromisosController extends BaseController {
         $data['compromisos'] = $data['compromisos_chart'] = $data['fuentes'] = $data['instituciones'] = $data['tags'] = $data['usuarios'] = $data['sectores'] = $data['tipos'] = $data['avances'] = array();
         $data['input'] = array_merge(array('instituciones' => array(),'tags'=>array(), 'usuarios'=>array(), 'sectores' => array(), 'fuentes' => array(), 'tipos' => array(), 'avances'=> array()), $input);
 
+        if(!Auth::user()->super)
+            $data['input']['usuarios']=array(Auth::user()->id);
+
+
         $sphinxHelper=new SphinxHelper(new \Scalia\SphinxSearch\SphinxSearch());
         $result = $sphinxHelper->search($q, $data['input']);
 
@@ -100,9 +104,14 @@ class CompromisosController extends BaseController {
 	}
 */
     public function getVer($compromiso_id){
+        $compromiso=Compromiso::find($compromiso_id);
+
+        if(!Auth::user()->super && $compromiso->usuario_id!=Auth::user()->id)
+            App::abort(403, 'Unauthorized action.');
+
         $this->layout->title = 'Compromiso';
         $this->layout->sidebar=View::make('backend/compromisos/sidebar',array('item_menu'=>'compromisos'));
-        $this->layout->content = View::make('backend/compromisos/view', array('compromiso' => Compromiso::find($compromiso_id)));
+        $this->layout->content = View::make('backend/compromisos/view', array('compromiso' => $compromiso));
     }
 
     public function getNuevo(){
@@ -120,7 +129,12 @@ class CompromisosController extends BaseController {
     }
 
     public function getEditar($compromiso_id){
-        $data['compromiso'] = Compromiso::find($compromiso_id);
+        $compromiso=Compromiso::find($compromiso_id);
+
+        if(!Auth::user()->super && $compromiso->usuario_id!=Auth::user()->id)
+            App::abort(403, 'Unauthorized action.');
+
+        $data['compromiso'] = $compromiso;
         $data['instituciones'] = Institucion::whereNull('institucion_padre_id')->get();
         $data['sectores'] = Sector::whereNull('sector_padre_id')->get();
         $data['fuentes'] = Fuente::whereNull('fuente_padre_id')->get();
@@ -163,6 +177,9 @@ class CompromisosController extends BaseController {
             $compromiso->institucion()->associate(Institucion::find(Input::get('institucion')));
             $compromiso->fuente()->associate(Fuente::find(Input::get('fuente')));
             $compromiso->usuario()->associate(Usuario::find(Input::get('usuario')));
+
+            if(!Auth::user()->super && $compromiso->usuario_id!=Auth::user()->id)
+                App::abort(403, 'Unauthorized action.');
 
             $compromiso->save();
 
@@ -215,13 +232,21 @@ class CompromisosController extends BaseController {
 
     public function getEliminar($compromiso_id){
         $compromiso = Compromiso::find($compromiso_id);
+
+        if(!Auth::user()->super && $compromiso->usuario_id!=Auth::user()->id)
+            App::abort(403, 'Unauthorized action.');
+
         $this->layout = View::make('backend/ajax_template');
         $this->layout->title = 'Eliminar Compromiso';
         $this->layout->content = View::make('backend/compromisos/delete', array('compromiso' => $compromiso));
     }
 
     public function deleteEliminar($compromiso_id){
-        $compromiso = Compromiso::find($compromiso_id);
+        $compromiso=Compromiso::find($compromiso_id);
+
+        if(!Auth::user()->super && $compromiso->usuario_id!=Auth::user()->id)
+            App::abort(403, 'Unauthorized action.');
+
         $compromiso->delete();
 
         return Redirect::to('backend/compromisos')->with('messages', array('success' => 'El compromiso ' . $compromiso->nombre . ' ha sido eliminada.'));

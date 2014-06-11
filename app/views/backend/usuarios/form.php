@@ -25,6 +25,17 @@
                 <input type="text" class="form-control" name="email" id="email" value="<?= $usuario->email; ?>"/>
             </div>
         </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Super Usuario</label>
+            <div class="col-sm-9">
+                <div class="radio">
+                    <label><input type="radio" name="super" value="1" <?=$usuario->super==1?'checked':''?> /> Sí</label>
+                </div>
+                <div>
+                    <label><input type="radio" name="super" value="0" <?=$usuario->super==0?'checked':''?> /> No</label>
+                </div>
+            </div>
+        </div>
         <div class="form-group cont-password" style="<?= $usuario->id ? '' : 'display: none;'; ?>">
             <label for="cambiar-password" class="col-sm-3 control-label">Password</label>
             <div class="col-sm-9">

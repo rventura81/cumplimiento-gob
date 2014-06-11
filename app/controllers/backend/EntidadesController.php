@@ -5,20 +5,27 @@ class EntidadesController extends BaseController {
     protected $layout='backend/template';
 
     public function getIndex(){
-        $offset = Input::get('offset', 0);
-        $limit = Input::get('limit', 10);
+        $entidades = EntidadDeLey::with('compromisos');
 
-        $entidades = EntidadDeLey::limit($limit)->offset($offset)->get();
+        if(!Auth::user()->super){
+            $entidades->whereHas('compromisos',function($q){$q->where('usuario_id',Auth::user()->id);});
+        }
 
         $this->layout->title='Entidades';
         $this->layout->sidebar=View::make('backend/entidades/sidebar',array('item_menu'=>'entidades'));
-        $this->layout->content=View::make('backend/entidades/index', array('entidades' => $entidades));
+        $this->layout->content=View::make('backend/entidades/index', array('entidades' => $entidades->get()));
     }
 
     public function getVer($entidad_id){
+        $entidad=EntidadDeLey::find($entidad_id);
+
+        if(!Auth::user()->super && count($entidad->compromisos->filter(function($c){return $c->usuario_id==Auth::user()->id;})) == 0){
+            App::abort(403, 'Unauthorized action.');
+        }
+
         $this->layout->title = 'Entidades';
         $this->layout->sidebar=View::make('backend/entidades/sidebar',array('item_menu'=>'entidades'));
-        $this->layout->content = View::make('backend/entidades/view', array('entidad' => EntidadDeLey::find($entidad_id)));
+        $this->layout->content = View::make('backend/entidades/view', array('entidad' => $entidad));
     }
 
     public function getNueva(){
@@ -37,7 +44,13 @@ class EntidadesController extends BaseController {
     }
 
     public function getEditar($entidad_id){
-        $data['entidad'] = EntidadDeLey::find($entidad_id);
+        $entidad = EntidadDeLey::find($entidad_id);
+
+        if(!Auth::user()->super && count($entidad->compromisos->filter(function($c){return $c->usuario_id==Auth::user()->id;})) == 0){
+            App::abort(403, 'Unauthorized action.');
+        }
+
+        $data['entidad']=$entidad;
 
         if(Request::ajax()){
             $view = 'backend/entidades/ajax_form';
@@ -67,6 +80,11 @@ class EntidadesController extends BaseController {
             $entidad->borrador = Input::get('borrador');
             $entidad->numero_boletin = Input::get('numero_boletin');
             $entidad->estado = Input::get('estado');
+
+            if(!Auth::user()->super && count($entidad->compromisos->filter(function($c){return $c->usuario_id==Auth::user()->id;})) == 0){
+                App::abort(403, 'Unauthorized action.');
+            }
+
             $entidad->save();
 
             $json->errors = array();
@@ -91,6 +109,11 @@ class EntidadesController extends BaseController {
 
     public function getEliminar($entidad_id){
         $entidad = EntidadDeLey::find($entidad_id);
+
+        if(!Auth::user()->super && count($entidad->compromisos->filter(function($c){return $c->usuario_id==Auth::user()->id;})) == 0){
+            App::abort(403, 'Unauthorized action.');
+        }
+
         $this->layout = View::make('backend/ajax_template');
         $this->layout->title = 'Eliminar Entidad de ley';
         $this->layout->content = View::make('backend/entidades/delete', array('entidad' => $entidad));
@@ -98,6 +121,11 @@ class EntidadesController extends BaseController {
 
     public function deleteEliminar($entidad_id){
         $entidad = EntidadDeLey::find($entidad_id);
+
+        if(!Auth::user()->super && count($entidad->compromisos->filter(function($c){return $c->usuario_id==Auth::user()->id;})) == 0){
+            App::abort(403, 'Unauthorized action.');
+        }
+
         $entidad->delete();
 
         return Redirect::to('backend/entidades')->with('messages', array('success' => 'La entidad de ley' . $entidad->nombre . ' ha sido eliminada.'));

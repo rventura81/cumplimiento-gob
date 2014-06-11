@@ -5,6 +5,11 @@ class FuentesController extends BaseController {
 
     protected $layout='backend/template';
 
+    function __construct(){
+        if(!Auth::user()->super)
+            App::abort(403, 'Unauthorized action.');
+    }
+
     public function getIndex(){
         $limit = Input::get('limit', 10);
         $offset = Input::get('offset', 0);

@@ -191,8 +191,8 @@
                                 <label>
                                     <input name="usuarios[]" <?= in_array($usuario->id, $input['usuarios']) ? 'checked' : ''; ?> value="<?= $usuario->id; ?>" type="checkbox"/>
                                     <?= $usuario->nombres; ?> <?=$usuario->apellidos?>
-                                    <?php if(isset($filtros_count['usuarios'][$usuario->id])): ?>
-                                        <span class="badge"><?= array_get($filtros_count['tag'],$usuario->id); ?></span>
+                                    <?php if(isset($filtros_count['usuario'][$usuario->id])): ?>
+                                        <span class="badge"><?= array_get($filtros_count['usuario'],$usuario->id); ?></span>
                                     <?php endif ?>
                                 </label>
                             </li>

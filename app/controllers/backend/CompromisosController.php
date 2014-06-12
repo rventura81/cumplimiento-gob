@@ -216,6 +216,8 @@ class CompromisosController extends BaseController {
 
             DB::connection()->getPdo()->commit();
 
+            exec('cd '.base_path().'/sphinx; searchd; indexer --rotate --all');
+
             $json->errors = array();
             $json->redirect = URL::to('backend/compromisos');
 
@@ -248,6 +250,8 @@ class CompromisosController extends BaseController {
             App::abort(403, 'Unauthorized action.');
 
         $compromiso->delete();
+
+        exec('cd '.base_path().'/sphinx; searchd; indexer --rotate --all');
 
         return Redirect::to('backend/compromisos')->with('messages', array('success' => 'El compromiso ' . $compromiso->nombre . ' ha sido eliminada.'));
     }

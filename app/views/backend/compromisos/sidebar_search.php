@@ -54,6 +54,7 @@
                 </div>
             </div>
 
+            <?php if(!empty($filtros['tag'])):?>
             <div class="panel-heading">Tags</div>
             <div class="panel-body panel-filtro-anidado">
                 <div class="checkbox">
@@ -72,6 +73,7 @@
                     </ul>
                 </div>
             </div>
+            <?php endif ?>
 
             <div class="panel-heading">Institución responsable</div>
             <div class="panel-body panel-filtro-anidado">

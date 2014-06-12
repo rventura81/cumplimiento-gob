@@ -39,7 +39,8 @@ class InstitucionesSeeder extends Seeder {
             array('id' => '30', 'tipo' => 'partida', 'nombre' => 'Otros poderes del Estado', 'created_at' => $date, 'updated_at' => $date),
             array('id' => '31', 'tipo' => 'partida', 'nombre' => 'Municipios', 'created_at' => $date, 'updated_at' => $date),
             array('id' => '32', 'tipo' => 'partida', 'nombre' => 'ChileAtiende Pymes', 'created_at' => $date, 'updated_at' => $date),
-            array('id' => '33', 'tipo' => 'partida', 'nombre' => 'ChileAtiende', 'created_at' => $date, 'updated_at' => $date)
+            array('id' => '33', 'tipo' => 'partida', 'nombre' => 'ChileAtiende', 'created_at' => $date, 'updated_at' => $date),
+            array('id' => '387', 'tipo' => 'partida', 'nombre' => 'Ministerio del Deporte', 'created_at' => $date, 'updated_at' => $date)
         ));
 
         //Capitulos

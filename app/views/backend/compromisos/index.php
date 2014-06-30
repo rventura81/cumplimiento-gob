@@ -27,7 +27,7 @@
             <?php foreach($compromisos as $compromiso): ?>
                 <tr>
                     <td>
-                        <?= $compromiso->nombre; ?>
+                        <a href="<?= URL::to('backend/compromisos/editar/'.$compromiso->id); ?>"><?= $compromiso->nombre; ?></a>
                     </td>
                     <td>
                         <a href="<?= URL::to('backend/compromisos/editar/'.$compromiso->id); ?>" class="btn btn-xs btn-success"><i class="glyphicon glyphicon-edit"></i> Editar</a>

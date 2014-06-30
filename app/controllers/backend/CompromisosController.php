@@ -221,7 +221,7 @@ class CompromisosController extends BaseController {
             $json->errors = array();
             $json->redirect = URL::to('backend/compromisos');
 
-            Session::flash('messages', array('success' => 'El compromiso "'. $compromiso->nombre .'" ha sido creado.'));
+            Session::flash('messages', array('success' => 'El compromiso "'. $compromiso->nombre .'" ha sido guardado.'));
 
             $response = Response::json($json, 200);
         } else {

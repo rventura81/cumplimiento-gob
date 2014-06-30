@@ -243,6 +243,28 @@ function initFiltrosBusqueda(){
     });
 
 
+    //Script para ocultar items cuando sobrepasan cierta cantidad en los paneles de filtro
+    var maxItems=8;
+    filtrosAnidados.each(function(i,el){
+        $(el).find('> div > ul > li.active:gt('+maxItems+')').hide();
+        if($(el).find('> div > ul > li.active:gt('+maxItems+')').length>0)
+            $(el).find('> div > ul').append('<li class="more active"><a href="#">Ver mas...</a></li>');
+        $(el).find('ul li.more a').click(
+            function(e){
+                e.preventDefault();
+                if($(this).text()=='Ver mas...'){
+                    $(el).find('> div > ul > li.active:not(".more"):gt('+maxItems+')').show();
+                    $(this).text('Ocultar...');
+                }else{
+                    $(el).find('> div > ul > li.active:not(".more"):gt('+maxItems+')').hide();
+                    $(this).text('Ver mas...');
+                }
+            });
+
+        });
+
+
+
     filtrosAnidados.find(':checkbox').change(function(){
         if($(this).prop("checked"))
             $(this).parents('li').find(':checkbox').prop("checked",true);

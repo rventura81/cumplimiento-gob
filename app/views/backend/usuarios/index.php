@@ -15,11 +15,10 @@
     <tbody>
         <?php foreach($usuarios as $usuario): ?>
             <tr>
-                <td><?= $usuario->nombre_completo; ?></td>
-                <td>
-                    <a href="<?= URL::to('backend/usuarios/ver/'.$usuario->id); ?>" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-search"></span> Ver</a>
+                <td><a href="<?= URL::to('backend/usuarios/ver/'.$usuario->id); ?>"><?= $usuario->nombre_completo; ?></a></td>
+                <td style="white-space: nowrap;">
                     <a href="<?= URL::to('backend/usuarios/editar/'.$usuario->id); ?>" class="btn btn-xs btn-success"><span class="glyphicon glyphicon-edit"></span> Editar</a>
-                    <a href="<?= URL::to('backend/usuarios/eliminar/'.$usuario->id); ?>" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#modal-backend"><span class="glyphicon glyphicon-remove"></span> Eliminar</a>
+                    <a href="<?= URL::to('backend/usuarios/eliminar/'.$usuario->id); ?>" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#modal-backend" title="Eliminar"><span class="glyphicon glyphicon-remove"></span></a>
                 </td>
             </tr>
         <?php endforeach; ?>

@@ -17,13 +17,12 @@
     <tbody>
     <?php foreach($entidades as $entidad): ?>
         <tr>
-            <td><?= $entidad->nombre; ?></td>
+            <td><a href="<?= URL::to('backend/entidades/editar/'.$entidad->id); ?>"><?= $entidad->nombre; ?></a></td>
             <td><?= $entidad->borrador?'Sí':'No' ?></td>
             <td><?= $entidad->estado; ?></td>
-            <td>
-                <a href="<?= URL::to('backend/entidades/ver/'.$entidad->id); ?>" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-search"></span> Ver</a>
+            <td style="white-space: nowrap;">
                 <a href="<?= URL::to('backend/entidades/editar/'.$entidad->id); ?>" class="btn btn-xs btn-success"><span class="glyphicon glyphicon-edit"></span> Editar</a>
-                <a href="<?= URL::to('backend/entidades/eliminar/'.$entidad->id); ?>" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#modal-backend"><span class="glyphicon glyphicon-remove"></span> Eliminar</a>
+                <a href="<?= URL::to('backend/entidades/eliminar/'.$entidad->id); ?>" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#modal-backend" title="Eliminar"><span class="glyphicon glyphicon-remove"></span></a>
             </td>
         </tr>
     <?php endforeach; ?>

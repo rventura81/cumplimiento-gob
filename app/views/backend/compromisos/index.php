@@ -29,9 +29,9 @@
                     <td>
                         <a href="<?= URL::to('backend/compromisos/editar/'.$compromiso->id); ?>"><?= $compromiso->nombre; ?></a>
                     </td>
-                    <td>
+                    <td style="white-space: nowrap;">
                         <a href="<?= URL::to('backend/compromisos/editar/'.$compromiso->id); ?>" class="btn btn-xs btn-success"><i class="glyphicon glyphicon-edit"></i> Editar</a>
-                        <a href="<?= URL::to('backend/compromisos/eliminar/'.$compromiso->id); ?>" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#modal-backend"><i class="glyphicon glyphicon-remove"></i> Eliminar</a>
+                        <a href="<?= URL::to('backend/compromisos/eliminar/'.$compromiso->id); ?>" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#modal-backend" title="Eliminar"><i class="glyphicon glyphicon-remove"></i></a>
                     </td>
                 </tr>
             <?php endforeach; ?>

@@ -55,7 +55,7 @@ class CronDaily extends Command {
                 $xml = $res->xml();
 
                 if($xml->proyecto){
-                    $e->nombre=$xml->proyecto->descripcion->titulo;
+                    $e->titulo=$xml->proyecto->descripcion->titulo;
                     $e->estado=$xml->proyecto->descripcion->estado;
                     $e->fecha_ingreso=new \Carbon\Carbon(str_replace('/','-',$xml->proyecto->descripcion->fecha_ingreso));
                     $e->camara_origen=$xml->proyecto->descripcion->camara_origen;

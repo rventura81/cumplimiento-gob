@@ -6,6 +6,12 @@
     </div>
 </div>
 <div class="form-group">
+    <label class="col-sm-3 control-label">Título</label>
+    <div class="col-sm-9">
+        <textarea rows="4" class="form-control" readonly><?= $entidad->titulo; ?></textarea>
+    </div>
+</div>
+<div class="form-group">
     <label for="tipo" class="col-sm-3 control-label">¿Es borrador?</label>
     <div class="col-sm-9">
         <label><input type="radio" name="borrador" value="1" <?=$entidad->borrador?'checked':''?> /> Sí</label>

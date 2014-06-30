@@ -154,8 +154,11 @@
 
             <div class="panel-heading">Tipo de Compromiso</div>
             <div class="panel-body panel-filtro-anidado">
+                <div class="checkbox">
+                <ul>
                 <?php foreach($tipos as $crc32_tipo => $tipo): ?>
-                    <div class="checkbox">
+                    <li <?= in_array($crc32_tipo, $filtros['tipo']) ? 'class="active"' : ''; ?>>
+
                     <label>
                         <input name="tipos[]" <?= in_array($crc32_tipo, $input['tipos']) ? 'checked' : ''; ?> value="<?= $crc32_tipo; ?>" type="checkbox"/>
                         <?= $tipo; ?>
@@ -163,14 +166,19 @@
                             <span class="badge"><?= array_get($filtros_count['tipo'],$crc32_tipo); ?></span>
                         <?php endif ?>
                     </label>
-                    </div>
+
+                    </li>
                 <?php endforeach; ?>
+                </ul>
+                </div>
             </div>
 
             <div class="panel-heading">Estado de Avance</div>
             <div class="panel-body panel-filtro-anidado">
+                <div class="checkbox">
+                    <ul>
                 <?php foreach($avances as $crc32_tipo => $tipo): ?>
-                    <div class="checkbox">
+                    <li <?= in_array($crc32_tipo, $filtros['avance']) ? 'class="active"' : ''; ?>>
                         <label>
                             <input name="avances[]" <?= in_array($crc32_tipo, $input['avances']) ? 'checked' : ''; ?> value="<?= $crc32_tipo; ?>" type="checkbox"/>
                             <?= $tipo; ?>
@@ -178,8 +186,10 @@
                                 <span class="badge"><?= array_get($filtros_count['avance'],$crc32_tipo); ?></span>
                             <?php endif ?>
                         </label>
-                    </div>
+                </li>
                 <?php endforeach; ?>
+                    </ul>
+                </div>
             </div>
 
             <div class="panel-heading">Sectorialista Responsable</div>

@@ -234,6 +234,15 @@ function initFiltrosBusqueda(){
     var filtrosAnidados = $('.panel-filtro-anidado');
     filtrosAnidados.find('li.active').parents('li').addClass('active');
 
+    //Escondemos los paneles de filtros que estan vacios.
+    filtrosAnidados.each(function(i,el){
+        if($(el).find('li.active').length == 0){
+            $(el).prev().hide();
+            $(el).hide();
+        }
+    });
+
+
     filtrosAnidados.find(':checkbox').change(function(){
         if($(this).prop("checked"))
             $(this).parents('li').find(':checkbox').prop("checked",true);

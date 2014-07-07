@@ -32,7 +32,7 @@ class CompromisosController extends BaseController {
                 $data['filtros_count'][$name] = array_count_values($filters_id);
             }
 
-            $compromisos = Compromiso::whereIn('id', $ids)->with('entidadesDeLey','institucion','usuario','mediosDeVerificacion','sectores');
+            $compromisos = Compromiso::whereIn('id', $ids)->with('entidadesDeLey','institucion','mediosDeVerificacion','sectores');
             if($q)
                 $compromisos->orderByRaw('FIELD(id,'.implode(',',$ids).')');
             else

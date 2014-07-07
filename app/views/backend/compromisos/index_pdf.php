@@ -15,8 +15,10 @@
                                 <?=$compromiso->institucion->nombre?></p>
                             </div>
                             <div class="col-md-6">
-                                <p><strong>Sectorialista Responsable:</strong><br />
-                                    <?=$compromiso->usuario->nombres?> <?=$compromiso->usuario->apellidos?></p>
+                                <p><strong>Estado de Avance</strong><br />
+                                    Estado: <?=$compromiso->avance?><br />
+                                    Descripción: <?=trim($compromiso->avance_descripcion)?$compromiso->avance_descripcion:'No hay descripción.'?>
+                                </p>
                             </div>
                         </div>
                         <?=$compromiso->descripcion?>

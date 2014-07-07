@@ -25,7 +25,7 @@
             </tr>
             <?php foreach($fuente->hijos as $h): ?>
                 <tr>
-                    <td> - <a href="<?= URL::to('backend/fuentes/editar/'.$fuente->id); ?>"><?= $h->nombre; ?></a></td>
+                    <td> - <a href="<?= URL::to('backend/fuentes/editar/'.$h->id); ?>"><?= $h->nombre; ?></a></td>
                     <td><?= $h->padre ? $h->padre->nombre : ' - '; ?></td>
                     <td style="white-space: nowrap;">
                         <a href="<?= URL::to('backend/fuentes/editar/'.$h->id); ?>" class="btn btn-xs btn-success"><span class="glyphicon glyphicon-edit"></span> Editar</a>
@@ -34,7 +34,7 @@
                 </tr>
                 <?php foreach($h->hijos as $n): ?>
                     <tr>
-                        <td> -- <a href="<?= URL::to('backend/fuentes/editar/'.$fuente->id); ?>"><?= $n->nombre; ?></a></td>
+                        <td> -- <a href="<?= URL::to('backend/fuentes/editar/'.$n->id); ?>"><?= $n->nombre; ?></a></td>
                         <td><?= $n->padre ? $n->padre->nombre : ' - '; ?></td>
                         <td style="white-space: nowrap;">
                             <a href="<?= URL::to('backend/fuentes/editar/'.$n->id); ?>" class="btn btn-xs btn-success"><span class="glyphicon glyphicon-edit"></span> Editar</a>

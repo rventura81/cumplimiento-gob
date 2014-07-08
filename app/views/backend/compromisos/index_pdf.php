@@ -1,10 +1,40 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
+    <style>
+        @page {
+            margin: 120px 20px 40px 20px;
+        }
+        body{
+            font-size: 80%;
+        }
+        #header{
+            position: fixed;
+            top: -100px;
+            left: 0;
+            right: 0;
+            height: 100px;
+            border-bottom: 1px solid #000;
+        }
+        #footer{
+            position: fixed;
+            bottom: -90px;
+            left: 0;
+            right: 0;
+            height: 100px;
+            border-top: 1px solid #000;
+        }
+    </style>
 </head>
 <body>
-<img src="<?=public_path('img/minsegpres.jpg')?>" alt="" width="100"/>
+<div id="header">
+    <img src="<?=public_path('img/minsegpres.jpg')?>" alt="" width="100"/>
+</div>
+<div id="footer">
+    <p><?=Carbon\Carbon::now()->formatLocalized('%c')?></p>
+</div>
+
+
 
             <?php foreach($compromisos as $compromiso): ?>
                 <div>
@@ -40,6 +70,5 @@
             <?php endif; ?>
 
 
-
-</html>
 </body>
+</html>

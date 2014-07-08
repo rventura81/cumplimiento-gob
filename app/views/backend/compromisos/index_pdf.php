@@ -16,6 +16,11 @@
             height: 100px;
             border-bottom: 1px solid #000;
         }
+        #header h1{
+            position: absolute;
+            top: 0;
+            left: 120px;
+        }
         #footer{
             position: fixed;
             bottom: -90px;
@@ -29,6 +34,7 @@
 <body>
 <div id="header">
     <img src="<?=public_path('img/minsegpres.jpg')?>" alt="" width="100"/>
+    <h1>Estado de avance de compromisos presidenciales</h1>
 </div>
 <div id="footer">
     <p><?=Carbon\Carbon::now()->formatLocalized('%c')?></p>

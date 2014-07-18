@@ -4,6 +4,10 @@
     <li class="active"><?= $compromiso->id ? 'Editar' : 'Nuevo'; ?></li>
 </ol>
 
+<?php if(!$editMode):?>
+<div class="alert alert-warning">Atención. Usted no tiene permisos para editar este compromiso. Solamente podra visualizarlo.</div>
+<?php endif ?>
+
 <form class="ajaxForm" method="post" action="<?= URL::to('backend/compromisos/guardar/' . $compromiso->id); ?>">
     <fieldset>
         <legend><?= $compromiso->id ? 'Editar' : 'Nuevo'; ?> Compromiso</legend>
@@ -96,8 +100,7 @@
                             <?php endforeach; ?>
                         </select>
                         <?php else: ?>
-                        <input type="text" class="form-control" readonly value="<?=Auth::user()->nombres.' '.Auth::user()->apellidos?>" />
-                        <input type="hidden" name="usuario" value="<?=Auth::user()->id?>" />
+                        <input type="text" class="form-control" readonly value="<?=$compromiso->usuario->nombres.' '.$compromiso->usuario->apellidos?>" />
                         <?php endif ?>
                     </div>
                 </div>
@@ -276,7 +279,7 @@
     </fieldset>
     <hr/>
     <div class="text-right">
-        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-save"></span> Guardar</button>
+        <?php if($editMode):?><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-save"></span> Guardar</button><?php endif ?>
         <a href="javascript:history.back();" class="btn btn-warning"><span class="glyphicon glyphicon-ban-circle"></span> Cancelar</a>
     </div>
 </form>

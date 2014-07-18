@@ -15,8 +15,8 @@ class CompromisosController extends BaseController {
         $data['compromisos'] = $data['compromisos_chart'] = $data['fuentes'] = $data['instituciones'] = $data['tags'] = $data['usuarios'] = $data['sectores'] = $data['tipos'] = $data['avances'] = array();
         $data['input'] = array_merge(array('instituciones' => array(),'tags'=>array(), 'usuarios'=>array(), 'sectores' => array(), 'fuentes' => array(), 'tipos' => array(), 'avances'=> array()), $input);
 
-        if(!Auth::user()->super)
-            $data['input']['usuarios']=array(Auth::user()->id);
+        //if(!Auth::user()->super)
+        //    $data['input']['usuarios']=array(Auth::user()->id);
 
 
         $sphinxHelper=new SphinxHelper(new \Scalia\SphinxSearch\SphinxSearch());
@@ -106,9 +106,6 @@ class CompromisosController extends BaseController {
     public function getVer($compromiso_id){
         $compromiso=Compromiso::find($compromiso_id);
 
-        if(!Auth::user()->super && $compromiso->usuario_id!=Auth::user()->id)
-            App::abort(403, 'Unauthorized action.');
-
         $this->layout->title = 'Compromiso';
         $this->layout->sidebar=View::make('backend/compromisos/sidebar',array('item_menu'=>'compromisos'));
         $this->layout->content = View::make('backend/compromisos/view', array('compromiso' => $compromiso));
@@ -131,9 +128,11 @@ class CompromisosController extends BaseController {
     public function getEditar($compromiso_id){
         $compromiso=Compromiso::find($compromiso_id);
 
+        $editMode=true;
         if(!Auth::user()->super && $compromiso->usuario_id!=Auth::user()->id)
-            App::abort(403, 'Unauthorized action.');
+            $editMode=false;
 
+        $data['editMode']=$editMode;
         $data['compromiso'] = $compromiso;
         $data['instituciones'] = Institucion::whereNull('institucion_padre_id')->get();
         $data['sectores'] = Sector::whereNull('sector_padre_id')->get();
@@ -153,7 +152,6 @@ class CompromisosController extends BaseController {
             'publico' => 'required',
             'fuente' => 'required',
             'institucion' => 'required',
-            'usuario' => 'required',
             'tipo'=>'required',
             'avance'=>'required'
         ));
@@ -176,7 +174,10 @@ class CompromisosController extends BaseController {
             $compromiso->avance_descripcion=Input::get('avance_descripcion');
             $compromiso->institucion()->associate(Institucion::find(Input::get('institucion')));
             $compromiso->fuente()->associate(Fuente::find(Input::get('fuente')));
-            $compromiso->usuario()->associate(Usuario::find(Input::get('usuario')));
+
+            //Solamente se puede asignar usuario si el compromiso no tiene asignado, o si el usuario es super.
+            if(Auth::user()->super || !$compromiso->usuario)
+                $compromiso->usuario()->associate(Usuario::find(Input::get('usuario')));
 
             if(!Auth::user()->super && $compromiso->usuario_id!=Auth::user()->id)
                 App::abort(403, 'Unauthorized action.');

@@ -81,7 +81,8 @@ class SectoresSeeder extends Seeder {
             array('id' => 67, 'nombre' => 'Valdivia', 'lat' => '0', 'lng' => '0', 'tipo' => 'provincia', 'sector_padre_id' => 15, 'created_at' => $date, 'updated_at' => $date),
             array('id' => 68, 'nombre' => 'Ranco', 'lat' => '0', 'lng' => '0', 'tipo' => 'provincia', 'sector_padre_id' => 15, 'created_at' => $date, 'updated_at' => $date),
             array('id' => 69, 'nombre' => 'Arica', 'lat' => '0', 'lng' => '0', 'tipo' => 'provincia', 'sector_padre_id' => 16, 'created_at' => $date, 'updated_at' => $date),
-            array('id' => 70, 'nombre' => 'Parinacota', 'lat' => '0', 'lng' => '0', 'tipo' => 'provincia', 'sector_padre_id' => 16, 'created_at' => $date, 'updated_at' => $date)
+            array('id' => 70, 'nombre' => 'Parinacota', 'lat' => '0', 'lng' => '0', 'tipo' => 'provincia', 'sector_padre_id' => 16, 'created_at' => $date, 'updated_at' => $date),
+            array('id' => 417, 'nombre' => 'Antártica Chilena', 'lat' => '0', 'lng' => '0', 'tipo' => 'provincia', 'sector_padre_id' => 13, 'created_at' => $date, 'updated_at' => $date)
         ));
 
         //Comuna
@@ -430,7 +431,8 @@ class SectoresSeeder extends Seeder {
             array('id' => 412, 'nombre' => 'Arica', 'lat' => '-18.477', 'lng' => '-70.3221', 'tipo' => 'comuna', 'sector_padre_id' => 69, 'created_at' => $date, 'updated_at' => $date),
             array('id' => 413, 'nombre' => 'Camarones', 'lat' => '-19.0089', 'lng' => '-69.9074', 'tipo' => 'comuna', 'sector_padre_id' => 69, 'created_at' => $date, 'updated_at' => $date),
             array('id' => 414, 'nombre' => 'Putre', 'lat' => '-18.1798', 'lng' => '-69.5544', 'tipo' => 'comuna', 'sector_padre_id' => 70, 'created_at' => $date, 'updated_at' => $date),
-            array('id' => 415, 'nombre' => 'General Lagos', 'lat' => '-17.8324', 'lng' => '-69.6094', 'tipo' => 'comuna', 'sector_padre_id' => 70, 'created_at' => $date, 'updated_at' => $date)
+            array('id' => 415, 'nombre' => 'General Lagos', 'lat' => '-17.8324', 'lng' => '-69.6094', 'tipo' => 'comuna', 'sector_padre_id' => 70, 'created_at' => $date, 'updated_at' => $date),
+            array('id' => 416, 'nombre' => 'Cabo de Hornos', 'lat' => '0', 'lng' => '0', 'tipo' => 'comuna', 'sector_padre_id' => 417, 'created_at' => $date, 'updated_at' => $date)
         ));
     }
 } 

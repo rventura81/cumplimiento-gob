@@ -266,8 +266,8 @@ function initFiltrosBusqueda(){
 
 
     filtrosAnidados.find(':checkbox').change(function(){
-        if($(this).prop("checked"))
-            $(this).parents('li').find(':checkbox').prop("checked",true);
+        var checked=$(this).prop("checked");
+        $(this).closest('li').find('li').find(':checkbox').prop("checked",checked);
     });
 }
 

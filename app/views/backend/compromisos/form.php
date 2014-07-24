@@ -148,6 +148,8 @@
                     <option value="En Proceso" <?=$compromiso->avance=='En Proceso'?'selected':''?>>En Proceso</option>
                     <option value="Atrasado" <?=$compromiso->avance=='Atrasado'?'selected':''?>>Atrasado</option>
                     <option value="Cumplido" <?=$compromiso->avance=='Cumplido'?'selected':''?>>Cumplido</option>
+                    <option value="Con Problemas" <?=$compromiso->avance=='Con Problemas'?'selected':''?>>Con Problemas</option>
+                    <option value="Reformulado" <?=$compromiso->avance=='Reformulado'?'selected':''?>>Reformulado</option>
                 </select>
             </div>
             <div class="col-sm-8">

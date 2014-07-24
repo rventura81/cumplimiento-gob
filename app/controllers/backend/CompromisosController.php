@@ -113,7 +113,11 @@ class CompromisosController extends BaseController {
 
     public function getNuevo(){
         $data['editMode']=true;
-        $data['compromiso'] = new Compromiso();
+
+        $compromiso=new Compromiso();
+        $compromiso->usuario()->associate(Auth::user());
+
+        $data['compromiso'] = $compromiso;
         $data['instituciones'] = Institucion::whereNull('institucion_padre_id')->get();
         $data['sectores'] = Sector::whereNull('sector_padre_id')->get();
         $data['fuentes'] = Fuente::whereNull('fuente_padre_id')->get();

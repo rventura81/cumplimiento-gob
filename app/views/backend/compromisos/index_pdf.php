@@ -14,7 +14,6 @@
             left: 0;
             right: 0;
             height: 100px;
-            border-bottom: 1px solid #000;
         }
         #header h1{
             position: absolute;
@@ -27,7 +26,6 @@
             left: 0;
             right: 0;
             height: 100px;
-            border-top: 1px solid #000;
         }
     </style>
 </head>

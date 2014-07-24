@@ -264,11 +264,12 @@ function initFiltrosBusqueda(){
         });
 
 
-
+    /*
     filtrosAnidados.find(':checkbox').change(function(){
         var checked=$(this).prop("checked");
         $(this).closest('li').find('li').find(':checkbox').prop("checked",checked);
     });
+    */
 }
 
 function initCharts(){

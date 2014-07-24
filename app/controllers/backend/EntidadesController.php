@@ -7,10 +7,6 @@ class EntidadesController extends BaseController {
     public function getIndex(){
         $entidades = EntidadDeLey::with('compromisos');
 
-        if(!Auth::user()->super){
-            $entidades->whereHas('compromisos',function($q){$q->where('usuario_id',Auth::user()->id);});
-        }
-
         $this->layout->title='Entidades';
         $this->layout->sidebar=View::make('backend/entidades/sidebar',array('item_menu'=>'entidades'));
         $this->layout->content=View::make('backend/entidades/index', array('entidades' => $entidades->get()));
@@ -46,10 +42,6 @@ class EntidadesController extends BaseController {
     public function getEditar($entidad_id){
         $entidad = EntidadDeLey::find($entidad_id);
 
-        if(!Auth::user()->super && count($entidad->compromisos->filter(function($c){return $c->usuario_id==Auth::user()->id;})) == 0){
-            App::abort(403, 'Unauthorized action.');
-        }
-
         $data['entidad']=$entidad;
 
         if(Request::ajax()){
@@ -80,10 +72,6 @@ class EntidadesController extends BaseController {
             $entidad->borrador = Input::get('borrador');
             $entidad->numero_boletin = Input::get('numero_boletin');
             $entidad->estado = Input::get('estado');
-
-            if(!Auth::user()->super && count($entidad->compromisos->filter(function($c){return $c->usuario_id==Auth::user()->id;})) == 0){
-                App::abort(403, 'Unauthorized action.');
-            }
 
             $entidad->save();
 

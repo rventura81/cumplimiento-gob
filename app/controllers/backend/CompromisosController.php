@@ -181,8 +181,10 @@ class CompromisosController extends BaseController {
             $compromiso->fuente()->associate(Fuente::find(Input::get('fuente')));
 
             //Solamente se puede asignar usuario si el compromiso no tiene asignado, o si el usuario es super.
-            if(Auth::user()->super || !$compromiso->usuario)
+            if(Auth::user()->super)
                 $compromiso->usuario()->associate(Usuario::find(Input::get('usuario')));
+            else if(!$compromiso->usuario)
+                $compromiso->usuario()->associate(Auth::user());
 
             if(!Auth::user()->super && $compromiso->usuario_id!=Auth::user()->id)
                 App::abort(403, 'Unauthorized action.');

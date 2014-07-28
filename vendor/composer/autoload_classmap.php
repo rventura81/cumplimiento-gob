@@ -16,6 +16,7 @@ return array(
     'AddTipoToMedioDeVerificacionTable' => $baseDir . '/app/database/migrations/2014_05_19_180046_add_tipo_to_medio_de_verificacion_table.php',
     'AddTituloToEntidadDeLeyTable' => $baseDir . '/app/database/migrations/2014_06_30_153908_add_titulo_to_entidad_de_ley_table.php',
     'Alter2EntidadDeLeyTable' => $baseDir . '/app/database/migrations/2014_07_24_151303_alter2_entidad_de_ley_table.php',
+    'AlterAvanceInCompromisoTable' => $baseDir . '/app/database/migrations/2014_07_28_190902_alter_avance_in_compromiso_table.php',
     'AlterAvanceInEntidadDeLeyTable' => $baseDir . '/app/database/migrations/2014_07_24_154930_alter_avance_in_entidad_de_ley_table.php',
     'AlterCompromisoTable' => $baseDir . '/app/database/migrations/2014_06_04_164401_alter_compromiso_table.php',
     'AlterEntidadDeLeyTable' => $baseDir . '/app/database/migrations/2014_06_10_145532_alter_entidad_de_ley_table.php',

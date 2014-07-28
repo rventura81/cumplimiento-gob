@@ -150,6 +150,7 @@
                     <option value="Cumplido" <?=$compromiso->avance=='Cumplido'?'selected':''?>>Cumplido</option>
                     <option value="Con Problemas" <?=$compromiso->avance=='Con Problemas'?'selected':''?>>Con Problemas</option>
                     <option value="Reformulado" <?=$compromiso->avance=='Reformulado'?'selected':''?>>Reformulado</option>
+                    <option value="Sin Información" <?=$compromiso->avance=='Sin Información'?'selected':''?>>Sin Información</option>
                 </select>
             </div>
             <div class="col-sm-8">

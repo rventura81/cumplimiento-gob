@@ -68,18 +68,18 @@ class CompromisosController extends BaseController {
                     foreach($compromisos as $c){
                         $row['id']=$c->id;
                         $row['nombre']=$c->nombre;
-                        $row['descripcion']=$c->descripcion;
+                        $row['descripcion']=strip_tags(html_entity_decode($c->descripcion));
                         $row['institucion']=$c->institucion->nombre;
                         $row['publico']=$c->publico?'Sí':'No';
                         $row['sectorialista']=$c->usuario->nombres.' '.$c->usuario->apellidos;
                         $row['fuente']=$c->fuente->nombre;
                         $row['tipo']=$c->tipo;
                         $row['avance']=$c->avance;
-                        $row['avance_descripcion']=$c->avance_descripcion;
+                        $row['avance_descripcion']=strip_tags(html_entity_decode($c->avance_descripcion));
                         $row['medios_de_verificacion']=$c->mediosDeVerificacion->implode('url',', ');
                         $row['entidades_de_ley']=$c->entidadesDeLey->implode('nombre',', ');
-                        $row['beneficios']=$c->beneficios;
-                        $row['metas']=$c->metas;
+                        $row['beneficios']=strip_tags(html_entity_decode($c->beneficios));
+                        $row['metas']=strip_tags(html_entity_decode($c->metas));
                         $row['sectores']=$c->sectores->implode('nombre',', ');
 
                         $array[]=$row;

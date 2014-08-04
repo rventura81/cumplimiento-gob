@@ -31,7 +31,7 @@
 </head>
 <body>
 <div id="header">
-    <img src="<?=public_path('img/minsegpres.jpg')?>" alt="" width="100"/>
+    <img src="<?=public_path('img/dci.png')?>" alt="" width="100"/>
     <h1>Estado de avance de compromisos presidenciales</h1>
 </div>
 <div id="footer">

@@ -26,7 +26,7 @@ class Sector extends Eloquent{
     public function getRegionAttribute(){
         if($this->padre && $this->padre->tipo=='region')
             return $this->padre;
-        elseif($this->padre->padre && $this->padre->padre->tipo=='region')
+        elseif($this->padre && $this->padre->padre && $this->padre->padre->tipo=='region')
             return $this->padre->padre;
 
         return $this;

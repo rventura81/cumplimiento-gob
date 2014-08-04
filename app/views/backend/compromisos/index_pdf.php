@@ -57,7 +57,7 @@
                         </div>
                         <?=$compromiso->descripcion?>
                         <?php if($compromiso->entidadesDeLey->count()):?>
-                        <h4>Entidades de Ley relacionadas:</h4>
+                        <h4>Trámites Legislativos relacionados:</h4>
                         <ul>
                         <?php foreach ($compromiso->entidadesDeLey as $e):?>
                             <li><a href="<?=URL::to('backend/entidades/editar/'.$e->id)?>"><?=$e->nombre?><?=$e->numero_boletin?' (Nº '.$e->numero_boletin.')':''?></a></li>

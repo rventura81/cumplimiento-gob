@@ -132,7 +132,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="form-group">
-                    <label for="metas">Metas</label>
+                    <label for="metas">Actividades Relacionadas</label>
                     <textarea class="form-control tinymce" rows="6" placeholder="Metas del compromisos." id="metas" name="metas"><?=$compromiso->metas?></textarea>
                 </div>
             </div>
@@ -205,7 +205,7 @@
             <div class="col-sm-9">
                 <div class="form-group form-compromisos-entidades-de-ley">
                     <a href="<?= URL::to('backend/entidades/nueva'); ?>" data-toggle="modal" data-target="#modal-backend" class="btn btn-xs btn-success pull-right"><span class="glyphicon glyphicon-plus"></span> Nueva</a>
-                    <label for="entidades_de_ley">Entidades de Ley asociadas</label>
+                    <label for="entidades_de_ley">Trámites Legislativos asociados</label>
                     <select id="entidades_de_ley" name="entidades_de_ley[]" class="form-control form-control-select2" data-placeholder="Seleccione las entidades de Ley asociadas a este compromiso" multiple>
                         <option></option>
                         <?php foreach($entidades_de_ley as $l): ?>

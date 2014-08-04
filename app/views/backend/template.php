@@ -41,7 +41,7 @@
                         <ul class="dropdown-menu">
                             <li><a href="<?= URL::to('/backend/compromisos'); ?>">Compromisos</a></li>
                             <?php if(Auth::user()->super):?><li><a href="<?= URL::to('/backend/fuentes'); ?>">Fuentes</a></li><?php endif ?>
-                            <li><a href="<?= URL::to('/backend/entidades'); ?>">Entidades de Ley</a></li>
+                            <li><a href="<?= URL::to('/backend/entidades'); ?>">Trámites Legislativos</a></li>
                             <li><a href="<?= URL::to('/backend/hitos'); ?>">Hitos</a></li>
                             <?php if(Auth::user()->super):?><li><a href="<?= URL::to('/backend/usuarios'); ?>">Usuarios</a></li><?php endif ?>
                         </ul>

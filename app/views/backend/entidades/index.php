@@ -1,9 +1,9 @@
 <ol class="breadcrumb">
     <li><a href="<?=URL::to('backend')?>">Inicio</a></li>
-    <li class="active">Entidades de Ley</li>
+    <li class="active">Trámites Legislativos</li>
 </ol>
 
-<a href="<?=URL::to('backend/entidades/nueva')?>" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Crear Entidad de Ley</a>
+<a href="<?=URL::to('backend/entidades/nueva')?>" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Crear Trámite Legislativo</a>
 
 <table class="table">
     <thead>

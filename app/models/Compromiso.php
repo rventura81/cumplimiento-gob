@@ -46,4 +46,14 @@ class Compromiso extends Eloquent{
         return $this->hasMany('Hito');
     }
 
+    public function getRegionesAttribute(){
+        $regiones=new \Illuminate\Database\Eloquent\Collection();
+        $this->sectores->each(function($sector) use ($regiones){
+            if($sector->region)
+                $regiones->push($sector->region);
+        });
+
+        return $regiones->unique();
+    }
+
 } 

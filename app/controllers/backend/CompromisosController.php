@@ -69,9 +69,11 @@ class CompromisosController extends BaseController {
                         $row['id']=$c->id;
                         $row['nombre']=$c->nombre;
                         $row['descripcion']=strip_tags(html_entity_decode($c->descripcion));
+                        $row['ministerio']=$c->institucion->partida->nombre;
                         $row['institucion']=$c->institucion->nombre;
                         $row['publico']=$c->publico?'Sí':'No';
                         $row['sectorialista']=$c->usuario->nombres.' '.$c->usuario->apellidos;
+                        $row['fuente_madre']=$c->fuente->fuente_principal->nombre;
                         $row['fuente']=$c->fuente->nombre;
                         $row['tipo']=$c->tipo;
                         $row['avance']=$c->avance;
@@ -80,6 +82,7 @@ class CompromisosController extends BaseController {
                         $row['entidades_de_ley']=$c->entidadesDeLey->implode('nombre',', ');
                         $row['beneficios']=strip_tags(html_entity_decode($c->beneficios));
                         $row['metas']=strip_tags(html_entity_decode($c->metas));
+                        $row['regiones']=$c->regiones->implode('nombre',', ');
                         $row['sectores']=$c->sectores->implode('nombre',', ');
 
                         $array[]=$row;

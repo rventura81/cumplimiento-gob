@@ -21,4 +21,11 @@ class Institucion extends Eloquent{
         return $this->belongsToMany('Compromiso');
     }
 
+    public function getPartidaAttribute(){
+        if($this->padre && $this->padre->tipo=='partida')
+            return $this->padre;
+
+        return $this;
+    }
+
 } 

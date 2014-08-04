@@ -28,4 +28,14 @@ class Fuente extends Eloquent{
         return count($this->hijos) > 0;
     }
 
+    public function getFuentePrincipalAttribute(){
+        $fuentePadre=$this;
+        while($fuentePadre->padre){
+            $fuentePadre=$fuentePadre->padre;
+        }
+
+        return $fuentePadre;
+
+    }
+
 }

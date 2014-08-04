@@ -22,4 +22,13 @@ class Sector extends Eloquent{
     public function hijos(){
         return $this->hasMany('Sector', 'sector_padre_id', 'id');
     }
+
+    public function getRegionAttribute(){
+        if($this->padre && $this->padre->tipo=='region')
+            return $this->padre;
+        elseif($this->padre->padre && $this->padre->padre->tipo=='region')
+            return $this->padre->padre;
+
+        return $this;
+    }
 } 

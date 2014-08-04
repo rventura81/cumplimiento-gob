@@ -11,6 +11,7 @@
     <link href="<?=URL::asset('bower_components/select2/select2.css')?>" rel="stylesheet">
     <link href="<?=URL::asset('bower_components/select2-bootstrap-css/select2-bootstrap.css')?>" rel="stylesheet">
     <link href="<?=URL::asset('bower_components/bootstrap-datepicker/css/datepicker3.css')?>" rel="stylesheet">
+    <link href="<?=URL::asset('bower_components/jquery-file-upload/css/jquery.fileupload.css')?>" rel="stylesheet">
     <link rel="stylesheet" href="<?= URL::asset('css/styles.css'); ?>"/>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -96,6 +97,10 @@
 <script src="<?=URL::asset('bower_components/flot/jquery.flot.js')?>"></script>
 <script src="<?=URL::asset('bower_components/flot/jquery.flot.pie.js')?>"></script>
 <script src="<?=URL::asset('bower_components/moment/min/moment-with-langs.min.js')?>"></script>
+<script src="<?=URL::asset('bower_components/jquery-file-upload/js/vendor/jquery.ui.widget.js')?>"></script>
+<script src="<?=URL::asset('bower_components/jquery-file-upload/js/jquery.iframe-transport.js')?>"></script>
+<script src="<?=URL::asset('bower_components/jquery-file-upload/js/jquery.fileupload.js')?>"></script>
+
 <script>
     var base_url="<?=url()?>";
 </script>

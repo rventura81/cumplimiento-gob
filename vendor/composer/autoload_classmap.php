@@ -2237,6 +2237,7 @@ return array(
     'Thujohn\\Pdf\\Pdf' => $vendorDir . '/thujohn/pdf/src/Thujohn/Pdf/Pdf.php',
     'Thujohn\\Pdf\\PdfFacade' => $vendorDir . '/thujohn/pdf/src/Thujohn/Pdf/PdfFacade.php',
     'Thujohn\\Pdf\\PdfServiceProvider' => $vendorDir . '/thujohn/pdf/src/Thujohn/Pdf/PdfServiceProvider.php',
+    'UploadsController' => $baseDir . '/app/controllers/backend/UploadsController.php',
     'Usuario' => $baseDir . '/app/models/Usuario.php',
     'UsuariosController' => $baseDir . '/app/controllers/backend/UsuariosController.php',
     'UsuariosSeeder' => $baseDir . '/app/database/seeds/UsuariosSeeder.php',

@@ -13,3 +13,4 @@ sphinx/run
 sphinx/searchd.log
 sphinx/sphinx.inc
 vendor/thujohn/pdf/src/Thujohn/Pdf/dompdf/lib/fonts/log.htm
+public/uploads

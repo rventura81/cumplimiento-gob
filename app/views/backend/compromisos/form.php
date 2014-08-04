@@ -268,7 +268,10 @@
                     <tr>
                         <td><input class="form-control" type="text" name="medios-de-verificacion[<?=$i?>][descripcion]" value="<?=$m->descripcion?>" placeholder="Descripción del medio de verificación" /></td>
                         <td><input class="form-control" type="text" name="medios-de-verificacion[<?=$i?>][tipo]" value="<?=$m->tipo?>" placeholder="pdf" /></td>
-                        <td><input class="form-control" type="text" name="medios-de-verificacion[<?=$i?>][url]" value="<?=$m->url?>" placeholder="http://www.diariooficial.cl" /></td>
+                        <td class="url">
+                            <input class="form-control" type="text" name="medios-de-verificacion[<?=$i?>][url]" value="<?=$m->url?>" placeholder="http://www.diariooficial.cl" />
+                            <span class="fileinput-button"><span class="glyphicon glyphicon-upload"></span><input type="file" /></span>
+                        </td>
                         <td>
                             <button class="btn btn-danger" type="button"><span class="glyphicon glyphicon-remove"></span></button>
                         </td>

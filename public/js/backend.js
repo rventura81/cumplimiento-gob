@@ -26,6 +26,8 @@ $(document).ready(function(){
 
     initFormCompromisosEntidadesDeLey();
 
+    initAjaxUpload();
+
 });
 
 function modalEvents() {
@@ -180,7 +182,7 @@ function initFormCompromisosMediosDeVerificacion(){
             var row='<tr>' +
                 '<td><input class="form-control" type="text" name="medios-de-verificacion['+maxid+'][descripcion]" value="" placeholder="Descripción del medio de verificación" /></td>' +
                 '<td><input class="form-control" type="text" name="medios-de-verificacion['+maxid+'][tipo]" value="" placeholder="pdf" /></td>' +
-                '<td><input class="form-control" type="text" name="medios-de-verificacion['+maxid+'][url]" value="" placeholder="http://www.diariooficial.cl" /></td>' +
+                '<td class="url"><input class="form-control" type="text" name="medios-de-verificacion['+maxid+'][url]" value="" placeholder="http://www.diariooficial.cl" /><span class="fileinput-button"><span class="glyphicon glyphicon-upload"></span><input type="file" /></span></td>' +
                 '<td>' +
                 '<button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></button>' +
                 '</td>' +
@@ -188,6 +190,7 @@ function initFormCompromisosMediosDeVerificacion(){
             $(el).find('.form-medios-table').append(row);
             ++maxid;
             $(el).find('.form-medios-table tbody tr').length?$(el).find('.form-medios-table').show():$(el).find('.form-medios-table').hide();
+            initAjaxUpload();
         });
         $(el).find('.form-medios-table').on('click','button',function(){
             $(this).closest('tr').remove();
@@ -329,5 +332,20 @@ function initFormCompromisosEntidadesDeLey(){
                 remote: base_url+"/backend/entidades/editar/"+currentSelect.data("select2Data").id
             });
         });
+    });
+}
+
+function initAjaxUpload(){
+    $(".fileinput-button input").fileupload({
+        dataType: 'json',
+        url: base_url+"/backend/uploads",
+        done: function (e, data) {
+            var name=data.result.files[0].name;
+            var url=data.result.files[0].url;
+            var extension=data.result.files[0].extension;
+            $(this).closest("tr").find("input[name*=descripcion]").val(name);
+            $(this).closest("tr").find("input[name*=tipo]").val(extension);
+            $(this).closest("tr").find("input[name*=url]").val(url);
+        }
     });
 }

@@ -4,6 +4,7 @@ class UploadsController extends BaseController {
 
 
     public function postIndex(){
+        $permittedExtensions=array('xls','xlsx','doc','docx','ppt','pptx','jpg','jpeg','gif','png','pdf','txt','csv');
         // Grab our files input
         $files = Input::file('files');
         // We will store our uploads in public/uploads/basic
@@ -13,6 +14,9 @@ class UploadsController extends BaseController {
         $results = array();
 
         foreach ($files as $file) {
+            if(!in_array($file->getClientOriginalExtension(),$permittedExtensions))
+                continue;
+
             // store our uploaded file in our uploads folder
             $filename=time().'_'.$file->getClientOriginalName();
             $file->move($uploadPath, $filename);

@@ -69,6 +69,7 @@ class CompromisosController extends BaseController {
                         $row['id']=$c->id;
                         $row['nombre']=$c->nombre;
                         $row['descripcion']=strip_tags(html_entity_decode($c->descripcion));
+                        $row['anuncio']=strip_tags(html_entity_decode($c->anuncio));
                         $row['ministerio']=$c->institucion->partida->nombre;
                         $row['institucion']=$c->institucion->nombre;
                         $row['publico']=$c->publico?'Sí':'No';

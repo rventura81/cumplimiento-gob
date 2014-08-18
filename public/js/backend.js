@@ -356,6 +356,10 @@ function initMoment(){
         var time=moment($(el).text());
         $(el).text(time.fromNow());
     });
+    $(".updatedAt").each(function(i,el){
+        var time=moment($(el).text());
+        $(el).text(time.format("DD-MM-YYYY HH:mm"));
+    });
 }
 
 function initFormCompromisosEntidadesDeLey(){

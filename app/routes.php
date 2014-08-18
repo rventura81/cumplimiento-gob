@@ -21,6 +21,7 @@ Route::group(array('before' => 'auth'), function()
     Route::controller('/backend/fuentes', 'FuentesController');
     Route::controller('/backend/entidades', 'EntidadesController');
     Route::controller('/backend/hitos', 'HitosController');
+    Route::controller('/backend/historial', 'HistorialController');
     Route::controller('/backend/uploads', 'UploadsController');
     Route::controller('/backend', 'BackendController');
 });

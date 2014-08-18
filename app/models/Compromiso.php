@@ -10,6 +10,47 @@ class Compromiso extends Eloquent{
 
     protected $fillable = array('nombre','descripcion','publico','anuncio','anuncio_emisor','tipo','beneficios','metas','avance','avance_descripcion');
 
+    public static function boot()
+    {
+        parent::boot();
+
+        self::saved(function($compromiso){
+            $log = new Historial();
+            $log->usuario()->associate(Auth::user());
+            $log->compromiso()->associate($compromiso);
+            $log->descripcion=Auth::user()->nombres.' '.Auth::user()->apellidos.' ha guardado el compromiso "'.$compromiso->nombre.'".';
+            $log->save();
+        });
+
+        self::updated(function($compromiso){
+            $dirty=$compromiso->getDirty();
+            unset($dirty['updated_at']);
+
+            $modificados=array_keys($dirty);
+
+            $log = new Historial();
+            $log->usuario()->associate(Auth::user());
+            $log->compromiso()->associate($compromiso);
+            $log->descripcion=Auth::user()->nombres.' '.Auth::user()->apellidos.' ha modificado el compromiso "'.$compromiso->nombre.'" en los siguientes campos: '.implode(', ',$modificados).'.';
+            $log->save();
+        });
+
+        self::created(function($compromiso){
+            $log = new Historial();
+            $log->usuario()->associate(Auth::user());
+            $log->compromiso()->associate($compromiso);
+            $log->descripcion=Auth::user()->nombres.' '.Auth::user()->apellidos.' ha creado el compromiso "'.$compromiso->nombre.'".';
+            $log->save();
+        });
+
+        self::deleted(function($compromiso){
+            $log = new Historial();
+            $log->usuario()->associate(Auth::user());
+            $log->descripcion=Auth::user()->nombres.' '.Auth::user()->apellidos.' ha eliminado el compromiso "'.$compromiso->nombre.'".';
+            $log->save();
+        });
+    }
+
     public function fuente(){
         return $this->belongsTo('Fuente');
     }

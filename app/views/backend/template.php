@@ -45,6 +45,7 @@
                             <li><a href="<?= URL::to('/backend/entidades'); ?>">Trámites Legislativos</a></li>
                             <li><a href="<?= URL::to('/backend/hitos'); ?>">Hitos</a></li>
                             <?php if(Auth::user()->super):?><li><a href="<?= URL::to('/backend/usuarios'); ?>">Usuarios</a></li><?php endif ?>
+                            <li><a href="<?=url('backend/historial')?>">Historial</a></li>
                         </ul>
                     </li>
                 </ul>

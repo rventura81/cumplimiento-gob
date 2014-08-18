@@ -6,7 +6,11 @@
                 <span>Busqueda</span>
             </div>
             <div class="panel-body">
-                <input type="text" class="form-control" name="q" id="q-filtros" value="<?= isset($q)?strip_tags($q):''; ?>"/>
+                <div class="clearInput">
+                    <input type="text" class="form-control" name="q" id="q-filtros" value="<?= isset($q)?strip_tags($q):''; ?>" placeholder="Ingrese su búsqueda"/>
+                    <a href="#" class="glyphicon glyphicon-remove-circle"></a>
+                </div>
+
             </div>
 
             <div class="panel-heading">Fuentes</div>

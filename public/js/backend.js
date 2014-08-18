@@ -28,6 +28,8 @@ $(document).ready(function(){
 
     initAjaxUpload();
 
+    initClearInput();
+
 });
 
 function modalEvents() {
@@ -385,5 +387,12 @@ function initAjaxUpload(){
             $(this).closest("tr").find("input[name*=tipo]").val(extension);
             $(this).closest("tr").find("input[name*=url]").val(url);
         }
+    });
+}
+
+function initClearInput(){
+    $(".clearInput a").click(function(){
+        $(this).siblings("input").val("");
+        return false;
     });
 }

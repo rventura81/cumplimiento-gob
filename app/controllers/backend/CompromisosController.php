@@ -13,11 +13,11 @@ class CompromisosController extends BaseController {
         unset($input['q']);
         unset($input['page']);
 
+        $input = $q===null && Session::has('input')?Session::get('input'):$input;  //Si es que no se esta haciendo un query, usamos los filtros almacenados en sesion.
+        Session::put('input',$input);   //Almacenamos los filtros en sesion.
+
         $data['compromisos'] = $data['compromisos_chart'] = $data['fuentes'] = $data['instituciones'] = $data['tags'] = $data['usuarios'] = $data['sectores'] = $data['tipos'] = $data['avances'] = array();
         $data['input'] = array_merge(array('instituciones' => array(),'tags'=>array(), 'usuarios'=>array(), 'sectores' => array(), 'fuentes' => array(), 'tipos' => array(), 'avances'=> array()), $input);
-
-        //if(!Auth::user()->super)
-        //    $data['input']['usuarios']=array(Auth::user()->id);
 
 
         $sphinxHelper=new SphinxHelper(new \Scalia\SphinxSearch\SphinxSearch());

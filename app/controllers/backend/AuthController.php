@@ -10,6 +10,7 @@ class AuthController extends BaseController {
 
     public function getLogout(){
         Auth::logout();
+        Session::forget('input');
         return Redirect::to('backend');
     }
 

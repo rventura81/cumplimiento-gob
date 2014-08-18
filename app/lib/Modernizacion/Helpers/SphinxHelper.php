@@ -32,7 +32,10 @@ class SphinxHelper {
     public function search($text, $options = array()){
         $ids = $filters = array();
 
-        $sqb = $this->sphinx->search($text, 'compromisos_index');
+        $sqb = $this->sphinx->search($text, 'compromisos_index')
+            ->setFieldWeights(array('nombre'=>10)
+            )
+            ->setMatchMode(\Sphinx\SphinxClient::SPH_MATCH_EXTENDED2);
 
         if($options['fuentes'])
             $sqb->filter('fuente', $options['fuentes']);

@@ -245,6 +245,40 @@ function initFiltrosBusqueda(){
         }
     });
 
+    filtrosAnidados.each(function(i,f){
+        $(f).find("ul > li > ul").each(function(j,ul){
+            var checkedElements=$(ul).find(":checked");
+            if(checkedElements.length==0)
+                $(ul).hide();
+        });
+
+        $(f).find("li").each(function(j, li){
+            var $children=$(li).find("> ul > li.active");
+            //console.log(li,children);
+            if($children.length>0){
+                var $expandButton;
+                if($(li).find("> ul:visible").length > 0)
+                    $expandButton=$("<a href='#' class='glyphicon glyphicon-minus'></a>");
+                else
+                    $expandButton=$("<a href='#' class='glyphicon glyphicon-plus'></a>");
+                $expandButton.click(function(){
+                    $(this).closest("li").find("> ul").slideToggle();
+
+                    if($(this).hasClass("glyphicon-plus"))
+                        $(this).attr("class","glyphicon glyphicon-minus");
+                    else
+                        $(this).attr("class","glyphicon glyphicon-plus");
+
+                    return false;
+                })
+
+                $expandButton.appendTo($(li).find("> label"));
+            }
+
+        });
+
+    });
+
 
     //Script para ocultar items cuando sobrepasan cierta cantidad en los paneles de filtro
     var maxItems=8;
